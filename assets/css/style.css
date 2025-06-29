@@ -531,7 +531,7 @@ button:focus {
 .site-header .navbar-header button {
     background-color: #000;
     width: 40px;
-    height: 35px;
+    height: 0px;
     border: 0;
     padding: 5px 10px;
     -webkit-border-radius: 3px;
@@ -2496,6 +2496,14 @@ border: 1px solid #666;
         -ms-filter: grayscale(100%);
         -o-filter: grayscale(100%);
          filter: grayscale(100%);
+}
+.contact-area input.form-control,
+.contact-area textarea.form-control,
+.contact-area select.form-control {
+  
+  color: #ffffff !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px;
 }
 
 /*==========================
