@@ -63,7 +63,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt></a>
+                        <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt></a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse navigation-holder">
                         
@@ -169,7 +169,7 @@
         <div class="service-dot">
             <div class="dots"></div>
         </div>
-        <img src="assets/images/icons/film.svg" alt="Video Editing Icon" style="width: 32px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <img src="assets/images/icons/videoeditor.svg" alt="Video Editing Icon" style="width: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
     </div>
     <div class="service-content">
         <h2>Video Editing</h2>
@@ -197,7 +197,7 @@
 
                                 <div class="service-content">
                                     <h2>Cinematography</h2>
-                                    <p>I capture cinematic visuals with professional camera work, lighting, and storytelling techniques.</p>
+                                    <p>I capture cinematic visuals with pro-level composition and lighting.</p>
                                 </div>
                             </div>
                         </div>
@@ -431,7 +431,7 @@
                                         <li>Reels Editing</li>
                                         <li>Digital Ads</li>
                                     </ul>
-                                    <a href="#" class="theme-btn">Contact Now</a>
+                                    <a href="#contact" class="theme-btn">Contact Now</a>
                                 </div>
                             </div>
                             <div class="grid">
@@ -448,7 +448,7 @@
                                         <li>Web Development</li>
                                         <li>Responsive Design</li>
                                     </ul>
-                                    <a href="#" class="theme-btn">Order Now</a>
+                                    <a href="#contact" class="theme-btn">Contact Now</a>
                                 </div>
                             </div>
                             <div class="grid">
@@ -465,7 +465,7 @@
                                         <li>Web Development</li>
                                         <li>Responsive Design</li>
                                     </ul>
-                                    <a href="#" class="theme-btn">Order Now</a>
+                                    <a href="#contact" class="theme-btn">Contact Now</a>
                                 </div>
                             </div>
                         </div>
@@ -598,6 +598,30 @@
 
     <!-- Custom script for this template -->
     <script src="assets/js/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $('a[href^="#"]').on('click', function(e) {
+    var target = $(this.getAttribute('href'));
 
+    if (target.length) {
+      e.preventDefault();
+
+      // Apply blur
+      $('body').addClass('smooth-scroll');
+
+      // Calculate scroll distance (for dramatic scroll effect)
+      const distance = Math.abs($(window).scrollTop() - target.offset().top);
+      const duration = Math.min(1200, distance); // cap scroll speed to 1200ms
+
+      // Animate scroll
+      $('html, body').animate({
+        scrollTop: target.offset().top
+      }, duration, 'swing', function () {
+        // Remove blur after scrolling
+        $('body').removeClass('smooth-scroll');
+      });
+    }
+  });
+</script>
 </body>
 </html>

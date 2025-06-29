@@ -2505,6 +2505,10 @@ border: 1px solid #666;
   border: 1px solid #ccc !important;
   border-radius: 4px;
 }
+body.smooth-scroll {
+  filter: blur(1px);
+  transition: filter 0.0s ease;
+}
 
 /*==========================
 1.2 footer-area start
