@@ -1,0 +1,110 @@
+E:\
++-- freelancing proj
+    +-- 3.PERSONAL
+        +-- PORTFOLIO WEBSITE
+            +-- payra
+                +-- Portfolio_Website
+                    ¦   .gitattributes
+                    ¦   folder-structure.txt
+                    ¦   index.html
+                    ¦   mail.php
+                    ¦
+                    +-- .vscode
+                    ¦   +-- launch.json
+                    ¦
+                    +-- assets
+                        +-- css
+                        ¦   +-- animate.css
+                        ¦   +-- bootstrap-touchspin.css
+                        ¦   +-- bootstrap.min.css
+                        ¦   +-- flaticon.css
+                        ¦   +-- font-awesome.min.css
+                        ¦   +-- jquery.fancybox.css
+                        ¦   +-- magnific-popup.css
+                        ¦   +-- odometer-theme-default.css
+                        ¦   +-- owl.carousel.css
+                        ¦   +-- owl.theme.css
+                        ¦   +-- owl.transitions.css
+                        ¦   +-- perfect-scrollbar.css
+                        ¦   +-- responsive.css
+                        ¦   +-- slick-theme.css
+                        ¦   +-- slick.css
+                        ¦   +-- style.css
+                        ¦   +-- style.css.map
+                        ¦   +-- themify-icons.css
+                        ¦
+                        +-- fonts
+                        ¦   +-- Flaticon.eot
+                        ¦   +-- Flaticon.svg
+                        ¦   +-- Flaticon.ttf
+                        ¦   +-- Flaticon.woff
+                        ¦   +-- Flaticon.woff2
+                        ¦   +-- glyphicons-halflings-regular.eot
+                        ¦   +-- glyphicons-halflings-regular.svg
+                        ¦   +-- glyphicons-halflings-regular.ttf
+                        ¦   +-- glyphicons-halflings-regular.woff
+                        ¦   +-- glyphicons-halflings-regular.woff2
+                        ¦   +-- slick.eot
+                        ¦   +-- slick.svg
+                        ¦   +-- slick.ttf
+                        ¦   +-- slick.woff
+                        ¦   +-- themify.eot
+                        ¦   +-- themify.svg
+                        ¦   +-- themify.ttf
+                        ¦   +-- themify.woff
+                        ¦   +-- _flaticon.scss
+                        ¦
+                        +-- images
+                        ¦   +-- ajax-loader.gif
+                        ¦   +-- logo.png
+                        ¦   +-- logo.svg
+                        ¦   +-- about
+                        ¦   ¦   +-- img-1.jpg
+                        ¦   +-- blog
+                        ¦   ¦   +-- 1.jpg
+                        ¦   ¦   +-- 2.jpg
+                        ¦   ¦   +-- 3.jpg
+                        ¦   ¦   +-- 7.jpg
+                        ¦   +-- fancybox
+                        ¦   ¦   +-- blank.gif
+                        ¦   ¦   +-- fancybox_loading.gif
+                        ¦   ¦   +-- fancybox_loading@2x.gif
+                        ¦   ¦   +-- fancybox_overlay.png
+                        ¦   ¦   +-- fancybox_sprite.png
+                        ¦   ¦   +-- fancybox_sprite@2x.png
+                        ¦   +-- gallery
+                        ¦   ¦   +-- img-1.jpg
+                        ¦   ¦   +-- img-2.jpg
+                        ¦   ¦   +-- img-3.jpg
+                        ¦   ¦   +-- img-4.jpg
+                        ¦   ¦   +-- img-5.jpg
+                        ¦   ¦   +-- img-6.jpg
+                        ¦   +-- home
+                        ¦   ¦   +-- img-1.jpg
+                        ¦   ¦   +-- img-2.jpg
+                        ¦   ¦   +-- img-3.jpg
+                        ¦   ¦   +-- img-4.jpg
+                        ¦   ¦   +-- img-5.jpg
+                        ¦   ¦   +-- img-6.jpg
+                        ¦   +-- icons
+                        ¦   ¦   +-- film.svg
+                        ¦   ¦   +-- graphics designer.svg
+                        ¦   ¦   +-- motiongraphics.svg
+                        ¦   ¦   +-- script to screen.svg
+                        ¦   ¦   +-- script to screen.svg.png
+                        ¦   ¦   +-- videoediting.png
+                        ¦   ¦   +-- videoeditor.svg
+                        ¦   ¦   +-- videoeditors.svg
+                        ¦   +-- slider
+                        ¦   ¦   +-- slide-2.jpg
+                        ¦   +-- testimonial
+                        ¦       +-- 1.jpg
+                        ¦       +-- 2.jpg
+                        ¦       +-- 3.jpg
+                        ¦
+                        +-- js
+                            +-- bootstrap.min.js
+                            +-- easing-min.js
+                            +-- jquery-plugin-collection.js
+                            +-- jquery.min.js
+                            +-- script.js
