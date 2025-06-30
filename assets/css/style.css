@@ -2560,3 +2560,16 @@ body.smooth-scroll {
 .contact-area  .section-title h2{
     margin-bottom: 100px;
 }
+/* Logo and navbar height adjustments */
+.header-style-1 .navbar-brand img {
+  width: 1210px;               /* adjust logo size */
+  height: auto;
+  margin-left: 15px;          /* push logo away from edge */
+}
+
+.header-style-1 .sticky-header {
+  min-height: 90px !important;   /* reduce total bar height */
+  padding: px 0 !important;    /* optional vertical spacing */
+  display: flex;
+  align-items: center;          /* vertically center logo */
+}
