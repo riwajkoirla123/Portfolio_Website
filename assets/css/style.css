@@ -292,9 +292,12 @@ button:focus {
 }
 
 .site-header .navigation .navbar-brand {
-    width: 200px;
-    height: 130px;
-    padding: 9px px 8px;
+    width: 180px;
+    height: 60px;
+    padding: 10px 0 10px 10px;
+    margin: 0;
+    display: block;
+    text-align: left; /* Force left alignment */
 }
 
 .site-header #navbar {
@@ -2572,4 +2575,24 @@ body.smooth-scroll {
   padding: px 0 !important;    /* optional vertical spacing */
   display: flex;
   align-items: center;          /* vertically center logo */
+}
+.site-header,
+.header-style-1,
+.header-style-1 .container-fluid,
+.header-style-1 .navigation {
+    min-height: unset !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.header-style-1 .navigation {
+    padding: 10px 0 !important;
+    margin: 0 !important;
+}
+
+.site-header .navigation .navbar-brand img {
+    max-height: 44px !important;
+    height: auto !important;
+    width: auto !important;
 }
