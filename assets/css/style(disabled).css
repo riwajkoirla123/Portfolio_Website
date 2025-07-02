@@ -186,7 +186,6 @@ button:focus {
     position: relative;
     text-transform: uppercase;
     margin: 0.31em 0 0;
-    color: ;
     color: #fff;
     margin-bottom: 50px;
     margin-top: 0;
@@ -271,10 +270,10 @@ button:focus {
  header
 --------------------------------------------------------------*/
 .site-header {
-  /* navigation open and close btn hide for width screen */
-  /* style for navigation less than 992px */
-  /*navbar collaps less then 992px*/
-  /*** cart-search-contact ***/
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 .site-header .navigation {
@@ -293,8 +292,12 @@ button:focus {
 }
 
 .site-header .navigation .navbar-brand {
-    height: auto;
-    padding: 9px 15px 8px;
+    width: 180px;
+    height: 60px;
+    padding: 10px 0 10px 10px;
+    margin: 0;
+    display: block;
+    text-align: left; /* Force left alignment */
 }
 
 .site-header #navbar {
@@ -531,7 +534,7 @@ button:focus {
 .site-header .navbar-header button {
     background-color: #000;
     width: 40px;
-    height: 35px;
+    height: 0px;
     border: 0;
     padding: 5px 10px;
     -webkit-border-radius: 3px;
@@ -1370,8 +1373,12 @@ button:focus {
 }
 
 .header-style-1 .sticky-header {
-  -webkit-box-shadow: 0 2px 15px rgba(125, 125, 125, 0.1);
-  box-shadow: 0 2px 15px rgba(125, 125, 125, 0.1);
+  background-color: #333;
+  padding: 5px 0 !important;
+  min-height: 50px !important;
+  height: 50px !important;
+  display: flex;
+  align-items: center;
 }
 
 .header-style-1 .sticky-header {
@@ -2439,7 +2446,7 @@ border: 1px solid #666;
 }
 
 .contact-validation-active #error {
-    background-color: #ffffff;
+    background-color: #ff1a1a;
     border-left: 5px solid red;
 }
 
@@ -2497,6 +2504,18 @@ border: 1px solid #666;
         -o-filter: grayscale(100%);
          filter: grayscale(100%);
 }
+.contact-area input.form-control,
+.contact-area textarea.form-control,
+.contact-area select.form-control {
+  
+  color: #ffffff !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px;
+}
+body.smooth-scroll {
+  filter: blur(1px);
+  transition: filter 0.0s ease;
+}
 
 /*==========================
 1.2 footer-area start
@@ -2525,7 +2544,7 @@ border: 1px solid #666;
 
 }
 .footer-image {
-    margin-bottom: 20px;
+    margin-bottom: 1px;
 }
 .footer-menu ul li:hover a{
   color:#fff;
@@ -2535,18 +2554,45 @@ border: 1px solid #666;
 }
 .footer-menu ul li a{
   font-size: 20px;
-  color:#999;
+  color:#ffffff;
 }
 .footer-sub p, .footer-sub span{
  font-size:14px;
- color:#ddd;
+ color:#ffffff;
 }
 .contact-area  .section-title h2{
     margin-bottom: 100px;
 }
-.contact-area input,
-.contact-area textarea,
-.contact-area .form-control {
-    color: #fff !important;    /* Change #fff to any color you want */
-    caret-color: #fff !important; /* Makes the cursor white as well */
+/* Logo and navbar height adjustments */
+.header-style-1 .navbar-brand img {
+  width: 1210px;               /* adjust logo size */
+  height: auto;
+  margin-left: 15px;          /* push logo away from edge */
+}
+
+.header-style-1 .sticky-header {
+  min-height: 90px !important;   /* reduce total bar height */
+  padding: px 0 !important;    /* optional vertical spacing */
+  display: flex;
+  align-items: center;          /* vertically center logo */
+}
+.site-header,
+.header-style-1,
+.header-style-1 .container-fluid,
+.header-style-1 .navigation {
+    min-height: unset !important;
+    height: auto !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.header-style-1 .navigation {
+    padding: 10px 0 !important;
+    margin: 0 !important;
+}
+
+.site-header .navigation .navbar-brand img {
+    max-height: 44px !important;
+    height: auto !important;
+    width: auto !important;
 }
