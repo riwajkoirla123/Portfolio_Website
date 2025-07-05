@@ -579,5 +579,14 @@
         }, 200));
 
     });
+    // Close the side menu on ANY nav link click (desktop or mobile)
+$(document).on('click', '.navigation-holder a', function() {
+    $('.navigation-holder').removeClass('open-navigation-menu');
+});
+// Close the side menu when any navigation link is clicked
+$('.navigation-holder .nav > li > a').on('click', function() {
+    $('.navigation-holder').removeClass('open-navigation-menu');
+});
+
 
 })(window.jQuery);

@@ -450,3 +450,26 @@
         padding-left: 0 !important;
     }
 }
+@media (max-width: 991px) {
+    /* Force the nav/side menu background to white */
+    .navigation-holder,
+    .header-style-1 .navigation-holder,
+    .navbar-collapse.navigation-holder,
+    #navbar.navigation-holder {
+        background: #fff !important;
+        box-shadow: 0 0 32px 0 rgba(0,0,0,0.08);
+    }
+
+    /* Make sure all nav item text/icons are dark for contrast */
+    .navigation-holder .nav > li > a,
+    .navigation-holder .nav > li > a img,
+    .navigation-holder .nav > li > a:visited,
+    .navigation-holder .nav > li > a:active {
+        color: #222 !important;
+        filter: none !important;
+    }
+    /* Fix any background color on nav items themselves */
+    .navigation-holder .nav > li > a {
+        background: transparent !important;
+    }
+}
