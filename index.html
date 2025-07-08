@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -407,77 +409,32 @@
             </div>
         </div>
         <!-- testimonial-area end -->
-        <!-- start pricing-section -->
-        <section class="pricing-section section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="section-title text-center">
-                            <span>Our Pricing</span>
-                            <h2>work exp</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="pricing-grids">
-                            <div class="grid">
-                                <div class="pricing-header">
-                                    <div class="circuler-price">
-                                        <i class="fi flaticon-web-programming"></i>
-                                    </div>
-                                    <p>Video Editing</p>
-                                </div>
-                                <div class="pricing-body">
-                                    <h2><sup>$</sup>0.0 <span>month</span></h2>
-                                    <ul>
-                                        <li>Documentry Editing</li>
-                                        <li>Reels Editing</li>
-                                        <li>Digital Ads</li>
-                                    </ul>
-                                    <a href="#contact" class="theme-btn">Contact Now</a>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="pricing-header">
-                                    <div class="circuler-price">
-                                        <i class="fi flaticon-settings-gears"></i>
-                                    </div>
-                                    <p>Standard</p>
-                                </div>
-                                <div class="pricing-body">
-                                    <h2><sup>$</sup>45<span>month</span></h2>
-                                    <ul>
-                                        <li>Web Design</li>
-                                        <li>Web Development</li>
-                                        <li>Responsive Design</li>
-                                    </ul>
-                                    <a href="#contact" class="theme-btn">Contact Now</a>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="pricing-header">
-                                    <div class="circuler-price">
-                                        <i class="fi flaticon-support"></i>
-                                    </div>
-                                    <p>Premium</p>
-                                </div>
-                                <div class="pricing-body">
-                                    <h2><sup>$</sup>50 <span>month</span></h2>
-                                    <ul>
-                                        <li>Web Design</li>
-                                        <li>Web Development</li>
-                                        <li>Responsive Design</li>
-                                    </ul>
-                                    <a href="#contact" class="theme-btn">Contact Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end pricing-section -->
+        <!-- start work experience-section -->
+        <section id="work-exp" class="experience-carousel-section">
+  <div class="section-title text-center">
+    <span>WORK EXPERIENCE</span>
+    <h2>MY JOURNEY</h2>
+  </div>
+  <div class="experience-carousel-wrapper">
+    <div class="swiper experience-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="assets/images/Experience Box/exp1.png" alt="Experience 1"></div>
+        <div class="swiper-slide"><img src="assets/images/Experience Box/exp2.png" alt="Experience 2"></div>
+        <div class="swiper-slide"><img src="assets/images/Experience Box/exp3.png" alt="Experience 3"></div>
+        <div class="swiper-slide"><img src="assets/images/Experience Box/exp4.png" alt="Experience 4"></div>
+        <div class="swiper-slide"><img src="assets/images/Experience Box/exp5.png" alt="Experience 5"></div>
+      </div>
+     <div class="swiper-button-prev">
+  <img src="assets/images/Experience Box/left side arrow.png" alt="Prev">
+</div>
+<div class="swiper-button-next">
+  <img src="assets/images/Experience Box/right side arrow.png" alt="Next">
+</div>
+    </div>
+  </div>
+</section>
+
+        <!-- end work experience-section -->
         <!-- start blog-section -->
         
         <!-- end blog-section -->
@@ -626,6 +583,28 @@
       });
     }
   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+var swiper = new Swiper('.experience-swiper', {
+  effect: 'coverflow',
+  grabCursor: false,
+  centeredSlides: true,
+  slidesPerView: 'auto',
+  coverflowEffect: {
+    rotate: 0,
+    stretch: 0,
+    depth: 150,
+    modifier: 1,
+    slideShadows: false,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  loop: true,
+  allowTouchMove: false
+});
 </script>
 </body>
 </html>

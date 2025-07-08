@@ -587,6 +587,28 @@ $(document).on('click', '.navigation-holder a', function() {
 $('.navigation-holder .nav > li > a').on('click', function() {
     $('.navigation-holder').removeClass('open-navigation-menu');
 });
-
+// Close the side menu when any navigation link is clicked
+$('.navigation-holder .nav > li > a').on('click', function() {
+    $('.navigation-holder').removeClass('open-navigation-menu');
+});
+var expSwiper = new Swiper('.experience-swiper', {
+  effect: 'coverflow',
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: 'auto',
+  initialSlide: 2,
+coverflowEffect: {
+  rotate: 0,
+  stretch: -100,     // More overlap
+  depth: 250,        // Depth in 3D space
+  modifier: 2.5,     // Stack effect multiplier
+  slideShadows: false,
+},
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  loop: true
+});
 
 })(window.jQuery);

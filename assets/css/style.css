@@ -2550,3 +2550,21 @@ border: 1px solid #666;
     color: #fff !important;    /* Change #fff to any color you want */
     caret-color: #fff !important; /* Makes the cursor white as well */
 }
+.experience-swiper .swiper-slide {
+  width: 320px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.4s ease;
+}
+
+.experience-swiper .swiper-slide-active {
+  transform: scale(1.2);
+  z-index: 10;
+}
+
+.experience-swiper .swiper-slide-next,
+.experience-swiper .swiper-slide-prev {
+  transform: scale(0.9);
+  z-index: 5;
+}
