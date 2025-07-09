@@ -597,7 +597,7 @@ var expSwiper = new Swiper('.experience-swiper', {
   effect: 'coverflow',
   grabCursor: true,
   centeredSlides: true,
-  slidesPerView: 'auto',
+  slidesPerView: 3,
   initialSlide: 2,
   coverflowEffect: {
     rotate: 0,

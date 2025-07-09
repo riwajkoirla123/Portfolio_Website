@@ -2551,7 +2551,8 @@ border: 1px solid #666;
     caret-color: #fff !important; /* Makes the cursor white as well */
 }
 .experience-swiper .swiper-slide {
-  width: 320px !important;
+  width: 260px;
+  height: 360px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2567,4 +2568,15 @@ border: 1px solid #666;
 .experience-swiper .swiper-slide-prev {
   transform: scale(0.9);
   z-index: 5;
+}
+.experience-carousel-wrapper {
+  width: 100%;
+  overflow: visible;
+  padding: 0 30px; /* Optional spacing */
+  box-sizing: border-box;
+}
+
+.experience-swiper {
+  width: 100%;
+  overflow: visible;
 }
