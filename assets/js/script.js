@@ -591,24 +591,29 @@ $('.navigation-holder .nav > li > a').on('click', function() {
 $('.navigation-holder .nav > li > a').on('click', function() {
     $('.navigation-holder').removeClass('open-navigation-menu');
 });
+
+// Your Swiper initialization here
 var expSwiper = new Swiper('.experience-swiper', {
   effect: 'coverflow',
   grabCursor: true,
   centeredSlides: true,
   slidesPerView: 'auto',
   initialSlide: 2,
-coverflowEffect: {
-  rotate: 0,
-  stretch: -100,     // More overlap
-  depth: 250,        // Depth in 3D space
-  modifier: 2.5,     // Stack effect multiplier
-  slideShadows: false,
-},
+  coverflowEffect: {
+    rotate: 0,
+    stretch: -100,
+    depth: 250,
+    modifier: 2.5,
+    slideShadows: false,
+  },
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
   loop: true
 });
+
+// Final closing line stays as it is
+
 
 })(window.jQuery);
