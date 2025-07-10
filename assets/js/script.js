@@ -1,40 +1,41 @@
+
 (function($) {
 
-	"use strict";
+  "use strict";
 
+  /*------------------------------------------
+      = FUNCTIONS
+  -------------------------------------------*/
 
-    /*------------------------------------------
-        = FUNCTIONS
-    -------------------------------------------*/
-    // Check ie and version
-    function isIE () {
-        var myNav = navigator.userAgent.toLowerCase();
-        return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1], 10) : false;
-    }
+  // Check ie and version
+  function isIE () {
+      var myNav = navigator.userAgent.toLowerCase();
+      return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1], 10) : false;
+  }
 
+  // Toggle mobile navigation
+  function toggleMobileNavigation() {
+      var navbar = $(".navigation-holder");
+      var openBtn = $(".navbar-header .open-btn");
+      var closeBtn = $(".navigation-holder .close-navbar");
 
-    // Toggle mobile navigation
-    function toggleMobileNavigation() {
-        var navbar = $(".navigation-holder");
-        var openBtn = $(".navbar-header .open-btn");
-        var closeBtn = $(".navigation-holder .close-navbar");
+      openBtn.on("click", function() {
+          if (!navbar.hasClass("slideInn")) {
+              navbar.addClass("slideInn");
+          }
+          return false;
+      });
 
-        openBtn.on("click", function() {
-            if (!navbar.hasClass("slideInn")) {
-                navbar.addClass("slideInn");
-            }
-            return false;
-        })
+      closeBtn.on("click", function() {
+          if (navbar.hasClass("slideInn")) {
+              navbar.removeClass("slideInn");
+          }
+          return false;
+      });
+  }
 
-        closeBtn.on("click", function() {
-            if (navbar.hasClass("slideInn")) {
-                navbar.removeClass("slideInn");
-            }
-            return false;
-        })
-    }
+  toggleMobileNavigation();
 
-    toggleMobileNavigation();
 
 
     // Function for toggle a class for small menu
@@ -613,7 +614,53 @@ var expSwiper = new Swiper('.experience-swiper', {
   loop: true
 });
 
-// Final closing line stays as it is
+// ========== Sub-navigation Logic ==========
+document.addEventListener("DOMContentLoaded", function () {
+  const mainBtns = document.querySelectorAll('#main-filter-nav .filter-btn');
+  const subNav = document.getElementById('sub-filter-nav');
+
+  const subFilters = {
+    reels: ['ALL', 'NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
+    longform: ['NEPA RUDRAKSHA', "NEPAL ENGINEERS'S ASSOCIATION"],
+    logo: [],
+    ads: ['Ajay Devgn X Nepa Rudraksha Campaign'],
+    all: []
+  };
+
+  mainBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Highlight selected main category
+      mainBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const selected = btn.dataset.category;
+      const items = subFilters[selected];
+
+      if (items.length > 0) {
+        // Inject sub-nav buttons
+        subNav.innerHTML = items.map((item, i) =>
+          `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
+        ).join('');
+        subNav.style.display = 'flex';
+
+        // Attach fresh listeners to the newly created buttons
+        const subBtns = subNav.querySelectorAll('.sub-filter-btn');
+        subBtns.forEach(subBtn => {
+          subBtn.addEventListener('click', () => {
+            subBtns.forEach(b => b.classList.remove('active'));
+            subBtn.classList.add('active');
+          });
+        });
+
+      } else {
+        subNav.innerHTML = '';
+        subNav.style.display = 'none';
+      }
+    });
+  });
+});
+
+
 
 
 })(window.jQuery);
