@@ -618,6 +618,8 @@ var expSwiper = new Swiper('.experience-swiper', {
 document.addEventListener("DOMContentLoaded", function () {
   const mainBtns = document.querySelectorAll('#main-filter-nav .filter-btn');
   const subNav = document.getElementById('sub-filter-nav');
+  const allLayout = document.getElementById('all-layout');
+  const filteredLayout = document.getElementById('filtered-layout');
 
   const subFilters = {
     reels: ['ALL', 'NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
@@ -636,30 +638,40 @@ document.addEventListener("DOMContentLoaded", function () {
       const selected = btn.dataset.category;
       const items = subFilters[selected];
 
-      if (items.length > 0) {
-        // Inject sub-nav buttons
-        subNav.innerHTML = items.map((item, i) =>
-          `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
-        ).join('');
-        subNav.style.display = 'flex';
-
-        // Attach fresh listeners to the newly created buttons
-        const subBtns = subNav.querySelectorAll('.sub-filter-btn');
-        subBtns.forEach(subBtn => {
-          subBtn.addEventListener('click', () => {
-            subBtns.forEach(b => b.classList.remove('active'));
-            subBtn.classList.add('active');
-          });
-        });
-
-      } else {
-        subNav.innerHTML = '';
+      // 🔁 Show or hide layouts
+      if (selected === 'all') {
+        allLayout.style.display = 'grid';
+        filteredLayout.style.display = 'none';
         subNav.style.display = 'none';
+      } else {
+        allLayout.style.display = 'none';
+        filteredLayout.style.display = 'grid';
+
+        // Inject sub-nav buttons
+        if (items.length > 0) {
+          subNav.innerHTML = items.map((item, i) =>
+            `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
+          ).join('');
+          subNav.style.display = 'flex';
+
+          // Attach click to sub buttons
+          const subBtns = subNav.querySelectorAll('.sub-filter-btn');
+          subBtns.forEach(subBtn => {
+            subBtn.addEventListener('click', () => {
+              subBtns.forEach(b => b.classList.remove('active'));
+              subBtn.classList.add('active');
+              // 👉 (Filtering logic will go here later)
+            });
+          });
+
+        } else {
+          subNav.innerHTML = '';
+          subNav.style.display = 'none';
+        }
       }
     });
   });
 });
-
 
 
 
