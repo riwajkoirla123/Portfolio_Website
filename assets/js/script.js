@@ -625,8 +625,7 @@ document.addEventListener("DOMContentLoaded", function () {
     reels: ['ALL', 'NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
     longform: ['NEPA RUDRAKSHA', "NEPAL ENGINEERS'S ASSOCIATION"],
     logo: [],
-    ads: ['Ajay Devgn X Nepa Rudraksha Campaign'],
-    all: []
+    ads: ['Ajay Devgn X Nepa Rudraksha Campaign']
   };
 
   mainBtns.forEach(btn => {
@@ -638,39 +637,47 @@ document.addEventListener("DOMContentLoaded", function () {
       const selected = btn.dataset.category;
       const items = subFilters[selected];
 
-      // 🔁 Show or hide layouts
-      if (selected === 'all') {
-        allLayout.style.display = 'grid';
-        filteredLayout.style.display = 'none';
-        subNav.style.display = 'none';
-      } else {
-        allLayout.style.display = 'none';
-        filteredLayout.style.display = 'grid';
+      // Show or hide layouts
+      allLayout.style.display = selected === 'reels' ? 'grid' : 'none';
+      filteredLayout.style.display = selected === 'reels' ? 'none' : 'grid';
 
-        // Inject sub-nav buttons
-        if (items.length > 0) {
-          subNav.innerHTML = items.map((item, i) =>
-            `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
-          ).join('');
-          subNav.style.display = 'flex';
+      // Inject sub-nav buttons
+      if (items.length > 0) {
+        subNav.innerHTML = items.map((item, i) =>
+          `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
+        ).join('');
+        subNav.style.display = 'flex';
 
-          // Attach click to sub buttons
-          const subBtns = subNav.querySelectorAll('.sub-filter-btn');
-          subBtns.forEach(subBtn => {
-            subBtn.addEventListener('click', () => {
-              subBtns.forEach(b => b.classList.remove('active'));
-              subBtn.classList.add('active');
-              // 👉 (Filtering logic will go here later)
-            });
+        // Attach click to sub buttons
+        const subBtns = subNav.querySelectorAll('.sub-filter-btn');
+        subBtns.forEach(subBtn => {
+          subBtn.addEventListener('click', () => {
+            subBtns.forEach(b => b.classList.remove('active'));
+            subBtn.classList.add('active');
           });
+        });
 
-        } else {
-          subNav.innerHTML = '';
-          subNav.style.display = 'none';
-        }
+      } else {
+        subNav.innerHTML = '';
+        subNav.style.display = 'none';
       }
     });
   });
+
+setTimeout(() => {
+  const reelsBtn = document.querySelector('[data-category="reels"]');
+  if (reelsBtn) {
+    reelsBtn.click();
+
+    setTimeout(() => {
+      const subBtns = document.querySelectorAll('.sub-filter-btn');
+      if (subBtns.length) {
+        subBtns[0].click(); // click first sub category like NEPA RUDRAKSHA
+      }
+    }, 10); // let sub-nav render first
+  }
+}, 0);
+
 });
 
 

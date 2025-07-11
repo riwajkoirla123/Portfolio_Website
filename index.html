@@ -280,7 +280,7 @@
 
 
 
-    <!--Start Portfolio area--> 
+   <!--Start Portfolio area--> 
 <section id="protfolio" class="gallery-section section-padding">
   <div class="container">
 
@@ -292,8 +292,7 @@
 
     <!-- Main Filter Navigation -->
     <div class="main-filter-nav" id="main-filter-nav">
-      <button class="filter-btn active" data-category="all">ALL</button>
-      <button class="filter-btn" data-category="reels">REELS FORMAT EDITING</button>
+      <button class="filter-btn active" data-category="reels">REELS FORMAT EDITING</button>
       <button class="filter-btn" data-category="longform">LONG FORM EDITING</button>
       <button class="filter-btn" data-category="logo">LOGO DESIGN</button>
       <button class="filter-btn" data-category="ads">SOCIAL MEDIA ADS</button>
@@ -302,37 +301,33 @@
     <!-- Sub Filter Navigation (populated dynamically) -->
     <div class="sub-filter-nav" id="sub-filter-nav"></div>
 
-  <!-- Grid for "ALL" category only -->
-<div id="all-layout" class="all-category-layout">
+    <!-- Grid: REELS FORMAT EDITING → ALL -->
+    <div id="reels-all-layout" class="reel-grid collapsed">
 
-  <!-- Row 1 -->
-  <div class="item ratio-9x16"><iframe src="https://www.youtube.com/embed/gk_uWkp_m_A" frameborder="0" allowfullscreen></iframe></div>
-  <div class="item ratio-5x4"><img src="assets/images/portfolios/box.png" alt=""></div>
-  <div class="item ratio-16x9"><iframe src="https://www.youtube.com/embed/cZG2FzJV0TY" frameborder="0" allowfullscreen></iframe></div>
-  <div class="item ratio-5x4"><img src="assets/images/portfolios/box.png" alt=""></div>
+      <!-- Reel Items (YouTube Thumbnails) -->
+      <div class="item reel-video" data-video-id="yrYxuYAAQbc">
+        <div class="video-wrapper">
+          <img class="reel-thumb" src="https://img.youtube.com/vi/yrYxuYAAQbc/hqdefault.jpg" alt="Reel Thumbnail">
+          <div class="play-button">▶</div>
+        </div>
+      </div>
 
-  <!-- Row 2 -->
-  <div class="item ratio-9x16"><iframe src="https://www.youtube.com/embed/gk_uWkp_m_A" frameborder="0" allowfullscreen></iframe></div>
-  <div class="item ratio-9x16"><iframe src="https://www.youtube.com/embed/gk_uWkp_m_A" frameborder="0" allowfullscreen></iframe></div>
-  <div class="item ratio-16x9"><iframe src="https://www.youtube.com/embed/cZG2FzJV0TY" frameborder="0" allowfullscreen></iframe></div>
-  <div class="item ratio-5x4"><img src="assets/images/portfolios/box.png" alt=""></div>
+      <!-- Add more with different video IDs -->
+      <div class="item reel-video" data-video-id="yrYxuYAAQbc">
+        <div class="video-wrapper">
+          <img class="reel-thumb" src="https://img.youtube.com/vi/yrYxuYAAQbc/hqdefault.jpg" alt="Reel Thumbnail">
+          <div class="play-button">▶</div>
+        </div>
+      </div>
 
-  <!-- Row 3 -->
-  <div class="item ratio-16x9"><iframe src="https://www.youtube.com/embed/cZG2FzJV0TY" frameborder="0" allowfullscreen></iframe></div>
-  <div class="item ratio-5x4"><img src="assets/images/portfolios/box.png" alt=""></div>
-  <div class="item ratio-5x4"><img src="assets/images/portfolios/box.png" alt=""></div>
-  <div class="item ratio-16x9"><iframe src="https://www.youtube.com/embed/cZG2FzJV0TY" frameborder="0" allowfullscreen></iframe></div>
+      <!-- More boxes here as needed -->
 
-  <!-- Branding Block -->
-  <div class="branding-block">
-    <p>REEL FRAME<br>& BRAND<br><span>MY VISUAL LANE</span></p>
-  </div>
+    </div>
 
-</div>
-
-<!-- Grid for other filtered categories -->
-<div id="filtered-layout" class="portfolio-grid" style="display: none;"></div>
-
+    <!-- Show More Button -->
+    <div id="show-more" class="show-more-btn">
+      <i class="fas fa-chevron-down"></i>
+    </div>
 
   </div>
 </section>
