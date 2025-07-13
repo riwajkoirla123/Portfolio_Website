@@ -473,3 +473,20 @@
         background: transparent !important;
     }
 }
+@media (max-width: 767px) {
+  .experience-swiper .swiper-slide {
+    width: 220px !important;
+    height: 340px !important;
+  }
+
+  .experience-section {
+    padding-top: 50px;
+    padding-bottom: 60px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    transform: scale(0.6);
+    top: 50%;
+  }
+}
