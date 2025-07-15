@@ -617,74 +617,43 @@ var expSwiper = new Swiper('.experience-swiper', {
 document.addEventListener("DOMContentLoaded", function () {
   const mainBtns = document.querySelectorAll('#main-filter-nav .filter-btn');
   const subNav = document.getElementById('sub-filter-nav');
-
-  // Map sub-categories to their layout IDs (divs)
-  const layouts = {
-    'reels-ALL': 'reels-all-layout',
-    'reels-NEPA RUDRAKSHA': 'reels-nepa-layout',
-    'reels-DARAZ': 'reels-daraz-layout',
-    'reels-SHARE SANSKAR': 'reels-sharesanskar-layout'
-    // add more if needed
-  };
+  const allLayout = document.getElementById('all-layout');
+  const filteredLayout = document.getElementById('filtered-layout');
 
   const subFilters = {
     reels: ['ALL', 'NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
-    longform: ['NEPA RUDRAKSHA', "NEPAL ENGINEERS' ASSOCIATION"],
+    longform: ['NEPA RUDRAKSHA', "NEPAL ENGINEERS'S ASSOCIATION"],
     logo: [],
     ads: ['Ajay Devgn X Nepa Rudraksha Campaign']
   };
 
-  // Hide all portfolio layouts
-  function hideAllLayouts() {
-    Object.values(layouts).forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.style.display = 'none';
-    });
-  }
-
   function handleMainClick(btn) {
     mainBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    const selected = btn.dataset.category;
 
-    // Setup sub-nav
-    const subItems = subFilters[selected];
-    if (subItems && subItems.length > 0) {
-      subNav.innerHTML = subItems.map((item, i) =>
+    const selected = btn.dataset.category;
+    const items = subFilters[selected];
+
+    allLayout.style.display = selected === 'reels' ? 'grid' : 'none';
+    filteredLayout.style.display = selected === 'reels' ? 'none' : 'grid';
+
+    if (items && items.length > 0) {
+      subNav.innerHTML = items.map((item, i) =>
         `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
       ).join('');
       subNav.style.display = 'flex';
 
-      // Sub-filter logic
       const subBtns = subNav.querySelectorAll('.sub-filter-btn');
-      subBtns.forEach((subBtn, i) => {
+      subBtns.forEach(subBtn => {
         subBtn.addEventListener('click', () => {
           subBtns.forEach(b => b.classList.remove('active'));
           subBtn.classList.add('active');
-          hideAllLayouts();
-          // Show correct layout based on main and sub selection
-          const layoutKey = `${selected}-${subBtn.textContent.trim().toUpperCase()}`;
-          const layoutId = layouts[layoutKey];
-          if (layoutId) {
-            const grid = document.getElementById(layoutId);
-            if (grid) grid.style.display = 'grid';
-          }
         });
       });
-
-      // Default: Show first sub-category layout
-      hideAllLayouts();
-      const defaultLayoutKey = `${selected}-${subItems[0].toUpperCase()}`;
-      const defaultLayoutId = layouts[defaultLayoutKey];
-      if (defaultLayoutId) {
-        const defaultGrid = document.getElementById(defaultLayoutId);
-        if (defaultGrid) defaultGrid.style.display = 'grid';
-      }
 
     } else {
       subNav.innerHTML = '';
       subNav.style.display = 'none';
-      hideAllLayouts();
     }
   }
 
@@ -692,91 +661,49 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.addEventListener('click', () => handleMainClick(btn));
   });
 
-  // Default: first main filter
-  const defaultBtn = document.querySelector('#main-filter-nav .filter-btn.active');
+  const defaultBtn = document.querySelector('[data-category="reels"]');
   if (defaultBtn) handleMainClick(defaultBtn);
+
+  // ✅ Call the sub-filter logic
+  setupPortfolioGridFiltering();
+
+  // ✅ Show More logic (inside DOMContentLoaded!)
+  const showMoreBtn = document.getElementById("show-more");
+  const reelGrid = document.getElementById("reels-all-layout");
+
+  showMoreBtn.addEventListener("click", () => {
+    reelGrid.classList.add("expanded");
+    showMoreBtn.style.display = "none";
+  });
+
+  window.addEventListener("scroll", () => {
+    const portfolio = document.getElementById("protfolio");
+    const portfolioBottom = portfolio.offsetTop + portfolio.offsetHeight;
+    const scrollY = window.scrollY + window.innerHeight;
+
+    if (scrollY > portfolioBottom + 100) {
+      reelGrid.classList.remove("expanded");
+      showMoreBtn.style.display = "block";
+    }
+  });
 });
-// ---- PORTFOLIO FILTER LOGIC ----
-document.addEventListener("DOMContentLoaded", function () {
-  const mainBtns = document.querySelectorAll('#main-filter-nav .filter-btn');
+
+function setupPortfolioGridFiltering() {
   const subNav = document.getElementById('sub-filter-nav');
+  const grid = document.getElementById('reels-all-layout');
+  const items = grid.querySelectorAll('.item');
 
-  // Map sub-categories to their layout IDs (divs)
-  const layouts = {
-    'reels-ALL': 'reels-all-layout',
-    'reels-NEPA RUDRAKSHA': 'reels-nepa-layout',
-    'reels-DARAZ': 'reels-daraz-layout',
-    'reels-SHARE SANSKAR': 'reels-sharesanskar-layout'
-  };
+  subNav.addEventListener('click', (e) => {
+    if (!e.target.classList.contains('sub-filter-btn')) return;
 
-  const subFilters = {
-    reels: ['ALL', 'NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
-    longform: ['NEPA RUDRAKSHA', "NEPAL ENGINEERS' ASSOCIATION"],
-    logo: [],
-    ads: ['Ajay Devgn X Nepa Rudraksha Campaign']
-  };
+    const selected = e.target.textContent.trim().toLowerCase();
 
-  function hideAllLayouts() {
-    Object.values(layouts).forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.style.display = 'none';
+    items.forEach(item => {
+      const tag = (item.dataset.tag || "").toLowerCase();
+      const show = selected === 'all' || tag === selected;
+      item.style.display = show ? 'block' : 'none';
     });
-  }
-
-  function handleMainClick(btn) {
-    mainBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const selected = btn.dataset.category;
-
-    // Setup sub-nav
-    const subItems = subFilters[selected];
-    if (subItems && subItems.length > 0) {
-      subNav.innerHTML = subItems.map((item, i) =>
-        `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
-      ).join('');
-      subNav.style.display = 'flex';
-
-      // Sub-filter logic
-      const subBtns = subNav.querySelectorAll('.sub-filter-btn');
-      subBtns.forEach((subBtn, i) => {
-        subBtn.addEventListener('click', () => {
-          subBtns.forEach(b => b.classList.remove('active'));
-          subBtn.classList.add('active');
-          hideAllLayouts();
-          // Show correct layout based on main and sub selection
-          const layoutKey = `${selected}-${subBtn.textContent.trim().toUpperCase()}`;
-          const layoutId = layouts[layoutKey];
-          if (layoutId) {
-            const grid = document.getElementById(layoutId);
-            if (grid) grid.style.display = 'grid';
-          }
-        });
-      });
-
-      // Default: Show first sub-category layout
-      hideAllLayouts();
-      const defaultLayoutKey = `${selected}-${subItems[0].toUpperCase()}`;
-      const defaultLayoutId = layouts[defaultLayoutKey];
-      if (defaultLayoutId) {
-        const defaultGrid = document.getElementById(defaultLayoutId);
-        if (defaultGrid) defaultGrid.style.display = 'grid';
-      }
-
-    } else {
-      subNav.innerHTML = '';
-      subNav.style.display = 'none';
-      hideAllLayouts();
-    }
-  }
-
-  mainBtns.forEach(btn => {
-    btn.addEventListener('click', () => handleMainClick(btn));
   });
-
-  // Default: first main filter
-  const defaultBtn = document.querySelector('#main-filter-nav .filter-btn.active');
-  if (defaultBtn) handleMainClick(defaultBtn);
-});
-
+}
 
 })(window.jQuery);
