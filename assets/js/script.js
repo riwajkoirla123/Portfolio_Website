@@ -622,7 +622,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Map sub-categories to their layout IDs (divs)
   const layouts = {
-    'reels-ALL': 'reels-all-layout',
     'reels-NEPA RUDRAKSHA': 'reels-nepa-layout',
     'reels-DARAZ': 'reels-daraz-layout',
     'reels-SHARE SANSKAR': 'reels-sharesanskar-layout'
@@ -630,7 +629,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const subFilters = {
-    reels: ['ALL', 'NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
+  reels: ['NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
     longform: ['NEPA RUDRAKSHA', "NEPAL ENGINEERS' ASSOCIATION"],
     logo: [],
     ads: ['Ajay Devgn X Nepa Rudraksha Campaign']
@@ -705,18 +704,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Map sub-categories to their layout IDs (divs)
   const layouts = {
-    'reels-ALL': 'reels-all-layout',
     'reels-NEPA RUDRAKSHA': 'reels-nepa-layout',
     'reels-DARAZ': 'reels-daraz-layout',
     'reels-SHARE SANSKAR': 'reels-sharesanskar-layout'
   };
 
-  const subFilters = {
-    reels: ['ALL', 'NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
-    longform: ['NEPA RUDRAKSHA', "NEPAL ENGINEERS' ASSOCIATION"],
-    logo: [],
-    ads: ['Ajay Devgn X Nepa Rudraksha Campaign']
-  };
+  
 
   function hideAllLayouts() {
     Object.values(layouts).forEach(id => {
