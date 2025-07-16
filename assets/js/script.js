@@ -277,6 +277,8 @@
 
     sortingGallery();
 
+    $('.gallery-filters li a:first').click();
+
 
 
 
@@ -593,26 +595,26 @@ $('.navigation-holder .nav > li > a').on('click', function() {
     $('.navigation-holder').removeClass('open-navigation-menu');
 });
 
-// Your Swiper initialization here
-var expSwiper = new Swiper('.experience-swiper', {
-  effect: 'coverflow',
-  grabCursor: true,
-  centeredSlides: true,
-  slidesPerView: 3,
-  initialSlide: 2,
-  coverflowEffect: {
-    rotate: 0,
-    stretch: -100,
-    depth: 250,
-    modifier: 2.5,
-    slideShadows: false,
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  loop: true
-});
+// // Your Swiper initialization here
+// var expSwiper = new Swiper('.experience-swiper', {
+//   effect: 'coverflow',
+//   grabCursor: true,
+//   centeredSlides: true,
+//   slidesPerView: 3,
+//   initialSlide: 2,
+//   coverflowEffect: {
+//     rotate: 0,
+//     stretch: -100,
+//     depth: 250,
+//     modifier: 2.5,
+//     slideShadows: false,
+//   },
+//   navigation: {
+//     nextEl: '.swiper-button-next',
+//     prevEl: '.swiper-button-prev',
+//   },
+//   loop: true
+// });
 
 document.addEventListener("DOMContentLoaded", function () {
   const mainBtns = document.querySelectorAll('#main-filter-nav .filter-btn');
@@ -776,6 +778,46 @@ document.addEventListener("DOMContentLoaded", function () {
   // Default: first main filter
   const defaultBtn = document.querySelector('#main-filter-nav .filter-btn.active');
   if (defaultBtn) handleMainClick(defaultBtn);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const lightbox = document.getElementById('video-lightbox');
+  const iframe = document.getElementById('lightbox-iframe');
+  const closeBtn = lightbox.querySelector('.close-btn');
+
+  document.querySelectorAll('.reel-video').forEach(item => {
+    item.addEventListener('click', function() {
+      const videoId = this.dataset.videoId;
+      if (!videoId) return;
+
+      const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3`;
+      iframe.src = embedUrl;
+
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  // Close on close button click
+  closeBtn.addEventListener('click', closeLightbox);
+
+  // Close on clicking outside the video content
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeLightbox();
+    }
+  });
+
+  // Close on pressing Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+      closeLightbox();
+    }
+  });
+
+  function closeLightbox() {
+    lightbox.style.display = 'none';
+    iframe.src = '';  // Stop the video playback by clearing src
+  }
 });
 
 

@@ -2704,37 +2704,43 @@ border: 1px solid #666;
 
 .lightbox-content {
   position: relative;
-  max-width: 90%;
-  max-height: 90%;
+  width: 360px;          /* base 9:16 size */
+  height: auto;
   aspect-ratio: 9 / 16;
-  background-color: #000;
+  max-width: 95vw;
+  max-height: 95vh;
+  background: #000;
   border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 0 30px rgba(0,0,0,0.8);
+  overflow: visible;     /* allow overflow to prevent cropping */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .lightbox-content iframe {
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
   border: none;
+  display: block;
 }
+
 .item.reel-video {
   width: 100%;
   position: relative;
-  padding-top: 177.77%; /* 9:16 aspect ratio */
+  padding-top: 177.77%; /* Maintains 9:16 aspect ratio */
   background: #fff;
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
 
 .video-wrapper {
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
 }
-
 .reel-thumb {
   width: 100%;
   height: 100%;
@@ -2750,22 +2756,7 @@ border: 1px solid #666;
   pointer-events: none;
 }
 
-.show-more-btn {
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.8rem;
-  color: white;
-  cursor: pointer;
-  z-index: 5;
-  padding: 10px;
-  background: none;
-}
 
-.show-more-btn:hover {
-  opacity: 0.8;
-}
 .reel-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -2781,23 +2772,6 @@ border: 1px solid #666;
   max-height: 100%;
 }
 
-.reel-grid::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-  background: linear-gradient(to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.2) 30%,
-    rgba(0, 0, 0, 0.5) 60%,
-    rgba(0, 0, 0, 0.8) 85%,
-    rgba(0, 0, 0, 1) 100%
-  );
-  pointer-events: none;
-  z-index: 3;
-}
 .grid-fade-overlay {
   position: absolute;
   bottom: 80px; /* moves above the show-more button */
