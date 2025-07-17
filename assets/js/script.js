@@ -615,27 +615,26 @@ $('.navigation-holder .nav > li > a').on('click', function() {
 //   },
 //   loop: true
 // });
-
 document.addEventListener("DOMContentLoaded", function () {
   const mainBtns = document.querySelectorAll('#main-filter-nav .filter-btn');
   const subNav = document.getElementById('sub-filter-nav');
 
-  // Map sub-categories to their layout IDs (divs)
+  // Map of main → sub → layout IDs
   const layouts = {
     'reels-NEPA RUDRAKSHA': 'reels-nepa-layout',
     'reels-DARAZ': 'reels-daraz-layout',
     'reels-SHARE SANSKAR': 'reels-sharesanskar-layout'
-    // add more if needed
   };
 
+  // Sub-filter options per main category
   const subFilters = {
-  reels: ['NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
-    longform: ['NEPA RUDRAKSHA', "NEPAL ENGINEERS' ASSOCIATION"],
+    reels: ['NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
+    longform: [],
     logo: [],
-    ads: ['Ajay Devgn X Nepa Rudraksha Campaign']
+    ads: []
   };
 
-  // Hide all portfolio layouts
+  // Hide all portfolio layout sections
   function hideAllLayouts() {
     Object.values(layouts).forEach(id => {
       const el = document.getElementById(id);
@@ -643,27 +642,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Handle main category click (e.g., REELS, LONGFORM)
   function handleMainClick(btn) {
+    // Toggle main nav active state
     mainBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    const selected = btn.dataset.category;
 
-    // Setup sub-nav
+    const selected = btn.dataset.category;
     const subItems = subFilters[selected];
+
     if (subItems && subItems.length > 0) {
+      // Build sub-filter buttons (no "All")
       subNav.innerHTML = subItems.map((item, i) =>
         `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
       ).join('');
       subNav.style.display = 'flex';
 
-      // Sub-filter logic
+      // Handle sub-filter click events
       const subBtns = subNav.querySelectorAll('.sub-filter-btn');
-      subBtns.forEach((subBtn, i) => {
+      subBtns.forEach((subBtn) => {
         subBtn.addEventListener('click', () => {
           subBtns.forEach(b => b.classList.remove('active'));
           subBtn.classList.add('active');
           hideAllLayouts();
-          // Show correct layout based on main and sub selection
+
           const layoutKey = `${selected}-${subBtn.textContent.trim().toUpperCase()}`;
           const layoutId = layouts[layoutKey];
           if (layoutId) {
@@ -673,88 +675,22 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
 
-      // Default: Show first sub-category layout
+      // Set default sub-filter = NEPA RUDRAKSHA (if exists)
       hideAllLayouts();
-      const defaultLayoutKey = `${selected}-${subItems[0].toUpperCase()}`;
+      const defaultLayoutKey = `${selected}-NEPA RUDRAKSHA`;
       const defaultLayoutId = layouts[defaultLayoutKey];
       if (defaultLayoutId) {
         const defaultGrid = document.getElementById(defaultLayoutId);
         if (defaultGrid) defaultGrid.style.display = 'grid';
-      }
 
-    } else {
-      subNav.innerHTML = '';
-      subNav.style.display = 'none';
-      hideAllLayouts();
-    }
-  }
-
-  mainBtns.forEach(btn => {
-    btn.addEventListener('click', () => handleMainClick(btn));
-  });
-
-  // Default: first main filter
-  const defaultBtn = document.querySelector('#main-filter-nav .filter-btn.active');
-  if (defaultBtn) handleMainClick(defaultBtn);
-});
-// ---- PORTFOLIO FILTER LOGIC ----
-document.addEventListener("DOMContentLoaded", function () {
-  const mainBtns = document.querySelectorAll('#main-filter-nav .filter-btn');
-  const subNav = document.getElementById('sub-filter-nav');
-
-  // Map sub-categories to their layout IDs (divs)
-  const layouts = {
-    'reels-NEPA RUDRAKSHA': 'reels-nepa-layout',
-    'reels-DARAZ': 'reels-daraz-layout',
-    'reels-SHARE SANSKAR': 'reels-sharesanskar-layout'
-  };
-
-  
-
-  function hideAllLayouts() {
-    Object.values(layouts).forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.style.display = 'none';
-    });
-  }
-
-  function handleMainClick(btn) {
-    mainBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const selected = btn.dataset.category;
-
-    // Setup sub-nav
-    const subItems = subFilters[selected];
-    if (subItems && subItems.length > 0) {
-      subNav.innerHTML = subItems.map((item, i) =>
-        `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
-      ).join('');
-      subNav.style.display = 'flex';
-
-      // Sub-filter logic
-      const subBtns = subNav.querySelectorAll('.sub-filter-btn');
-      subBtns.forEach((subBtn, i) => {
-        subBtn.addEventListener('click', () => {
-          subBtns.forEach(b => b.classList.remove('active'));
-          subBtn.classList.add('active');
-          hideAllLayouts();
-          // Show correct layout based on main and sub selection
-          const layoutKey = `${selected}-${subBtn.textContent.trim().toUpperCase()}`;
-          const layoutId = layouts[layoutKey];
-          if (layoutId) {
-            const grid = document.getElementById(layoutId);
-            if (grid) grid.style.display = 'grid';
+        // Set "Nepa Rudraksha" sub-filter button as active
+        subBtns.forEach(btn => {
+          if (btn.textContent.trim().toUpperCase() === 'NEPA RUDRAKSHA') {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
           }
         });
-      });
-
-      // Default: Show first sub-category layout
-      hideAllLayouts();
-      const defaultLayoutKey = `${selected}-${subItems[0].toUpperCase()}`;
-      const defaultLayoutId = layouts[defaultLayoutKey];
-      if (defaultLayoutId) {
-        const defaultGrid = document.getElementById(defaultLayoutId);
-        if (defaultGrid) defaultGrid.style.display = 'grid';
       }
 
     } else {
@@ -764,54 +700,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Add click event to each main filter button
   mainBtns.forEach(btn => {
     btn.addEventListener('click', () => handleMainClick(btn));
   });
 
-  // Default: first main filter
-  const defaultBtn = document.querySelector('#main-filter-nav .filter-btn.active');
-  if (defaultBtn) handleMainClick(defaultBtn);
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  const lightbox = document.getElementById('video-lightbox');
-  const iframe = document.getElementById('lightbox-iframe');
-  const closeBtn = lightbox.querySelector('.close-btn');
-
-  document.querySelectorAll('.reel-video').forEach(item => {
-    item.addEventListener('click', function() {
-      const videoId = this.dataset.videoId;
-      if (!videoId) return;
-
-      const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3`;
-      iframe.src = embedUrl;
-
-      lightbox.style.display = 'flex';
-    });
-  });
-
-  // Close on close button click
-  closeBtn.addEventListener('click', closeLightbox);
-
-  // Close on clicking outside the video content
-  lightbox.addEventListener('click', function(e) {
-    if (e.target === this) {
-      closeLightbox();
-    }
-  });
-
-  // Close on pressing Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && lightbox.style.display === 'flex') {
-      closeLightbox();
-    }
-  });
-
-  function closeLightbox() {
-    lightbox.style.display = 'none';
-    iframe.src = '';  // Stop the video playback by clearing src
+  // 🔥 On page load: Default to REELS → NEPA RUDRAKSHA
+  const defaultBtn = document.querySelector('.filter-btn[data-category="reels"]');
+  if (defaultBtn) {
+    defaultBtn.classList.add('active');
+    handleMainClick(defaultBtn);
   }
 });
-
-
 })(window.jQuery);
