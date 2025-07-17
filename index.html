@@ -277,7 +277,6 @@
         </div>
         <!-- service-area end -->
 
-
 <!-- Start-Portfolio Area -->
 <section id="protfolio" class="gallery-section section-padding">
   <div class="container">
@@ -296,37 +295,60 @@
       <button class="filter-btn" data-category="ads">SOCIAL MEDIA ADS</button>
     </div>
 
-    <!-- Sub Filter Navigation (populated dynamically) -->
+    <!-- Sub Filter Navigation -->
     <div class="sub-filter-nav" id="sub-filter-nav"></div>
 
     <!-- REELS FORMAT EDITING → NEPA RUDRAKSHA -->
-    <div id="reels-nepa-layout" class="portfolio-grid" style="display:none;">
-      <!-- Video 1 -->
-      <div class="item reel-video" data-video-id="ID_dxQzil_c" data-tag="nepa rudraksha">
-        <div class="video-wrapper">
-          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD COMBO.PNG" alt="Nepa Rudraksha">
-          <div class="play-button">▶</div>
+    <div id="reels-nepa-layout" style="display:none;">
+      <div class="video-carousel-wrapper">
+        <div class="video-carousel-track" id="video-carousel-track">
+
+          <!-- ----- Video 1 ----- -->
+          <div class="item reel-video" data-video-id="ID_dxQzil_c" data-tag="nepa rudraksha">
+            <div class="video-wrapper">
+              <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD COMBO.PNG" alt="Nepa Rudraksha">
+              <div class="play-button">▶</div>
+            </div>
+          </div>
+          <!-- ----- End of Video 1 ----- -->
+
+          <!-- ----- Video 2 ----- -->
+          <div class="item reel-video" data-video-id="rb_YxXTWXU4" data-tag="nepa rudraksha">
+            <div class="video-wrapper">
+              <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD JOINS NR.png" alt="Nepa Rudraksha">
+              <div class="play-button">▶</div>
+            </div>
+          </div>
+          <!-- ----- End of Video 2 ----- -->
+
+          <!-- ----- Video 3 ----- -->
+          <div class="item reel-video" data-video-id="nbv5FgPqHxU" data-tag="nepa rudraksha">
+            <div class="video-wrapper">
+              <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SHRAWAN WISH.PNG" alt="Nepa Rudraksha">
+              <div class="play-button">▶</div>
+            </div>
+          </div>
+          <!-- ----- End of Video 3 ----- -->
+
+          <!-- ----- Video 4 ----- -->
+          <div class="item reel-video" data-video-id="gxu3TUTLXKs" data-tag="nepa rudraksha">
+            <div class="video-wrapper">
+              <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD TEASER 1.png" alt="Nepa Rudraksha">
+              <div class="play-button">▶</div>
+            </div>
+          </div>
+          <!-- ----- End of Video 4 ----- -->
+
         </div>
-      </div>
-      <!-- Video 2 -->
-      <div class="item reel-video" data-video-id="rb_YxXTWXU4" data-tag="nepa rudraksha">
-        <div class="video-wrapper">
-          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD JOINS NR.png" alt="Nepa Rudraksha">
-          <div class="play-button">▶</div>
-        </div>
-      </div>
-      <!-- Video 3 -->
-      <div class="item reel-video" data-video-id="nbv5FgPqHxU" data-tag="nepa rudraksha">
-        <div class="video-wrapper">
-          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SHRAWAN WISH.PNG" alt="Nepa Rudraksha">
-          <div class="play-button">▶</div>
-        </div>
-      </div>
-      <!-- Video 4 -->
-      <div class="item reel-video" data-video-id="gxu3TUTLXKs" data-tag="nepa rudraksha">
-        <div class="video-wrapper">
-          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD TEASER 1.png" alt="Nepa Rudraksha">
-          <div class="play-button">▶</div>
+
+        <!-- Arrow Controls -->
+        <div class="carousel-controls">
+          <button class="carousel-btn left" id="carousel-prev">
+            <img src="assets/images/portfolios/left.png" alt="Previous">
+          </button>
+          <button class="carousel-btn right" id="carousel-next">
+            <img src="assets/images/portfolios/right.png" alt="Next">
+          </button>
         </div>
       </div>
     </div>
@@ -351,7 +373,7 @@
       </div>
     </div>
 
-  </div>
+  </div> <!-- End container -->
 </section>
 <!-- End Portfolio area -->
 

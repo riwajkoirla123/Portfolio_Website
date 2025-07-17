@@ -712,4 +712,42 @@ document.addEventListener("DOMContentLoaded", function () {
     handleMainClick(defaultBtn);
   }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const track = document.getElementById('video-carousel-track');
+  const nextBtn = document.getElementById('carousel-next');
+  const prevBtn = document.getElementById('carousel-prev');
+
+  if (!track) return;
+
+  let scrollIndex = 0;
+  const videosPerPage = 8;
+
+  const items = track.querySelectorAll('.item.reel-video');
+  const totalItems = items.length;
+  const totalPages = Math.ceil(totalItems / videosPerPage);
+
+  function updateVisibleVideos() {
+    items.forEach((el, i) => {
+      if (i >= scrollIndex * videosPerPage && i < (scrollIndex + 1) * videosPerPage) {
+        el.style.display = 'block';
+      } else {
+        el.style.display = 'none';
+      }
+    });
+  }
+
+  nextBtn.addEventListener('click', () => {
+    scrollIndex = Math.min(scrollIndex + 1, totalPages - 1);
+    updateVisibleVideos();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    scrollIndex = Math.max(scrollIndex - 1, 0);
+    updateVisibleVideos();
+  });
+
+  updateVisibleVideos(); // Initial call
+});
+
 })(window.jQuery);
