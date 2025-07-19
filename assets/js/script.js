@@ -750,4 +750,133 @@ document.addEventListener('DOMContentLoaded', function () {
   updateVisibleVideos(); // Initial call
 });
 
+// Nepa Rudraksha Carousel Logic
+// Only runs if #reels-nepa-layout is present
+
+document.addEventListener('DOMContentLoaded', function () {
+  const nepaLayout = document.getElementById('reels-nepa-layout');
+  if (!nepaLayout) return;
+
+  // Carousel controls
+  const titleEl = document.getElementById('nepa-carousel-title');
+  const prevBtn = document.getElementById('nepa-carousel-prev');
+  const nextBtn = document.getElementById('nepa-carousel-next');
+  const indicatorEl = document.getElementById('nepa-carousel-indicator');
+  // Find the see more button (by class, since id was removed)
+  let seeMoreBtn = nepaLayout.querySelector('.see-more-btn');
+
+  // Carousel slide data
+  const slides = [
+    {
+      title: 'Ajay Devgn as Brand Ambassador',
+      seeMoreUrl: 'https://www.facebook.com/',
+      seeMoreText: 'SEE MORE',
+    },
+    {
+      title: 'CEO Feature Reels',
+      seeMoreUrl: 'https://www.youtube.com/',
+      seeMoreText: 'SEE MORE',
+    },
+    {
+      title: 'Creative Visual Content',
+      seeMoreUrl: 'https://www.facebook.com/',
+      seeMoreText: 'SEE MORE',
+    },
+    {
+      title: 'Product Showcase Reels',
+      seeMoreUrl: 'https://www.instagram.com/',
+      seeMoreText: 'SEE MORE',
+    },
+  ];
+  let currentSlide = 0;
+
+ function updateCarousel() {
+  // Update title
+  if (titleEl) {
+    titleEl.textContent = slides[currentSlide].title;
+  }
+  // Update indicator
+  if (indicatorEl) {
+    indicatorEl.textContent = `${currentSlide + 1} / ${slides.length}`;
+  }
+  // Update see more button
+  if (seeMoreBtn) {
+    seeMoreBtn.onclick = function () {
+      window.open(slides[currentSlide].seeMoreUrl, '_blank');
+    };
+    seeMoreBtn.textContent = slides[currentSlide].seeMoreText;
+  }
+
+  // Disable prev button on first slide
+  if (prevBtn) {
+    if (currentSlide === 0) {
+      prevBtn.disabled = true;
+      prevBtn.style.opacity = 0.4;
+      prevBtn.style.cursor = 'not-allowed';
+    } else {
+      prevBtn.disabled = false;
+      prevBtn.style.opacity = 1;
+      prevBtn.style.cursor = 'pointer';
+    }
+  }
+
+  // Disable next button on last slide
+  if (nextBtn) {
+    if (currentSlide === slides.length - 1) {
+      nextBtn.disabled = true;
+      nextBtn.style.opacity = 0.4;
+      nextBtn.style.cursor = 'not-allowed';
+    } else {
+      nextBtn.disabled = false;
+      nextBtn.style.opacity = 1;
+      nextBtn.style.cursor = 'pointer';
+    }
+  }
+}
+if (prevBtn) {
+  prevBtn.addEventListener('click', function () {
+    if (currentSlide > 0) {
+      currentSlide--;
+      updateCarousel();
+    }
+  });
+}
+if (nextBtn) {
+  nextBtn.addEventListener('click', function () {
+    if (currentSlide < slides.length - 1) {
+      currentSlide++;
+      updateCarousel();
+    }
+  });
+}
+
+  // Initial update
+  updateCarousel();
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const lightbox = document.getElementById('lightbox');
+  const iframe = document.getElementById('lightbox-iframe');
+
+  // When a video is clicked
+  document.querySelectorAll('.item.reel-video').forEach(item => {
+    item.addEventListener('click', function () {
+      const videoId = item.getAttribute('data-video-id');
+      if (videoId) {
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+        lightbox.classList.add('active');
+      }
+    });
+  });
+
+  // Close lightbox on overlay click
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) {
+      iframe.src = '';
+      lightbox.classList.remove('active');
+    }
+  });
+});
+
+
 })(window.jQuery);

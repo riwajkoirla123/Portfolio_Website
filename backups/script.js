@@ -277,6 +277,8 @@
 
     sortingGallery();
 
+    $('.gallery-filters li a:first').click();
+
 
 
 
@@ -593,117 +595,235 @@ $('.navigation-holder .nav > li > a').on('click', function() {
     $('.navigation-holder').removeClass('open-navigation-menu');
 });
 
-// Your Swiper initialization here
-var expSwiper = new Swiper('.experience-swiper', {
-  effect: 'coverflow',
-  grabCursor: true,
-  centeredSlides: true,
-  slidesPerView: 3,
-  initialSlide: 2,
-  coverflowEffect: {
-    rotate: 0,
-    stretch: -100,
-    depth: 250,
-    modifier: 2.5,
-    slideShadows: false,
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-  loop: true
-});
-
+// // Your Swiper initialization here
+// var expSwiper = new Swiper('.experience-swiper', {
+//   effect: 'coverflow',
+//   grabCursor: true,
+//   centeredSlides: true,
+//   slidesPerView: 3,
+//   initialSlide: 2,
+//   coverflowEffect: {
+//     rotate: 0,
+//     stretch: -100,
+//     depth: 250,
+//     modifier: 2.5,
+//     slideShadows: false,
+//   },
+//   navigation: {
+//     nextEl: '.swiper-button-next',
+//     prevEl: '.swiper-button-prev',
+//   },
+//   loop: true
+// });
 document.addEventListener("DOMContentLoaded", function () {
   const mainBtns = document.querySelectorAll('#main-filter-nav .filter-btn');
   const subNav = document.getElementById('sub-filter-nav');
-  const allLayout = document.getElementById('all-layout');
-  const filteredLayout = document.getElementById('filtered-layout');
 
-  const subFilters = {
-    reels: ['ALL', 'NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
-    longform: ['NEPA RUDRAKSHA', "NEPAL ENGINEERS'S ASSOCIATION"],
-    logo: [],
-    ads: ['Ajay Devgn X Nepa Rudraksha Campaign']
+  // Map of main → sub → layout IDs
+  const layouts = {
+    'reels-NEPA RUDRAKSHA': 'reels-nepa-layout',
+    'reels-DARAZ': 'reels-daraz-layout',
+    'reels-SHARE SANSKAR': 'reels-sharesanskar-layout'
   };
 
+  // Sub-filter options per main category
+  const subFilters = {
+    reels: ['NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
+    longform: [],
+    logo: [],
+    ads: []
+  };
+
+  // Hide all portfolio layout sections
+  function hideAllLayouts() {
+    Object.values(layouts).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+  }
+
+  // Handle main category click (e.g., REELS, LONGFORM)
   function handleMainClick(btn) {
+    // Toggle main nav active state
     mainBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
     const selected = btn.dataset.category;
-    const items = subFilters[selected];
+    const subItems = subFilters[selected];
 
-    allLayout.style.display = selected === 'reels' ? 'grid' : 'none';
-    filteredLayout.style.display = selected === 'reels' ? 'none' : 'grid';
-
-    if (items && items.length > 0) {
-      subNav.innerHTML = items.map((item, i) =>
+    if (subItems && subItems.length > 0) {
+      // Build sub-filter buttons (no "All")
+      subNav.innerHTML = subItems.map((item, i) =>
         `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
       ).join('');
       subNav.style.display = 'flex';
 
+      // Handle sub-filter click events
       const subBtns = subNav.querySelectorAll('.sub-filter-btn');
-      subBtns.forEach(subBtn => {
+      subBtns.forEach((subBtn) => {
         subBtn.addEventListener('click', () => {
           subBtns.forEach(b => b.classList.remove('active'));
           subBtn.classList.add('active');
+          hideAllLayouts();
+
+          const layoutKey = `${selected}-${subBtn.textContent.trim().toUpperCase()}`;
+          const layoutId = layouts[layoutKey];
+          if (layoutId) {
+            const grid = document.getElementById(layoutId);
+            if (grid) grid.style.display = 'grid';
+          }
         });
       });
+
+      // Set default sub-filter = NEPA RUDRAKSHA (if exists)
+      hideAllLayouts();
+      const defaultLayoutKey = `${selected}-NEPA RUDRAKSHA`;
+      const defaultLayoutId = layouts[defaultLayoutKey];
+      if (defaultLayoutId) {
+        const defaultGrid = document.getElementById(defaultLayoutId);
+        if (defaultGrid) defaultGrid.style.display = 'grid';
+
+        // Set "Nepa Rudraksha" sub-filter button as active
+        subBtns.forEach(btn => {
+          if (btn.textContent.trim().toUpperCase() === 'NEPA RUDRAKSHA') {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
 
     } else {
       subNav.innerHTML = '';
       subNav.style.display = 'none';
+      hideAllLayouts();
     }
   }
 
+  // Add click event to each main filter button
   mainBtns.forEach(btn => {
     btn.addEventListener('click', () => handleMainClick(btn));
   });
 
-  const defaultBtn = document.querySelector('[data-category="reels"]');
-  if (defaultBtn) handleMainClick(defaultBtn);
-
-  // ✅ Call the sub-filter logic
-  setupPortfolioGridFiltering();
-
-  // ✅ Show More logic (inside DOMContentLoaded!)
-  const showMoreBtn = document.getElementById("show-more");
-  const reelGrid = document.getElementById("reels-all-layout");
-
-  showMoreBtn.addEventListener("click", () => {
-    reelGrid.classList.add("expanded");
-    showMoreBtn.style.display = "none";
-  });
-
-  window.addEventListener("scroll", () => {
-    const portfolio = document.getElementById("protfolio");
-    const portfolioBottom = portfolio.offsetTop + portfolio.offsetHeight;
-    const scrollY = window.scrollY + window.innerHeight;
-
-    if (scrollY > portfolioBottom + 100) {
-      reelGrid.classList.remove("expanded");
-      showMoreBtn.style.display = "block";
-    }
-  });
+  // 🔥 On page load: Default to REELS → NEPA RUDRAKSHA
+  const defaultBtn = document.querySelector('.filter-btn[data-category="reels"]');
+  if (defaultBtn) {
+    defaultBtn.classList.add('active');
+    handleMainClick(defaultBtn);
+  }
 });
 
-function setupPortfolioGridFiltering() {
-  const subNav = document.getElementById('sub-filter-nav');
-  const grid = document.getElementById('reels-all-layout');
-  const items = grid.querySelectorAll('.item');
+document.addEventListener('DOMContentLoaded', function () {
+  const track = document.getElementById('video-carousel-track');
+  const nextBtn = document.getElementById('carousel-next');
+  const prevBtn = document.getElementById('carousel-prev');
 
-  subNav.addEventListener('click', (e) => {
-    if (!e.target.classList.contains('sub-filter-btn')) return;
+  if (!track) return;
 
-    const selected = e.target.textContent.trim().toLowerCase();
+  let scrollIndex = 0;
+  const videosPerPage = 8;
 
-    items.forEach(item => {
-      const tag = (item.dataset.tag || "").toLowerCase();
-      const show = selected === 'all' || tag === selected;
-      item.style.display = show ? 'block' : 'none';
+  const items = track.querySelectorAll('.item.reel-video');
+  const totalItems = items.length;
+  const totalPages = Math.ceil(totalItems / videosPerPage);
+
+  function updateVisibleVideos() {
+    items.forEach((el, i) => {
+      if (i >= scrollIndex * videosPerPage && i < (scrollIndex + 1) * videosPerPage) {
+        el.style.display = 'block';
+      } else {
+        el.style.display = 'none';
+      }
     });
+  }
+
+  nextBtn.addEventListener('click', () => {
+    scrollIndex = Math.min(scrollIndex + 1, totalPages - 1);
+    updateVisibleVideos();
   });
-}
+
+  prevBtn.addEventListener('click', () => {
+    scrollIndex = Math.max(scrollIndex - 1, 0);
+    updateVisibleVideos();
+  });
+
+  updateVisibleVideos(); // Initial call
+});
+
+// Nepa Rudraksha Carousel Logic
+// Only runs if #reels-nepa-layout is present
+
+document.addEventListener('DOMContentLoaded', function () {
+  const nepaLayout = document.getElementById('reels-nepa-layout');
+  if (!nepaLayout) return;
+
+  // Carousel controls
+  const titleEl = document.getElementById('nepa-carousel-title');
+  const prevBtn = document.getElementById('nepa-carousel-prev');
+  const nextBtn = document.getElementById('nepa-carousel-next');
+  const indicatorEl = document.getElementById('nepa-carousel-indicator');
+  // Find the see more button (by class, since id was removed)
+  let seeMoreBtn = nepaLayout.querySelector('.see-more-btn');
+
+  // Carousel slide data
+  const slides = [
+    {
+      title: 'Ajay Devgn as Brand Ambassador',
+      seeMoreUrl: 'https://www.youtube.com/playlist?list=PL_AJAY_DEVGN',
+      seeMoreText: 'SEE MORE',
+    },
+    {
+      title: 'CEO Feature Reels',
+      seeMoreUrl: 'https://www.youtube.com/playlist?list=PL_CEO_FEATURE',
+      seeMoreText: 'SEE MORE',
+    },
+    {
+      title: 'Creative Visual Content',
+      seeMoreUrl: 'https://www.youtube.com/playlist?list=PL_CREATIVE_VISUAL',
+      seeMoreText: 'SEE MORE',
+    },
+    {
+      title: 'Product Showcase Reels',
+      seeMoreUrl: 'https://www.youtube.com/playlist?list=PL_PRODUCT_SHOWCASE',
+      seeMoreText: 'SEE MORE',
+    },
+  ];
+  let currentSlide = 0;
+
+  function updateCarousel() {
+    // Update title
+    if (titleEl) {
+      titleEl.textContent = slides[currentSlide].title;
+    }
+    // Update indicator
+    if (indicatorEl) {
+      indicatorEl.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+    // Update see more button
+    if (seeMoreBtn) {
+      seeMoreBtn.onclick = function () {
+        window.open(slides[currentSlide].seeMoreUrl, '_blank');
+      };
+      seeMoreBtn.textContent = slides[currentSlide].seeMoreText;
+    }
+    // Optionally, you could show/hide different video sets here if you want to extend functionality
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function () {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      updateCarousel();
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function () {
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateCarousel();
+    });
+  }
+
+  // Initial update
+  updateCarousel();
+});
 
 })(window.jQuery);
