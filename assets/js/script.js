@@ -1,3 +1,16 @@
+// Only force scroll to top if NOT on Live Server (localhost)
+if (!window.location.href.includes("localhost")) {
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  };
+}
+
+
+
+
+
+
+
 
 (function($) {
 
