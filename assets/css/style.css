@@ -2494,66 +2494,43 @@ color: rgb(255, 0, 0);
 ===========================*/
 .footer-area {
     padding: 40px 0 20px;
-    border-top: 1px solid rgba(102, 102, 102, 0.3);
+    border-top:1px solid rgba(102,102,102,.3); 
 }
-
-.footer-image {
-    margin-bottom: 20px;
-}
-
-.footer-menu ul {
-    display: flex; /* Added for horizontal layout */
-    justify-content: center;
-    align-items: center;
+.footer-menu ul{
+    justify-content:center;
     margin-bottom: 15px;
-    padding: 0;
-    list-style: none;
 }
-
 .footer-menu ul li {
     width: 40px;
     height: 40px;
-    line-height: 40px;
+    line-height: 46px;
     margin: 0 5px;
     border-radius: 50%;
     background: #333;
-    transition: all 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    transition: all .3s;
+    display: inline-block;
 }
+.footer-menu ul li:hover{
+  background:#333; 
+  color:#fff; 
 
-.footer-menu ul li:hover {
-    background: #333;
-    color: #fff;
 }
-
-.footer-menu ul li a {
-    font-size: 20px;
-    color: #999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    transition: color 0.3s;
+.footer-image {
+    margin-bottom: 20px;
 }
-
-.footer-menu ul li:hover a {
-    color: #fff;
+.footer-menu ul li:hover a{
+  color:#fff;
 }
-
-.footer-menu ul li i {
-    font-size: 20px; /* Fixed from font-style to font-size */
+.footer-menu ul li i{
+  font-style: 20px; 
 }
-
-.footer-sub p,
-.footer-sub span {
-    font-size: 14px;
-    color: #ddd;
+.footer-menu ul li a{
+  font-size: 20px;
+  color:#999;
 }
-
+.footer-sub p, .footer-sub span{
+ font-size:14px;
+ color:#ddd;
 }
 .contact-area  .section-title h2{
     margin-bottom: 100px;
