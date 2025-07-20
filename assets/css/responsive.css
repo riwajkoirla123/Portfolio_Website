@@ -649,3 +649,12 @@
   }
 }
 
+
+@media only screen and (max-width: 600px) {
+  #work-exp .experience-carousel-wrapper .swiper-slide img {
+    width: 80%;  /* smaller on mobile */
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+}

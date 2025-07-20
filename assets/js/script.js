@@ -855,28 +855,126 @@ if (nextBtn) {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  const lightbox = document.getElementById('lightbox');
+  const nepaLayout = document.getElementById('reels-nepa-layout');
+  if (!nepaLayout) return;
+
+  const titleEl = document.getElementById('nepa-carousel-title');
+  const prevBtn = document.getElementById('nepa-carousel-prev');
+  const nextBtn = document.getElementById('nepa-carousel-next');
+  const indicatorEl = document.getElementById('nepa-carousel-indicator');
+  const seeMoreBtn = nepaLayout.querySelector('.see-more-btn');
+  const lightbox = document.getElementById('video-lightbox');
   const iframe = document.getElementById('lightbox-iframe');
 
-  // When a video is clicked
-  document.querySelectorAll('.item.reel-video').forEach(item => {
-    item.addEventListener('click', function () {
-      const videoId = item.getAttribute('data-video-id');
-      if (videoId) {
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-        lightbox.classList.add('active');
+  const slides = [
+    {
+      title: 'Ajay Devgn as Brand Ambassador',
+      seeMoreUrl: 'https://www.facebook.com/',
+    },
+    {
+      title: 'CEO Feature Reels',
+      seeMoreUrl: 'https://www.youtube.com/',
+    },
+    {
+      title: 'Creative Visual Content',
+      seeMoreUrl: 'https://www.linkedin.com/',
+    },
+    {
+      title: 'Product Showcase Reels',
+      seeMoreUrl: 'https://www.threads.net/',
+    },
+  ];
+
+  let currentSlide = 0;
+
+  function bindVideoClickEvents() {
+    document.querySelectorAll('.item.reel-video').forEach(item => {
+      item.onclick = function () {
+        const videoId = item.getAttribute('data-video-id');
+        if (videoId) {
+          iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+          lightbox.classList.add('active');
+        }
+      };
+    });
+  }
+
+  if (lightbox) {
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) {
+        iframe.src = '';
+        lightbox.classList.remove('active');
       }
     });
-  });
+  }
 
-  // Close lightbox on overlay click
-  lightbox.addEventListener('click', function (e) {
-    if (e.target === lightbox) {
-      iframe.src = '';
-      lightbox.classList.remove('active');
+  function updateCarousel() {
+    // Update title
+    if (titleEl) {
+      titleEl.textContent = slides[currentSlide].title;
     }
-  });
-});
 
+    // Update indicator
+    if (indicatorEl) {
+      indicatorEl.textContent = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    // Update See More button
+    if (seeMoreBtn) {
+      seeMoreBtn.textContent = 'SEE MORE';
+      seeMoreBtn.onclick = () => window.open(slides[currentSlide].seeMoreUrl, '_blank');
+    }
+
+    // Disable prev on first slide
+    if (prevBtn) {
+      if (currentSlide === 0) {
+        prevBtn.disabled = true;
+        prevBtn.style.opacity = 0.4;
+        prevBtn.style.cursor = 'not-allowed';
+      } else {
+        prevBtn.disabled = false;
+        prevBtn.style.opacity = 1;
+        prevBtn.style.cursor = 'pointer';
+      }
+    }
+
+    // Disable next on last slide
+    if (nextBtn) {
+      if (currentSlide === slides.length - 1) {
+        nextBtn.disabled = true;
+        nextBtn.style.opacity = 0.4;
+        nextBtn.style.cursor = 'not-allowed';
+      } else {
+        nextBtn.disabled = false;
+        nextBtn.style.opacity = 1;
+        nextBtn.style.cursor = 'pointer';
+      }
+    }
+
+    // Re-bind video click events on each update
+    bindVideoClickEvents();
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function () {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateCarousel();
+      }
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function () {
+      if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        updateCarousel();
+      }
+    });
+  }
+
+  // Initial setup
+  updateCarousel();
+});
 
 })(window.jQuery);
