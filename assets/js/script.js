@@ -1,11 +1,3 @@
-// Only force scroll to top if NOT on Live Server (localhost)
-if (!window.location.href.includes("localhost")) {
-  window.onbeforeunload = function () {
-    window.scrollTo(0, 0);
-  };
-}
-
-
 
 
 
@@ -628,23 +620,36 @@ $('.navigation-holder .nav > li > a').on('click', function() {
 //   },
 //   loop: true
 // });
+
+// Main Portfolio Navigation Script
+
 document.addEventListener("DOMContentLoaded", function () {
   const mainBtns = document.querySelectorAll('#main-filter-nav .filter-btn');
   const subNav = document.getElementById('sub-filter-nav');
 
   // Map of main → sub → layout IDs
   const layouts = {
+    // REELS
     'reels-NEPA RUDRAKSHA': 'reels-nepa-layout',
     'reels-DARAZ': 'reels-daraz-layout',
-    'reels-SHARE SANSKAR': 'reels-sharesanskar-layout'
+    'reels-SHARE SANSKAR': 'reels-sharesanskar-layout',
+
+    // LONGFORM
+    'longform-NEPA RUDRAKSHA': 'longform-nepa-layout',
+    'longform-Nepal Engineers Association': 'longform-nea-layout',
+
+    // LOGO
+
+    // ADS
+    'ads-AJAY DEVGN X NEPA RUDRAKSHA CAMPAIGN': 'ads-ajaydevgn-layout',
   };
 
   // Sub-filter options per main category
   const subFilters = {
     reels: ['NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
-    longform: [],
+    longform: ['NEPA RUDRAKSHA', 'NEPAL ENGINEERS ASSOCIATION'],
     logo: [],
-    ads: []
+    ads: ['Ajay Devgn X Nepa Rudraksha Campaign']
   };
 
   // Hide all portfolio layout sections
@@ -657,7 +662,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Handle main category click (e.g., REELS, LONGFORM)
   function handleMainClick(btn) {
-    // Toggle main nav active state
     mainBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
@@ -665,13 +669,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const subItems = subFilters[selected];
 
     if (subItems && subItems.length > 0) {
-      // Build sub-filter buttons (no "All")
       subNav.innerHTML = subItems.map((item, i) =>
         `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
       ).join('');
       subNav.style.display = 'flex';
 
-      // Handle sub-filter click events
       const subBtns = subNav.querySelectorAll('.sub-filter-btn');
       subBtns.forEach((subBtn) => {
         subBtn.addEventListener('click', () => {
@@ -688,22 +690,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
 
-      // Set default sub-filter = NEPA RUDRAKSHA (if exists)
+      // Show default layout (first sub-filter)
       hideAllLayouts();
-      const defaultLayoutKey = `${selected}-NEPA RUDRAKSHA`;
+      const defaultSub = subItems[0].toUpperCase();
+      const defaultLayoutKey = `${selected}-${defaultSub}`;
       const defaultLayoutId = layouts[defaultLayoutKey];
       if (defaultLayoutId) {
         const defaultGrid = document.getElementById(defaultLayoutId);
         if (defaultGrid) defaultGrid.style.display = 'grid';
-
-        // Set "Nepa Rudraksha" sub-filter button as active
-        subBtns.forEach(btn => {
-          if (btn.textContent.trim().toUpperCase() === 'NEPA RUDRAKSHA') {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
-        });
       }
 
     } else {
@@ -713,12 +707,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Add click event to each main filter button
+  // Main nav click event binding
   mainBtns.forEach(btn => {
     btn.addEventListener('click', () => handleMainClick(btn));
   });
 
-  // 🔥 On page load: Default to REELS → NEPA RUDRAKSHA
+  // On load: show REELS → NEPA RUDRAKSHA
   const defaultBtn = document.querySelector('.filter-btn[data-category="reels"]');
   if (defaultBtn) {
     defaultBtn.classList.add('active');
@@ -726,6 +720,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+// Carousel: Generic video carousel pagination logic
 document.addEventListener('DOMContentLoaded', function () {
   const track = document.getElementById('video-carousel-track');
   const nextBtn = document.getElementById('carousel-next');
@@ -735,138 +730,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let scrollIndex = 0;
   const videosPerPage = 8;
-
   const items = track.querySelectorAll('.item.reel-video');
   const totalItems = items.length;
   const totalPages = Math.ceil(totalItems / videosPerPage);
 
   function updateVisibleVideos() {
     items.forEach((el, i) => {
-      if (i >= scrollIndex * videosPerPage && i < (scrollIndex + 1) * videosPerPage) {
-        el.style.display = 'block';
-      } else {
-        el.style.display = 'none';
-      }
+      el.style.display = (i >= scrollIndex * videosPerPage && i < (scrollIndex + 1) * videosPerPage) ? 'block' : 'none';
     });
   }
 
-  nextBtn.addEventListener('click', () => {
+  nextBtn?.addEventListener('click', () => {
     scrollIndex = Math.min(scrollIndex + 1, totalPages - 1);
     updateVisibleVideos();
   });
 
-  prevBtn.addEventListener('click', () => {
+  prevBtn?.addEventListener('click', () => {
     scrollIndex = Math.max(scrollIndex - 1, 0);
     updateVisibleVideos();
   });
 
-  updateVisibleVideos(); // Initial call
+  updateVisibleVideos();
 });
 
-// Nepa Rudraksha Carousel Logic
-// Only runs if #reels-nepa-layout is present
-
-document.addEventListener('DOMContentLoaded', function () {
-  const nepaLayout = document.getElementById('reels-nepa-layout');
-  if (!nepaLayout) return;
-
-  // Carousel controls
-  const titleEl = document.getElementById('nepa-carousel-title');
-  const prevBtn = document.getElementById('nepa-carousel-prev');
-  const nextBtn = document.getElementById('nepa-carousel-next');
-  const indicatorEl = document.getElementById('nepa-carousel-indicator');
-  // Find the see more button (by class, since id was removed)
-  let seeMoreBtn = nepaLayout.querySelector('.see-more-btn');
-
-  // Carousel slide data
-  const slides = [
-    {
-      title: 'Ajay Devgn as Brand Ambassador',
-      seeMoreUrl: 'https://www.facebook.com/',
-      seeMoreText: 'SEE MORE',
-    },
-    {
-      title: 'CEO Feature Reels',
-      seeMoreUrl: 'https://www.youtube.com/',
-      seeMoreText: 'SEE MORE',
-    },
-    {
-      title: 'Creative Visual Content',
-      seeMoreUrl: 'https://www.facebook.com/',
-      seeMoreText: 'SEE MORE',
-    },
-    {
-      title: 'Product Showcase Reels',
-      seeMoreUrl: 'https://www.instagram.com/',
-      seeMoreText: 'SEE MORE',
-    },
-  ];
-  let currentSlide = 0;
-
- function updateCarousel() {
-  // Update title
-  if (titleEl) {
-    titleEl.textContent = slides[currentSlide].title;
-  }
-  // Update indicator
-  if (indicatorEl) {
-    indicatorEl.textContent = `${currentSlide + 1} / ${slides.length}`;
-  }
-  // Update see more button
-  if (seeMoreBtn) {
-    seeMoreBtn.onclick = function () {
-      window.open(slides[currentSlide].seeMoreUrl, '_blank');
-    };
-    seeMoreBtn.textContent = slides[currentSlide].seeMoreText;
-  }
-
-  // Disable prev button on first slide
-  if (prevBtn) {
-    if (currentSlide === 0) {
-      prevBtn.disabled = true;
-      prevBtn.style.opacity = 0.4;
-      prevBtn.style.cursor = 'not-allowed';
-    } else {
-      prevBtn.disabled = false;
-      prevBtn.style.opacity = 1;
-      prevBtn.style.cursor = 'pointer';
-    }
-  }
-
-  // Disable next button on last slide
-  if (nextBtn) {
-    if (currentSlide === slides.length - 1) {
-      nextBtn.disabled = true;
-      nextBtn.style.opacity = 0.4;
-      nextBtn.style.cursor = 'not-allowed';
-    } else {
-      nextBtn.disabled = false;
-      nextBtn.style.opacity = 1;
-      nextBtn.style.cursor = 'pointer';
-    }
-  }
-}
-if (prevBtn) {
-  prevBtn.addEventListener('click', function () {
-    if (currentSlide > 0) {
-      currentSlide--;
-      updateCarousel();
-    }
-  });
-}
-if (nextBtn) {
-  nextBtn.addEventListener('click', function () {
-    if (currentSlide < slides.length - 1) {
-      currentSlide++;
-      updateCarousel();
-    }
-  });
-}
-
-  // Initial update
-  updateCarousel();
-});
-
+// Nepa Rudraksha Carousel Custom Logic
 document.addEventListener('DOMContentLoaded', function () {
   const nepaLayout = document.getElementById('reels-nepa-layout');
   if (!nepaLayout) return;
@@ -880,22 +767,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const iframe = document.getElementById('lightbox-iframe');
 
   const slides = [
-    {
-      title: 'Ajay Devgn as Brand Ambassador',
-      seeMoreUrl: 'https://www.facebook.com/',
-    },
-    {
-      title: 'CEO Feature Reels',
-      seeMoreUrl: 'https://www.youtube.com/',
-    },
-    {
-      title: 'Creative Visual Content',
-      seeMoreUrl: 'https://www.linkedin.com/',
-    },
-    {
-      title: 'Product Showcase Reels',
-      seeMoreUrl: 'https://www.threads.net/',
-    },
+    { title: 'Ajay Devgn as Brand Ambassador', seeMoreUrl: 'https://www.facebook.com/' },
+    { title: 'CEO Feature Reels (External)', seeMoreUrl: 'https://www.youtube.com/' },
+    { title: 'CEO Feature Reels (Internal)', seeMoreUrl: 'https://www.youtube.com/' },
+    { title: 'Creative Visual Content', seeMoreUrl: 'https://www.linkedin.com/' },
+    { title: 'Product Showcase Reels', seeMoreUrl: 'https://www.threads.net/' }
   ];
 
   let currentSlide = 0;
@@ -912,82 +788,78 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  if (lightbox) {
-    lightbox.addEventListener('click', function (e) {
-      if (e.target === lightbox) {
-        iframe.src = '';
-        lightbox.classList.remove('active');
-      }
-    });
-  }
+  lightbox?.addEventListener('click', function (e) {
+    if (e.target === lightbox) {
+      iframe.src = '';
+      lightbox.classList.remove('active');
+    }
+  });
 
   function updateCarousel() {
-    // Update title
-    if (titleEl) {
-      titleEl.textContent = slides[currentSlide].title;
-    }
+    if (titleEl) titleEl.textContent = slides[currentSlide].title;
+    if (indicatorEl) indicatorEl.textContent = `${currentSlide + 1} / ${slides.length}`;
 
-    // Update indicator
-    if (indicatorEl) {
-      indicatorEl.textContent = `${currentSlide + 1} / ${slides.length}`;
-    }
-
-    // Update See More button
     if (seeMoreBtn) {
       seeMoreBtn.textContent = 'SEE MORE';
       seeMoreBtn.onclick = () => window.open(slides[currentSlide].seeMoreUrl, '_blank');
     }
 
-    // Disable prev on first slide
     if (prevBtn) {
-      if (currentSlide === 0) {
-        prevBtn.disabled = true;
-        prevBtn.style.opacity = 0.4;
-        prevBtn.style.cursor = 'not-allowed';
-      } else {
-        prevBtn.disabled = false;
-        prevBtn.style.opacity = 1;
-        prevBtn.style.cursor = 'pointer';
-      }
+      prevBtn.disabled = currentSlide === 0;
+      prevBtn.style.opacity = currentSlide === 0 ? 0.4 : 1;
+      prevBtn.style.cursor = currentSlide === 0 ? 'not-allowed' : 'pointer';
     }
 
-    // Disable next on last slide
     if (nextBtn) {
-      if (currentSlide === slides.length - 1) {
-        nextBtn.disabled = true;
-        nextBtn.style.opacity = 0.4;
-        nextBtn.style.cursor = 'not-allowed';
-      } else {
-        nextBtn.disabled = false;
-        nextBtn.style.opacity = 1;
-        nextBtn.style.cursor = 'pointer';
-      }
+      nextBtn.disabled = currentSlide === slides.length - 1;
+      nextBtn.style.opacity = currentSlide === slides.length - 1 ? 0.4 : 1;
+      nextBtn.style.cursor = currentSlide === slides.length - 1 ? 'not-allowed' : 'pointer';
     }
 
-    // Re-bind video click events on each update
     bindVideoClickEvents();
   }
 
-  if (prevBtn) {
-    prevBtn.addEventListener('click', function () {
-      if (currentSlide > 0) {
-        currentSlide--;
-        updateCarousel();
-      }
-    });
-  }
+  prevBtn?.addEventListener('click', () => {
+    if (currentSlide > 0) {
+      currentSlide--;
+      updateCarousel();
+    }
+  });
 
-  if (nextBtn) {
-    nextBtn.addEventListener('click', function () {
-      if (currentSlide < slides.length - 1) {
-        currentSlide++;
-        updateCarousel();
-      }
-    });
-  }
+  nextBtn?.addEventListener('click', () => {
+    if (currentSlide < slides.length - 1) {
+      currentSlide++;
+      updateCarousel();
+    }
+  });
 
-  // Initial setup
   updateCarousel();
 });
+
+
+const container = document.querySelector('.main-filter-nav');
+const buttons = container.querySelectorAll('.filter-btn');
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    // Remove old active classes and add to clicked
+    buttons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    // Calculate visibility of button
+    const btnRect = button.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+
+    // Scroll only if button is not fully in view
+    if (btnRect.left < containerRect.left || btnRect.right > containerRect.right) {
+      button.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'nearest',
+        block: 'nearest'
+      });
+    }
+  });
+});
+
 
 })(window.jQuery);

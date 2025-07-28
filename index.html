@@ -319,7 +319,35 @@
     </div>
 
     <!-- Sub Filter Navigation -->
-    <div class="sub-filter-nav" id="sub-filter-nav"></div>
+    <div class="sub-filter-nav" id="sub-filter-nav">
+
+      <!-- Sub-filters for Reels -->
+      <div class="sub-filter-group" data-parent="reels" style="display: flex; gap: 8px;">
+        <button class="sub-filter-btn active" data-subcategory="nepa-rudraksha">Nepa Rudraksha</button>
+        <button class="sub-filter-btn" data-subcategory="daraz">Daraz</button>
+        <button class="sub-filter-btn" data-subcategory="sharesanskar">Share Sanskar</button>
+      </div>
+
+      <!-- Sub-filters for Long Form -->
+      <div class="sub-filter-group" data-parent="longform" style="display: none; gap: 8px;">
+        <button class="sub-filter-btn active" data-subcategory="nepa-rudraksha">Nepa Rudraksha</button>
+        <button class="sub-filter-btn" data-subcategory="nea">Nepal Engineers Association</button>
+      </div>
+
+      <!-- Sub-filters for Graphic Designs -->
+      <div class="sub-filter-group" data-parent="logo" style="display: none; gap: 8px;">
+        <button class="sub-filter-btn active" data-subcategory="logo-type-1">Logo Type 1</button>
+        <button class="sub-filter-btn" data-subcategory="logo-type-2">Logo Type 2</button>
+      </div>
+
+      <!-- Sub-filters for Social Media Ads -->
+      <div class="sub-filter-group" data-parent="ads" style="display: none; gap: 8px;">
+        <button class="sub-filter-btn active" data-subcategory="facebook-ads">Facebook Ads</button>
+        <button class="sub-filter-btn" data-subcategory="instagram-ads">Instagram Ads</button>
+      </div>
+
+    </div>
+    <!-- End Sub Filter Navigation -->
 
     <!-- REELS FORMAT EDITING → NEPA RUDRAKSHA -->
     <div id="reels-nepa-layout" style="display:none;">
@@ -400,27 +428,126 @@
     </div>
     <!-- End of reels-nepa-layout -->
 
-    <!-- REELS FORMAT EDITING → DARAZ -->
-    <div id="reels-daraz-layout" class="portfolio-grid" style="display:none;">
+<!-- REELS FORMAT EDITING → DARAZ -->
+<div id="reels-daraz-layout" style="display:none;">
+  <h2 id="daraz-carousel-title" class="section-title" style="font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 1.6rem; text-align: center; margin-top: 0; color: #fff; margin-bottom: 10px;">
+    Daraz Project Showcase
+  </h2>
+
+  <div class="video-carousel-wrapper">
+    <div class="video-carousel-track" id="daraz-video-carousel-track">
+
+      <!-- ----- Video 1 ----- -->
       <div class="item reel-video" data-video-id="3sO5o9XX0Yg" data-tag="daraz">
         <div class="video-wrapper">
-          <img class="reel-thumb" src="https://img.youtube.com/vi/3sO5o9XX0Yg/hqdefault.jpg" alt="Daraz">
+          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.PNG" alt="Daraz">
           <div class="play-button">▶</div>
         </div>
       </div>
-    </div>
+      <!-- ----- End of Video 1 ----- -->
 
-    <!-- REELS FORMAT EDITING → SHARE SANSKAR -->
-    <div id="reels-sharesanskar-layout" class="portfolio-grid" style="display:none;">
-      <div class="item reel-video" data-video-id="-pnFSV2HChI" data-tag="sharesanskar">
+      <!-- ----- Video 2 ----- -->
+      <div class="item reel-video" data-video-id="3sO5o9XX0Yg" data-tag="daraz">
         <div class="video-wrapper">
-          <img class="reel-thumb" src="https://img.youtube.com/vi/-pnFSV2HChI/hqdefault.jpg" alt="Share Sanskar">
+          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.PNG" alt="Daraz">
           <div class="play-button">▶</div>
         </div>
       </div>
-    </div>
+      <!-- ----- End of Video 2 ----- -->
 
-  </div> <!-- End container -->
+      <!-- ----- Video 3 ----- -->
+      <div class="item reel-video" data-video-id="3sO5o9XX0Yg" data-tag="daraz">
+        <div class="video-wrapper">
+          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.PNG" alt="Daraz">
+          <div class="play-button">▶</div>
+        </div>
+      </div>
+      <!-- ----- End of Video 3 ----- -->
+
+      <!-- ----- Video 4 ----- -->
+      <div class="item reel-video" data-video-id="3sO5o9XX0Yg" data-tag="daraz">
+        <div class="video-wrapper">
+          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.PNG" alt="Daraz">
+          <div class="play-button">▶</div>
+        </div>
+      </div>
+      <!-- ----- End of Video 4 ----- -->
+
+    </div>
+  </div>
+
+  <!-- See More button below the carousel -->
+  <div style="text-align:center; margin-top: 1px;">
+    <button class="see-more-btn" onclick="window.open('YOUR-DARAZ-SEE-MORE-LINK', '_blank')">
+      SEE MORE
+    </button>
+  </div>
+
+</div> <!-- End reels-daraz-layout -->
+
+
+<!-- Start REELS FORMAT EDITING → SHARE SANSKAR -->
+<div id="reels-sharesanskar-layout" style="display:none;">
+  <h2 id="sharesanskar-carousel-title" class="section-title" style="font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 1.6rem; text-align: center; margin-top: 0; color: #fff; margin-bottom: 10px;">
+    Share Sanskar Project Showcase
+  </h2>
+  <div class="video-carousel-wrapper">
+    <div class="video-carousel-track">
+
+      <!-- ----- Video 1 ----- -->
+      <div class="item reel-video" data-video-id="gk_uWkp_m_A" data-tag="sharesanskar">
+        <div class="video-wrapper">
+          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Share Sanskar/air asia.PNG" alt="Share Sanskar" />
+          <div class="play-button">▶</div>
+        </div>
+      </div>
+      <!-- ----- End of Video 1 ----- -->
+
+      <!-- ----- Video 2 ----- -->
+      <div class="item reel-video" data-video-id="gk_uWkp_m_A" data-tag="sharesanskar">
+        <div class="video-wrapper">
+          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Share Sanskar/air asia.PNG" alt="Share Sanskar" />
+          <div class="play-button">▶</div>
+        </div>
+      </div>
+      <!-- ----- End of Video 2 ----- -->
+
+      <!-- ----- Video 3 ----- -->
+      <div class="item reel-video" data-video-id="gk_uWkp_m_A" data-tag="sharesanskar">
+        <div class="video-wrapper">
+          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Share Sanskar/air asia.PNG" alt="Share Sanskar" />
+          <div class="play-button">▶</div>
+        </div>
+      </div>
+      <!-- ----- End of Video 3 ----- -->
+
+      <!-- ----- Video 4 ----- -->
+      <div class="item reel-video" data-video-id="gk_uWkp_m_A" data-tag="sharesanskar">
+        <div class="video-wrapper">
+          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Share Sanskar/air asia.PNG" alt="Share Sanskar" />
+          <div class="play-button">▶</div>
+        </div>
+      </div>
+      <!-- ----- End of Video 4 ----- -->
+
+    </div>
+    <!-- End video-carousel-track -->
+
+    <!-- See More button for Share Sanskar -->
+    <div style="text-align:center; margin-top: 10px;">
+  <button class="see-more-btn" onclick="window.open('YOUR-SHARE-SANSKAR-SEE-MORE-LINK', '_blank')">
+    SEE MORE
+  </button>
+</div>
+
+    <!-- End See More button for Share Sanskar -->
+
+  </div>
+  <!-- End video-carousel-wrapper -->
+</div>
+<!-- End reels-sharesanskar-layout -->
+
+</div> <!-- End container -->
 </section>
 <!-- End Portfolio area -->
 

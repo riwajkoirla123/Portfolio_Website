@@ -352,7 +352,7 @@
 @media (max-width: 767px) {
     /* Remove centering, force hero to left with padding */
     .slide-caption {
-        margin-left:  !important;
+        margin-left: 0 !important;
         margin-right: auto !important;
         padding-left: 18px !important;
         padding-right: 0 !important;
@@ -656,5 +656,109 @@
     height: auto;
     margin: 0 auto;
     display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  #reels-nepa-layout iframe,
+  #reels-nepa-layout video {
+    max-width: 90vw !important;  /* limit width to 90% of viewport */
+    height: auto !important;     /* keep aspect ratio */
+    aspect-ratio: 16 / 9;        /* maintain 16:9 ratio */
+    object-fit: contain;         /* fit inside container */
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+
+
+@media (max-width: 1000px) {
+  .main-filter-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px;
+    padding-left: 90px;      /* keep left padding for first button */
+    padding-right: 0;        /* remove right padding to avoid extra space */
+    scroll-padding-left: 15px;
+    scroll-padding-right: 0px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .main-filter-nav .filter-btn {
+    flex: 0 0 auto;
+    width: 110px;
+    white-space: normal;
+    line-height: 1.3em;
+    overflow: hidden;
+    text-overflow: clip;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 12px;
+    padding: 15px 10px;
+    text-align: center;
+    border-radius: 15px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    scroll-snap-align: start;
+  }
+
+  /* Add right margin to last button equal to gap */
+  .main-filter-nav .filter-btn:last-child {
+    margin-right: 10px;
+  }
+
+  .main-filter-nav .filter-btn.active {
+    background-color: white;
+    color: black;
+    border-radius: 15px;
+  }
+
+  /* Hide scrollbar */
+  .main-filter-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .main-filter-nav {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+
+/* Video carousel: Adjusting video size for smaller screens */
+@media (max-width: 1000px) {
+  .video-carousel-wrapper iframe,
+  .video-carousel-wrapper video {
+    width: 100% !important;  /* Ensure full width for video */
+    max-width: 100% !important; /* Limit the video width to 100% */
+    height: auto !important;  /* Maintain aspect ratio */
+    object-fit: contain !important; /* Keep the aspect ratio intact */
+    margin: 0 auto !important;  /* Center the video horizontally */
+  }
+}
+
+@media (max-width: 768px) {
+  .video-carousel-wrapper iframe,
+  .video-carousel-wrapper video {
+    width: 100% !important;  /* Full width for smaller screens */
+    max-width: 100% !important;  /* Limit video width to 100% */
+    height: auto !important;     /* Keep aspect ratio intact */
+    object-fit: contain !important; /* Maintain aspect ratio */
+  }
+}
+
+@media (max-width: 480px) {
+  .video-carousel-wrapper iframe,
+  .video-carousel-wrapper video {
+    width: 100% !important;  /* Full width for very small screens */
+    max-width: 100% !important; /* Ensure full width */
+    height: auto !important;  /* Maintain aspect ratio */
+    object-fit: contain !important; /* Maintain the aspect ratio */
   }
 }

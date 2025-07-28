@@ -1708,7 +1708,6 @@ page loader
 }
 
 /*--------------------------------------------------------------
-/*--------------------------------------------------------------
 0.7 protfolio-section
 --------------------------------------------------------------*/
 .gallery-section {
@@ -1824,7 +1823,7 @@ page loader
 /* --- Portfolio Main Filter Navigation Rounded Style --- */
 .main-filter-nav {
   background-color: #000;
-  border-radius: 9999px; /* Fully rounded corners */
+  border-radius: 10px; /* Fully rounded corners */
   padding: 12px 30px;
   margin: 0 auto 6px auto;
   max-width: 1100px;
@@ -1851,23 +1850,24 @@ page loader
 .main-filter-nav .filter-btn.active {
   background-color: #fff;
   color: #000;
-  border-radius: 9999px;
+  border-radius: 9px;
 }
 
 /* Sub Filter Nav */
 /* --- Portfolio Sub Filter Navigation Rounded Style --- */
 .sub-filter-nav {
-  display: none;
+  display: flex; /* Changed from none to flex to make it visible by default — control display with JS if needed */
   justify-content: center;
+  flex-wrap: wrap; /* allow buttons to wrap to new lines if needed */
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 8px 30px;
   gap: 20px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 20px;
   max-width: 1100px;
-  border-radius: 9999px; /* Fully rounded corners */
+  border-radius: 9999px; /* fully rounded container */
 }
 
 .sub-filter-nav .sub-filter-btn {
@@ -1877,11 +1877,16 @@ page loader
   font-family: 'Heebo', sans-serif;
   font-weight: 500;
   border: none;
-  padding: 5px 12px;
+  padding: 5px 16px;
   cursor: pointer;
-  transition: 0.2s ease;
-  border-radius: 9999px; /* Fully rounded buttons */
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 9999px;
+
+  white-space: nowrap;  /* Prevent line breaks */
+  max-width: none;      /* Remove width limit */
+  text-align: center;
 }
+
 
 .sub-filter-nav .sub-filter-btn.active {
   background-color: #fff;
@@ -2100,7 +2105,7 @@ page loader
 }
 
 /* SEE MORE Button */
-#reels-nepa-layout .see-more-btn {
+.see-more-btn {
   background: #444;
   color: #fff;
   padding: 8px 25px;
@@ -2116,11 +2121,11 @@ page loader
   max-width: 140px;
 }
 
-#reels-nepa-layout .see-more-btn:hover,
-#reels-nepa-layout .see-more-btn:active {
+/* Hover and active state */
+.see-more-btn:hover,
+.see-more-btn:active {
   background: #000;
 }
-
 
 /*-------------------- MOBILE & TABLET --------------------*/
 
@@ -2170,11 +2175,6 @@ page loader
     padding: 6px 15px;
     gap: 12px;
     margin-bottom: 16px;
-  }
-
-  .sub-filter-nav .sub-filter-btn {
-    font-size: 11px;
-    padding: 4px 10px;
   }
 
   /* Reel Grid */
@@ -2229,10 +2229,6 @@ page loader
     gap: 8px;
   }
 
-  .sub-filter-nav .sub-filter-btn {
-    font-size: 10px;
-    padding: 4px 8px;
-  }
 }
 /*=======================================
 0.8 testimonial-area start
