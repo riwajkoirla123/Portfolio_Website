@@ -795,29 +795,46 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  function updateCarousel() {
-    if (titleEl) titleEl.textContent = slides[currentSlide].title;
-    if (indicatorEl) indicatorEl.textContent = `${currentSlide + 1} / ${slides.length}`;
-
-    if (seeMoreBtn) {
-      seeMoreBtn.textContent = 'SEE MORE';
-      seeMoreBtn.onclick = () => window.open(slides[currentSlide].seeMoreUrl, '_blank');
-    }
-
-    if (prevBtn) {
-      prevBtn.disabled = currentSlide === 0;
-      prevBtn.style.opacity = currentSlide === 0 ? 0.4 : 1;
-      prevBtn.style.cursor = currentSlide === 0 ? 'not-allowed' : 'pointer';
-    }
-
-    if (nextBtn) {
-      nextBtn.disabled = currentSlide === slides.length - 1;
-      nextBtn.style.opacity = currentSlide === slides.length - 1 ? 0.4 : 1;
-      nextBtn.style.cursor = currentSlide === slides.length - 1 ? 'not-allowed' : 'pointer';
-    }
-
-    bindVideoClickEvents();
+function updateCarousel() {
+  // Update the slide title (e.g., "Ajay Devgn as Brand Ambassador")
+  if (titleEl) {
+    titleEl.textContent = slides[currentSlide].title;
   }
+
+  // Update the slide number to "Slide X/5"
+  if (indicatorEl) {
+    indicatorEl.textContent = `Slide ${currentSlide + 1} / ${slides.length}`;
+  }
+
+  // Update the 'See More' button link and text
+  if (seeMoreBtn) {
+    seeMoreBtn.textContent = 'SEE MORE';
+    seeMoreBtn.onclick = () => window.open(slides[currentSlide].seeMoreUrl, '_blank');
+  }
+
+  // Disable/Enable 'Prev' button and adjust its style
+  if (prevBtn) {
+    prevBtn.disabled = currentSlide === 0;
+    prevBtn.style.opacity = currentSlide === 0 ? 0.4 : 1;
+    prevBtn.style.cursor = currentSlide === 0 ? 'not-allowed' : 'pointer';
+  }
+
+  // Disable/Enable 'Next' button and adjust its style
+  if (nextBtn) {
+    nextBtn.disabled = currentSlide === slides.length - 1;
+    nextBtn.style.opacity = currentSlide === slides.length - 1 ? 0.4 : 1;
+    nextBtn.style.cursor = currentSlide === slides.length - 1 ? 'not-allowed' : 'pointer';
+  }
+
+  // Update the progress bar (fill it according to current slide)
+  if (progressBar) {
+    const progress = ((currentSlide + 1) / slides.length) * 100;
+    progressBar.style.width = `${progress}%`;
+  }
+
+  // Bind video click events (You might have a separate function for this)
+  bindVideoClickEvents();
+}
 
   prevBtn?.addEventListener('click', () => {
     if (currentSlide > 0) {
@@ -861,5 +878,60 @@ buttons.forEach(button => {
   });
 });
 
+// Initialize variables
+let currentSlide = 1;  // Starting at slide 1
+const totalSlides = 5;  // Total number of slides (5 slides in this case)
+const progressBar = document.getElementById('nepa-progress-bar');  // Progress bar element
+const slideIndicator = document.getElementById('nepa-carousel-indicator');  // Slide number indicator
+
+// Function to update the carousel (including progress bar)
+function updateCarousel() {
+  // Update the slide number to "Slide X/5"
+  if (slideIndicator) {
+    slideIndicator.textContent = `Slide ${currentSlide} / ${totalSlides}`;
+  }
+
+  // Update the progress bar width incrementally
+  if (progressBar) {
+    // Calculate the width increment (each slide is 20px for a 100px progress bar)
+    const progress = (currentSlide / totalSlides) * 100;
+    progressBar.style.width = `${progress}%`;
+  }
+
+  // Enable/disable buttons and adjust styles
+  if (prevBtn) {
+    prevBtn.disabled = currentSlide === 1;
+    prevBtn.style.opacity = currentSlide === 1 ? 0.4 : 1;
+    prevBtn.style.cursor = currentSlide === 1 ? 'not-allowed' : 'pointer';
+  }
+
+  if (nextBtn) {
+    nextBtn.disabled = currentSlide === totalSlides;
+    nextBtn.style.opacity = currentSlide === totalSlides ? 0.4 : 1;
+    nextBtn.style.cursor = currentSlide === totalSlides ? 'not-allowed' : 'pointer';
+  }
+
+  // Optionally bind video click events or any other logic
+  bindVideoClickEvents();
+}
+
+// Event listener for 'Next' button
+document.getElementById('nepa-carousel-next').addEventListener('click', () => {
+  if (currentSlide < totalSlides) {
+    currentSlide++;
+    updateCarousel();
+  }
+});
+
+// Event listener for 'Prev' button
+document.getElementById('nepa-carousel-prev').addEventListener('click', () => {
+  if (currentSlide > 1) {
+    currentSlide--;
+    updateCarousel();
+  }
+});
+
+// Initialize carousel on page load
+updateCarousel();
 
 })(window.jQuery);

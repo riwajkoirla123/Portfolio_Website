@@ -2609,3 +2609,22 @@ body, .main-content {
     right: 4px;
   }
 }
+
+/* Progress bar container (the background bar) */
+.progress-bar-container {
+  width: 100px;  /* Full width of the progress bar */
+  height: 6px;
+  background-color: #434343;  /* Black background for the progress bar */
+  border-radius: 3px;
+  position: relative;
+}
+
+/* Progress bar (the filling part) */
+.progress-bar {
+  height: 100%;
+  width: 0%;  /* This will be updated with JavaScript */
+  background-color: rgb(0, 0, 0) !important;  /* Force applying the red color */
+  border-radius: 3px;
+  transition: width 0.3s ease;  /* Smooth transition effect */
+}
+

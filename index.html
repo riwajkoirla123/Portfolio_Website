@@ -349,62 +349,8 @@
     </div>
     <!-- End Sub Filter Navigation -->
 
-    <!-- REELS FORMAT EDITING → NEPA RUDRAKSHA -->
+     <!-- REELS FORMAT EDITING → NEPA RUDRAKSHA -->
     <div id="reels-nepa-layout" style="display:none;">
-
-      <!-- Title Only -->
-      <h2 id="nepa-carousel-title" class="section-title" style="font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 1.6rem; text-align: center; margin-top: 0; color: #fff; margin-bottom: 10px;">
-        Ajay Devgn as Brand Ambassador
-      </h2>
-
-      <div class="video-carousel-wrapper">
-        <div class="video-carousel-track" id="video-carousel-track">
-
-          <!-- ----- Video 1 ----- -->
-          <div class="item reel-video" data-video-id="ID_dxQzil_c" data-tag="nepa rudraksha">
-            <div class="video-wrapper">
-              <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD COMBO.PNG" alt="Nepa Rudraksha">
-              <div class="play-button">▶</div>
-            </div>
-          </div>
-          <!-- ----- End of Video 1 ----- -->
-
-          <!-- ----- Video 2 ----- -->
-          <div class="item reel-video" data-video-id="rb_YxXTWXU4" data-tag="nepa rudraksha">
-            <div class="video-wrapper">
-              <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD JOINS NR.png" alt="Nepa Rudraksha">
-              <div class="play-button">▶</div>
-            </div>
-          </div>
-          <!-- ----- End of Video 2 ----- -->
-
-          <!-- ----- Video 3 ----- -->
-          <div class="item reel-video" data-video-id="nbv5FgPqHxU" data-tag="nepa rudraksha">
-            <div class="video-wrapper">
-              <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SHRAWAN WISH.PNG" alt="Nepa Rudraksha">
-              <div class="play-button">▶</div>
-            </div>
-          </div>
-          <!-- ----- End of Video 3 ----- -->
-
-          <!-- ----- Video 4 ----- -->
-          <div class="item reel-video" data-video-id="gxu3TUTLXKs" data-tag="nepa rudraksha">
-            <div class="video-wrapper">
-              <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD TEASER 1.png" alt="Nepa Rudraksha">
-              <div class="play-button">▶</div>
-            </div>
-          </div>
-          <!-- ----- End of Video 4 ----- -->
-
-        </div>
-      </div>
-
-      <!-- See More button below the carousel -->
-      <div style="text-align:center; margin-top: 1px;">
-        <button class="see-more-btn" onclick="window.open('YOUR-SEE-MORE-LINK-HERE', '_blank')">
-          SEE MORE
-        </button>
-      </div>
 
       <!-- Carousel Navigation: Prev / Slide Number / Next -->
       <div style="display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 10px; margin-bottom: 8px; min-height: 40px;">
@@ -414,9 +360,15 @@
           </svg>
         </button>
 
-        <span id="nepa-carousel-indicator" style="font-family: 'Heebo', sans-serif; font-size: 1rem; color: #fff; min-width: 40px; text-align: center;">
-          1/4
+        <!-- Update this part for Slide X/5 -->
+        <span id="nepa-carousel-indicator" style="font-family: 'Heebo', sans-serif; font-size: 1rem; color: #fff; min-width: 70px; text-align: center;">
+          Slide 1/5
         </span>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar-container" style="width: 200px; height: 6px; background-color: #ccc; border-radius: 3px;">
+          <div id="nepa-progress-bar" class="progress-bar" style="height: 100%; width: 0%; background-color: white; border-radius: 3px; transition: width 0.3s ease;"></div>
+        </div>
 
         <button id="nepa-carousel-next" class="carousel-arrow right-arrow" style="background: rgba(0,0,0,0.5); border: none; border-radius: 50%; width: 40px; height: 40px; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer;">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -425,8 +377,64 @@
         </button>
       </div>
 
+  
+  <!-- Title Only -->
+  <h2 id="nepa-carousel-title" class="section-title" style="font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 1.6rem; text-align: center; margin-top: 0; color: #fff; margin-bottom: 10px;">
+    Ajay Devgn as Brand Ambassador
+  </h2>
+
+  <div class="video-carousel-wrapper">
+    <div class="video-carousel-track" id="video-carousel-track">
+
+      <!-- ----- Video 1 ----- -->
+      <div class="item reel-video" data-video-id="ID_dxQzil_c" data-tag="nepa rudraksha">
+        <div class="video-wrapper">
+          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD COMBO.PNG" alt="Nepa Rudraksha">
+          <div class="play-button">▶</div>
+        </div>
+      </div>
+      <!-- ----- End of Video 1 ----- -->
+
+      <!-- ----- Video 2 ----- -->
+      <div class="item reel-video" data-video-id="rb_YxXTWXU4" data-tag="nepa rudraksha">
+        <div class="video-wrapper">
+          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD JOINS NR.png" alt="Nepa Rudraksha">
+          <div class="play-button">▶</div>
+        </div>
+      </div>
+      <!-- ----- End of Video 2 ----- -->
+
+      <!-- ----- Video 3 ----- -->
+      <div class="item reel-video" data-video-id="nbv5FgPqHxU" data-tag="nepa rudraksha">
+        <div class="video-wrapper">
+          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SHRAWAN WISH.PNG" alt="Nepa Rudraksha">
+          <div class="play-button">▶</div>
+        </div>
+      </div>
+      <!-- ----- End of Video 3 ----- -->
+
+      <!-- ----- Video 4 ----- -->
+      <div class="item reel-video" data-video-id="gxu3TUTLXKs" data-tag="nepa rudraksha">
+        <div class="video-wrapper">
+          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD TEASER 1.png" alt="Nepa Rudraksha">
+          <div class="play-button">▶</div>
+        </div>
+      </div>
+      <!-- ----- End of Video 4 ----- -->
+
     </div>
-    <!-- End of reels-nepa-layout -->
+  </div>
+
+  <!-- See More button below the carousel -->
+  <div style="text-align:center; margin-top: 1px;">
+    <button class="see-more-btn" onclick="window.open('YOUR-SEE-MORE-LINK-HERE', '_blank')">
+      SEE MORE
+    </button>
+  </div>
+
+</div>
+<!-- End of reels-nepa-layout -->
+
 
 <!-- REELS FORMAT EDITING → DARAZ -->
 <div id="reels-daraz-layout" style="display:none;">
@@ -440,7 +448,7 @@
       <!-- ----- Video 1 ----- -->
       <div class="item reel-video" data-video-id="3sO5o9XX0Yg" data-tag="daraz">
         <div class="video-wrapper">
-          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.PNG" alt="Daraz">
+         <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.png" alt="Daraz">
           <div class="play-button">▶</div>
         </div>
       </div>
