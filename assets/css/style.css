@@ -186,7 +186,6 @@ button:focus {
     position: relative;
     text-transform: uppercase;
     margin: 0.31em 0 0;
-    color: ;
     color: #fff;
     margin-bottom: 50px;
     margin-top: 0;
@@ -1183,7 +1182,7 @@ button:focus {
 }
 .hero .hero-slider .slick-current .slider-image {
   -webkit-animation: kenburn 25s 2s alternate infinite;
-  -animation: kenburn 25s 2s alternate infinite;
+  animation: kenburn 25s 2s alternate infinite;
 }
 .hero .slide-caption {
   padding-top: 60px;
@@ -1845,12 +1844,13 @@ page loader
   transition: 0.2s ease;
   outline: none;
   border-radius: 9999px; /* Fully rounded buttons */
+  
+  border-radius: 9px;
 }
 
 .main-filter-nav .filter-btn.active {
   background-color: #fff;
   color: #000;
-  border-radius: 9px;
 }
 
 /* Sub Filter Nav */
@@ -2473,6 +2473,7 @@ color: rgb(255, 0, 0);
     margin: 5px 0 0 0;
     text-align: left;
     display: block;
+}
 
 .theme-btn-s3 {
     font-size: 15px;
@@ -2493,36 +2494,63 @@ color: rgb(255, 0, 0);
     border-top:1px solid rgba(102,102,102,.3); 
 }
 .footer-menu ul{
-    justify-content:center;
-    margin-bottom: 15px;
+    justify-content: center !important;
+    margin-bottom: 25px !important;
+    gap: 15px !important;
+    padding: 0 !important;
+    list-style: none !important;
 }
-.footer-menu ul li {
-    width: 40px;
-    height: 40px;
-    line-height: 46px;
-    margin: 0 5px;
-    border-radius: 50%;
-    background: #333;
-    transition: all .3s;
-    display: inline-block;
+.footer-area .footer-menu ul li {
+    width: 50px !important;
+    height: 50px !important;
+    line-height: 50px !important;
+    margin: 0 !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #444, #222) !important;
+    transition: all 0.4s ease !important;
+    display: inline-block !important;
+    position: relative !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
 }
-.footer-menu ul li:hover{
-  background:#333; 
-  color:#fff; 
-
+.footer-area .footer-menu ul li:hover{
+    background: linear-gradient(135deg, #555, #333) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+    border: 2px solid #666 !important;
+}
+.footer-area .footer-menu ul li:nth-child(1):hover {
+    background: linear-gradient(135deg, #4267B2, #365899) !important;
+    border-color: #4267B2 !important;
+}
+.footer-area .footer-menu ul li:nth-child(2):hover {
+    background: linear-gradient(135deg, #E4405F, #C13584) !important;
+    border-color: #E4405F !important;
+}
+.footer-area .footer-menu ul li:nth-child(3):hover {
+    background: linear-gradient(135deg, #0077B5, #005885) !important;
+    border-color: #0077B5 !important;
 }
 .footer-image {
-    margin-bottom: 20px;
+    margin-bottom: 30px !important;
 }
-.footer-menu ul li:hover a{
-  color:#fff;
+.footer-area .footer-menu ul li:hover a{
+    color: #fff !important;
+    transform: scale(1.1) !important;
 }
-.footer-menu ul li i{
-  font-style: 20px; 
+.footer-area .footer-menu ul li i{
+    font-size: 22px !important;
+    transition: all 0.3s ease !important;
 }
-.footer-menu ul li a{
-  font-size: 20px;
-  color:#999;
+.footer-area .footer-menu ul li a{
+    font-size: 22px !important;
+    color: #bbb !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
 }
 .footer-sub p, .footer-sub span{
  font-size:14px;
@@ -2532,9 +2560,11 @@ color: rgb(255, 0, 0);
     margin-bottom: 100px;
 }
 .carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  /* position: absolute; */
+  /* top: 50%;
+  transform: translateY(-100%); */
+  top: 0;
+  transform: translateY(0%);
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
   border: none;
@@ -2571,9 +2601,11 @@ body, .main-content {
 
 /* --- Carousel Arrow Styles for Prototype --- */
 .carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  /* position: absolute; */
+   /* top: 50%;
+  transform: translateY(-100%); */
+  top: 0;
+  transform: translateY(0%);
   z-index: 10;
   background-color: #111;
   border: none;
@@ -2603,28 +2635,118 @@ body, .main-content {
 /* For mobile, bring arrows inside grid */
 @media (max-width: 991px) {
   .left-arrow {
-    left: 4px;
+    left: -12px;
   }
   .right-arrow {
-    right: 4px;
+    right: -12px;
   }
 }
 
 /* Progress bar container (the background bar) */
 .progress-bar-container {
-  width: 100px;  /* Full width of the progress bar */
+  max-width: 200px;  /* Full width of the progress bar */
   height: 6px;
   background-color: #434343;  /* Black background for the progress bar */
   border-radius: 3px;
   position: relative;
+  width: 100%;
 }
 
 /* Progress bar (the filling part) */
 .progress-bar {
   height: 100%;
   width: 0%;  /* This will be updated with JavaScript */
-  background-color: rgb(0, 0, 0) !important;  /* Force applying the red color */
   border-radius: 3px;
   transition: width 0.3s ease;  /* Smooth transition effect */
 }
 
+/* Enhanced Footer Social Icons - High Specificity Override */
+.footer-area .footer-menu ul.d-flex {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 15px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.footer-area .footer-menu ul.d-flex li {
+    width: 55px !important;
+    height: 55px !important;
+    margin: 0 !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #333, #111) !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+    overflow: hidden !important;
+}
+
+.footer-area .footer-menu ul.d-flex li::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1)) !important;
+    border-radius: 50% !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+.footer-area .footer-menu ul.d-flex li:hover::before {
+    opacity: 1 !important;
+}
+
+.footer-area .footer-menu ul.d-flex li:hover {
+    transform: translateY(-5px) scale(1.05) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+    border: 2px solid #555 !important;
+}
+
+.footer-area .footer-menu ul.d-flex li:nth-child(1):hover {
+    background: linear-gradient(135deg, #4267B2, #1e3a8a) !important;
+    border-color: #4267B2 !important;
+    box-shadow: 0 10px 30px rgba(66, 103, 178, 0.4) !important;
+}
+
+.footer-area .footer-menu ul.d-flex li:nth-child(2):hover {
+    background: linear-gradient(135deg, #E4405F, #be185d) !important;
+    border-color: #E4405F !important;
+    box-shadow: 0 10px 30px rgba(228, 64, 95, 0.4) !important;
+}
+
+.footer-area .footer-menu ul.d-flex li:nth-child(3):hover {
+    background: linear-gradient(135deg, #0077B5, #0f172a) !important;
+    border-color: #0077B5 !important;
+    box-shadow: 0 10px 30px rgba(0, 119, 181, 0.4) !important;
+}
+
+.footer-area .footer-menu ul.d-flex li a {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #bbb !important;
+    font-size: 24px !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.footer-area .footer-menu ul.d-flex li:hover a {
+    color: #ffffff !important;
+    transform: scale(1.1) !important;
+}
+
+.footer-area .footer-menu ul.d-flex li a i {
+    font-size: 24px !important;
+    transition: all 0.3s ease !important;
+}
