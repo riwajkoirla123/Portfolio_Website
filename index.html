@@ -350,90 +350,273 @@
       <!-- End Sub Filter Navigation -->
 
       <!-- REELS FORMAT EDITING → NEPA RUDRAKSHA -->
-      <div id="reels-nepa-layout" style="display:none;">
+<div id="reels-nepa-layout" style="display:none;">
 
-        <!-- Carousel Navigation: Prev / Slide Number / Next -->
-        <div style="display: flex; justify-content: center; position: relative; align-items: center; gap: 16px; margin-top: 10px; margin-bottom: 8px; min-height: 40px;">
-          <button id="nepa-carousel-prev" class="carousel-arrow left-arrow" style="background: rgba(0,0,0,0.5); border: none; border-radius: 50%; width: 100%; max-width: 40px; height: 40px; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m15 18-6-6 6-6"></path>
-            </svg>
-          </button>
+  <!-- Carousel Navigation Controls -->
+  <div style="display: flex; justify-content: center; position: relative; align-items: center; gap: 16px; margin-top: 10px; margin-bottom: 8px; min-height: 40px;">
+    <button id="nepa-carousel-prev" class="carousel-arrow left-arrow" style="background: rgba(0,0,0,0.5); border: none; border-radius: 50%; width: 100%; max-width: 40px; height: 40px; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"></path>
+      </svg>
+    </button>
 
-          <!-- Update this part for Slide X/5 -->
-          <span id="nepa-carousel-indicator" style="font-family: 'Heebo', sans-serif; font-size: 1rem; color: #fff; min-width: 70px; text-align: center;">
-            Slide 1/5
-          </span>
+    <!-- Carousel Slide Indicator -->
+    <span id="nepa-carousel-indicator" style="font-family: 'Heebo', sans-serif; font-size: 1rem; color: #fff; min-width: 70px; text-align: center;">
+      Slide 1/5
+    </span>
 
-          <!-- Progress Bar -->
-          <div class="progress-bar-container" style="height: 6px; background-color: #000000; border-radius: 3px;">
-            <div id="nepa-progress-bar" class="progress-bar" style="height: 100%; width: 0%; background-color: white; border-radius: 3px; transition: width 0.3s ease;"></div>
-          </div>
+    <!-- Progress Bar -->
+    <div class="progress-bar-container" style="height: 6px; background-color: #000000; border-radius: 3px;">
+      <div id="nepa-progress-bar" class="progress-bar" style="height: 100%; width: 0%; background-color: white; border-radius: 3px; transition: width 0.3s ease;"></div>
+    </div>
 
-          <button id="nepa-carousel-next" class="carousel-arrow right-arrow" style="background: rgba(0,0,0,0.5); border: none; border-radius: 50%;  width: 100%; max-width: 40px;  height: 40px; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m9 18 6-6-6-6"></path>
-            </svg>
-          </button>
-        </div>
+    <button id="nepa-carousel-next" class="carousel-arrow right-arrow" style="background: rgba(0,0,0,0.5); border: none; border-radius: 50%; width: 100%; max-width: 40px; height: 40px; color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6"></path>
+      </svg>
+    </button>
+  </div>
 
-    
-    <!-- Title Only -->
-    <h2 id="nepa-carousel-title" class="section-title" style="font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 1.6rem; text-align: center; margin-top: 0; color: #fff; margin-bottom: 10px;">
-      Ajay Devgn as Brand Ambassador
-    </h2>
+  <!-- Slides Wrapper -->
+  <div class="video-carousel-wrapper">
 
-    <div class="video-carousel-wrapper">
-      <div class="video-carousel-track" id="video-carousel-track">
+    <!-- Slide 1: Ajay Devgn as Brand Ambassador -->
+<div class="slide" data-slide-index="0">
+  <h2 class="section-title" style="font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 1.6rem; text-align: center; margin-top: 0; color: #fff; margin-bottom: 10px;">
+    Ajay Devgn as Brand Ambassador
+  </h2>
 
-        <!-- ----- Video 1 ----- -->
-        <div class="item reel-video" data-video-id="ID_dxQzil_c" data-tag="nepa rudraksha">
-          <div class="video-wrapper">
-            <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 1.jpg" alt="Nepa Rudraksha">
-            <div class="play-button">▶</div>
-          </div>
-        </div>
-        <!-- ----- End of Video 1 ----- -->
+  <div class="video-carousel-track">
 
-        <!-- ----- Video 2 ----- -->
-        <div class="item reel-video" data-video-id="rb_YxXTWXU4" data-tag="nepa rudraksha">
-          <div class="video-wrapper">
-            <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 2.jpg" alt="Nepa Rudraksha">
-            <div class="play-button">▶</div>
-          </div>
-        </div>
-        <!-- ----- End of Video 2 ----- -->
-
-        <!-- ----- Video 3 ----- -->
-        <div class="item reel-video" data-video-id="nbv5FgPqHxU" data-tag="nepa rudraksha">
-          <div class="video-wrapper">
-            <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 3.jpg" alt="Nepa Rudraksha">
-            <div class="play-button">▶</div>
-          </div>
-        </div>
-        <!-- ----- End of Video 3 ----- -->
-
-        <!-- ----- Video 4 ----- -->
-        <div class="item reel-video" data-video-id="gxu3TUTLXKs" data-tag="nepa rudraksha">
-          <div class="video-wrapper">
-            <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 4.jpg" alt="Nepa Rudraksha">
-            <div class="play-button">▶</div>
-          </div>
-        </div>
-        <!-- ----- End of Video 4 ----- -->
-
+    <!-- ----- Video 1 ----- -->
+    <div class="item reel-video" data-video-id="CRIx_Klr19s" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 1.jpg" alt="Nepa Rudraksha">
+        <div class="play-button">▶</div>
       </div>
     </div>
+    <!-- ----- End of Video 1 ----- -->
 
-    <!-- See More button below the carousel -->
-    <div style="text-align:center; margin-top: 1px;">
-      <button class="see-more-btn" onclick="window.open('YOUR-SEE-MORE-LINK-HERE', '_blank')">
-        SEE MORE
-      </button>
+    <!-- ----- Video 2 ----- -->
+    <div class="item reel-video" data-video-id="MQZQ6HYl-IU" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 2.jpg" alt="Nepa Rudraksha">
+        <div class="play-button">▶</div>
+      </div>
     </div>
+    <!-- ----- End of Video 2 ----- -->
+
+    <!-- ----- Video 3 ----- -->
+    <div class="item reel-video" data-video-id="l8WbfBg2JKI" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 3.jpg" alt="Nepa Rudraksha">
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 3 ----- -->
+
+    <!-- ----- Video 4 ----- -->
+    <div class="item reel-video" data-video-id="LHP9wRSyDEg" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 4.jpg" alt="Nepa Rudraksha">
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 4 ----- -->
 
   </div>
-  <!-- End of reels-nepa-layout -->
+</div>
+    <!-- End of Slide 1 -->
+
+    <!-- Slide 2: CEO Feature Reels (External) -->
+<div class="slide" data-slide-index="1" style="display: none;">
+  <h2 class="section-title" style="font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 1.6rem; text-align: center; margin-top: 0; color: #fff; margin-bottom: 10px;">
+    CEO Feature Reels (External)
+  </h2>
+  <div class="video-carousel-track">
+    <!-- ----- Video 4 ----- -->
+    <div class="item reel-video" data-video-id="gxu3TUTLXKs" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 4.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 4 ----- -->
+
+    <!-- ----- Video 3 ----- -->
+    <div class="item reel-video" data-video-id="nbv5FgPqHxU" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 3.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 3 ----- -->
+
+    <!-- ----- Video 2 ----- -->
+    <div class="item reel-video" data-video-id="rb_YxXTWXU4" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 2.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 2 ----- -->
+
+    <!-- ----- Video 1 ----- -->
+    <div class="item reel-video" data-video-id="ID_dxQzil_c" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 1.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 1 ----- -->
+  </div>
+</div>
+    <!-- End of Slide 2 -->
+
+
+    <!-- Slide 3: CEO Feature Reels (Internal) -->
+<div class="slide" data-slide-index="2" style="display: none;">
+  <h2 class="section-title" style="font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 1.6rem; text-align: center; margin-top: 0; color: #fff; margin-bottom: 10px;">
+    CEO Feature Reels (Internal)
+  </h2>
+  <div class="video-carousel-track">
+    <!-- ----- Video 1 ----- -->
+    <div class="item reel-video" data-video-id="ID_dxQzil_c" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 1.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 1 ----- -->
+
+    <!-- ----- Video 2 ----- -->
+    <div class="item reel-video" data-video-id="rb_YxXTWXU4" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 2.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 2 ----- -->
+
+    <!-- ----- Video 3 ----- -->
+    <div class="item reel-video" data-video-id="nbv5FgPqHxU" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 3.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 3 ----- -->
+
+    <!-- ----- Video 4 ----- -->
+    <div class="item reel-video" data-video-id="gxu3TUTLXKs" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 4.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 4 ----- -->
+  </div>
+</div>
+    <!-- End of Slide 3 -->
+
+ <!-- Slide 4: Creative Visual Content -->
+<div class="slide" data-slide-index="3" style="display: none;">
+  <h2 class="section-title" style="font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 1.6rem; text-align: center; margin-top: 0; color: #fff; margin-bottom: 10px;">
+    Creative Visual Content
+  </h2>
+  <div class="video-carousel-track">
+    <!-- ----- Video 4 ----- -->
+    <div class="item reel-video" data-video-id="gxu3TUTLXKs" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 4.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 4 ----- -->
+
+    <!-- ----- Video 3 ----- -->
+    <div class="item reel-video" data-video-id="nbv5FgPqHxU" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 3.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 3 ----- -->
+
+    <!-- ----- Video 2 ----- -->
+    <div class="item reel-video" data-video-id="rb_YxXTWXU4" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 2.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 2 ----- -->
+
+    <!-- ----- Video 1 ----- -->
+    <div class="item reel-video" data-video-id="ID_dxQzil_c" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 1.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 1 ----- -->
+  </div>
+</div>
+
+<!-- Slide 5: Product Showcase Reel -->
+<div class="slide" data-slide-index="4" style="display: none;">
+  <h2 class="section-title" style="font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 1.6rem; text-align: center; margin-top: 0; color: #fff; margin-bottom: 10px;">
+    Product Showcase Reel
+  </h2>
+  <div class="video-carousel-track">
+    <!-- ----- Video 1 ----- -->
+    <div class="item reel-video" data-video-id="ID_dxQzil_c" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 1.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 1 ----- -->
+
+    <!-- ----- Video 2 ----- -->
+    <div class="item reel-video" data-video-id="rb_YxXTWXU4" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 2.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 2 ----- -->
+
+    <!-- ----- Video 3 ----- -->
+    <div class="item reel-video" data-video-id="nbv5FgPqHxU" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 3.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 3 ----- -->
+
+    <!-- ----- Video 4 ----- -->
+    <div class="item reel-video" data-video-id="gxu3TUTLXKs" data-tag="nepa rudraksha">
+      <div class="video-wrapper">
+        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SLIDE 1/SLIDE 1- 4.jpg" alt="Nepa Rudraksha" />
+        <div class="play-button">▶</div>
+      </div>
+    </div>
+    <!-- ----- End of Video 4 ----- -->
+  </div>
+</div>
+  <!-- End of Slide 5 -->
+
+  <!-- SEE MORE Button -->
+  <div style="text-align:center; margin-top: 10px;">
+    <button class="see-more-btn" onclick="window.open('YOUR-SEE-MORE-LINK-HERE', '_blank')">
+      SEE MORE
+    </button>
+  </div>
+</div>
+<!-- End of reels-nepa-layout -->
+
 
 
   <!-- REELS FORMAT EDITING → DARAZ -->
@@ -780,34 +963,33 @@
   </div>
 
   <!-- All JavaScript files -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/easing-min.js"></script>
-  <script src="assets/js/jquery-plugin-collection.js"></script>
-  <script src="assets/js/script.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/easing-min.js"></script>
+<script src="assets/js/jquery-plugin-collection.js"></script>
+<script src="assets/js/script.js"></script>
 
-  <!-- Smooth scroll -->
-  <script>
-    $('a[href^="#"]').on('click', function(e) {
-      var target = $(this.getAttribute('href'));
-      if (target.length) {
-        e.preventDefault();
-        $('body').addClass('smooth-scroll');
-        const distance = Math.abs($(window).scrollTop() - target.offset().top);
-        const duration = Math.min(1200, distance);
-        $('html, body').animate({ scrollTop: target.offset().top }, duration, 'swing', function () {
-          $('body').removeClass('smooth-scroll');
-        });
-      }
-    });
-  </script>
+<!-- Smooth scroll -->
+<script>
+  $('a[href^="#"]').on('click', function(e) {
+    var target = $(this.getAttribute('href'));
+    if (target.length) {
+      e.preventDefault();
+      $('body').addClass('smooth-scroll');
+      const distance = Math.abs($(window).scrollTop() - target.offset().top);
+      const duration = Math.min(1200, distance);
+      $('html, body').animate({ scrollTop: target.offset().top }, duration, 'swing', function () {
+        $('body').removeClass('smooth-scroll');
+      });
+    }
+  });
+</script>
 
-  <!-- Swiper.js -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    // Your Swiper carousel code stays unchanged here...
-  </script>
-
+<!-- Swiper.js -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  // Your Swiper carousel code stays unchanged here...
+</script>
 
 <script>
   const navContainer = document.getElementById('main-filter-nav');
@@ -828,49 +1010,49 @@
   });
 </script>
 
-  <!-- Portfolio Sub-filter Logic (you can keep yours as is) -->
-  <script>
-    const mainBtns = document.querySelectorAll('.main-filter-nav .filter-btn');
-    const subNav = document.getElementById('sub-filter-nav');
+<!-- Portfolio Sub-filter Logic -->
+<script>
+  const mainBtns = document.querySelectorAll('.main-filter-nav .filter-btn');
+  const subNav = document.getElementById('sub-filter-nav');
 
-    const subFilters = {
-      reels: ['ALL', 'NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
-      longform: ['NEPA RUDRAKSHA', "NEPAL ENGINEERS'S ASSOCIATION"],
-      logo: [],
-      ads: ['Ajay Devgn X Nepa Rudraksha Campaign'],
-      all: []
-    };
+  const subFilters = {
+    reels: ['ALL', 'NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
+    longform: ['NEPA RUDRAKSHA', "NEPAL ENGINEERS'S ASSOCIATION"],
+    logo: [],
+    ads: ['Ajay Devgn X Nepa Rudraksha Campaign'],
+    all: []
+  };
 
-    mainBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        mainBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+  mainBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      mainBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-        const selected = btn.dataset.category;
-        const items = subFilters[selected];
+      const selected = btn.dataset.category;
+      const items = subFilters[selected];
 
-        if (items.length > 0) {
-          subNav.innerHTML = items.map((item, i) =>
-            `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
-          ).join('');
-          subNav.style.display = 'flex';
+      if (items.length > 0) {
+        subNav.innerHTML = items.map((item, i) =>
+          `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
+        ).join('');
+        subNav.style.display = 'flex';
 
-          const subBtns = subNav.querySelectorAll('.sub-filter-btn');
-          subBtns.forEach(subBtn => {
-            subBtn.addEventListener('click', () => {
-              subBtns.forEach(b => b.classList.remove('active'));
-              subBtn.classList.add('active');
-            });
+        const subBtns = subNav.querySelectorAll('.sub-filter-btn');
+        subBtns.forEach(subBtn => {
+          subBtn.addEventListener('click', () => {
+            subBtns.forEach(b => b.classList.remove('active'));
+            subBtn.classList.add('active');
           });
-        } else {
-          subNav.innerHTML = '';
-          subNav.style.display = 'none';
-        }
-      });
+        });
+      } else {
+        subNav.innerHTML = '';
+        subNav.style.display = 'none';
+      }
     });
-  </script>
+  });
+</script>
 
-  <script>
+<script>
   document.addEventListener("DOMContentLoaded", function () {
     const journeySwiper = new Swiper('.experience-swiper', {
       modules: [
@@ -941,128 +1123,104 @@
       simulateTouch: false
     });
   });
-  </script>
+</script>
 
+<!-- ✅ Custom Lightbox Video Popup -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const thumbnails = document.querySelectorAll(".reel-video");
+    const lightbox = document.getElementById("video-lightbox");
+    const iframe = document.getElementById("lightbox-iframe");
+    const closeBtn = document.querySelector(".close-btn");
 
-  <!-- ✅ Custom Lightbox Video Popup -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const thumbnails = document.querySelectorAll(".reel-video");
-      const lightbox = document.getElementById("video-lightbox");
-      const iframe = document.getElementById("lightbox-iframe");
-      const closeBtn = document.querySelector(".close-btn");
-
-      thumbnails.forEach(item => {
-        item.addEventListener("click", () => {
-          const videoId = item.dataset.videoId;
-          iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-          lightbox.classList.add("active");
-        });
+    thumbnails.forEach(item => {
+      item.addEventListener("click", () => {
+        const videoId = item.dataset.videoId;
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+        lightbox.classList.add("active");
       });
+    });
 
-      closeBtn.addEventListener("click", () => {
+    closeBtn.addEventListener("click", () => {
+      lightbox.classList.remove("active");
+      iframe.src = "";
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
         lightbox.classList.remove("active");
         iframe.src = "";
-      });
-
-      lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) {
-          lightbox.classList.remove("active");
-          iframe.src = "";
-        }
-      });
+      }
     });
-  </script>
-  <script>
-    const videoData = [
-      {
-        title: "Ajay Devgn as Brand Ambassador",
-        video: {
-          id: "ID_dxQzil_c",
-          thumb: "assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD COMBO.png"
-        },
-        link: "https://www.facebook.com/"
-      },
-      {
-        title: "CEO Feature Reels",
-        video: {
-          id: "rb_YxXTWXU4",
-          thumb: "assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD JOINS NR.png"
-        },
-        link: "https://www.youtube.com/"
-      },
-      {
-        title: "Creative Visual Content",
-        video: {
-          id: "nbv5FgPqHxU",
-          thumb: "assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/SHRAWAN WISH.png"
-        },
-        link: "https://www.linkedin.com/"
-      },
-      {
-        title: "Product Showcase Reels",
-        video: {
-          id: "gxu3TUTLXKs",
-          thumb: "assets/images/portfolios/Videos Thumbnail/Nepa Rudraksha/AD TEASER 1.png"
-        },
-        link: "https://www.threads.net/"
-      }
-    ];
+  });
+</script>
 
-    let currentSlide = 0;
+<!-- Nepa Carousel with dynamic content -->
+<script>
+  // Add this container somewhere in your HTML for slide content:
+  // <div id="slide-container"></div>
 
-    const titleEl = document.getElementById("nepa-carousel-title");
-    const indicatorEl = document.getElementById("nepa-carousel-indicator");
-    const trackEl = document.getElementById("video-carousel-track");
-    const seeMoreBtn = document.querySelector(".see-more-btn");
-
-    function renderSlide(index) {
-      const data = videoData[index];
-
-      // Update title
-      titleEl.textContent = data.title;
-
-      // Update indicator
-      indicatorEl.textContent = `${index + 1}/4`;
-
-      // Update see more button link
-      seeMoreBtn.setAttribute("onclick", `window.open('${data.link}', '_blank')`);
-
-      // Clear current videos
-      trackEl.innerHTML = "";
-
-      // Add 4 cloned videos
-      for (let i = 0; i < 4; i++) {
-        const item = document.createElement("div");
-        item.className = "item reel-video";
-        item.setAttribute("data-video-id", data.video.id);
-        item.setAttribute("data-tag", "nepa rudraksha");
-
-        item.innerHTML = `
-          <div class="video-wrapper">
-            <img class="reel-thumb" src="${data.video.thumb}" alt="Nepa Rudraksha">
-            <div class="play-button">▶</div>
-          </div>
-        `;
-
-        trackEl.appendChild(item);
-      }
+  const videoData = [
+    {
+      title: "Ajay Devgn as Brand Ambassador",
+      content: `
+        <video controls width="320" height="180" preload="metadata" style="max-width:100%;">
+          <source src="path_to_video1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>`
+    },
+    {
+      title: "CEO Feature Reels",
+      content: `
+        <video controls width="320" height="180" preload="metadata" style="max-width:100%;">
+          <source src="path_to_video2.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>`
+    },
+    {
+      title: "Creative Visual Content",
+      content: `
+        <video controls width="320" height="180" preload="metadata" style="max-width:100%;">
+          <source src="path_to_video3.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>`
+    },
+    {
+      title: "Product Showcase Reels",
+      content: `
+        <video controls width="320" height="180" preload="metadata" style="max-width:100%;">
+          <source src="path_to_video4.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>`
     }
+  ];
 
-    // Handle button clicks
-    document.getElementById("nepa-carousel-prev").addEventListener("click", () => {
-      currentSlide = (currentSlide - 1 + videoData.length) % videoData.length;
-      renderSlide(currentSlide);
-    });
-    
+  let currentSlide = 0;
 
-    document.getElementById("nepa-carousel-next").addEventListener("click", () => {
-      currentSlide = (currentSlide + 1) % videoData.length;
-      renderSlide(currentSlide);
-    });
+  const titleEl = document.getElementById("nepa-carousel-title");
+  const indicatorEl = document.getElementById("nepa-carousel-indicator");
+  const slideContainer = document.getElementById("slide-container");
 
-    // Initial render
+  function renderSlide(index) {
+    const data = videoData[index];
+
+    titleEl.textContent = data.title;
+    indicatorEl.textContent = `Slide ${index + 1} / ${videoData.length}`;
+    slideContainer.innerHTML = data.content;
+  }
+
+  document.getElementById("nepa-carousel-prev").addEventListener("click", () => {
+    currentSlide = (currentSlide - 1 + videoData.length) % videoData.length;
     renderSlide(currentSlide);
-  </script>
+  });
+
+  document.getElementById("nepa-carousel-next").addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % videoData.length;
+    renderSlide(currentSlide);
+  });
+
+  renderSlide(currentSlide);
+</script>
+
   </body>
   </html>

@@ -763,3 +763,159 @@
     object-fit: contain !important; /* Maintain the aspect ratio */
   }
 }
+
+
+@media screen and (min-width: 100px) and (max-width: 724px) {
+  /* Hero section adjustments */
+  .hero-style-1 {
+    height: 450px; /* smaller height for small screens */
+    min-height: 450px;
+  }
+  .hero-style-1 .slide {
+    height: 450px;
+    min-height: 450px;
+  }
+  .hero .slide-caption {
+    padding-top: 0;
+    text-align: left;
+    padding-left: 12px;
+    padding-right: 12px;
+    max-width: 100%;
+    width: 100%; /* Changed from 100vw to 100% */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
+  }
+
+  /* Buttons inside hero */
+  .btns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding-left: 12px;
+  }
+  .btns .theme-btn {
+    width: 85%;
+    max-width: 220px;
+    min-width: 140px;
+    margin: 0 !important;
+  }
+
+  /* Service section wrappers */
+  .service-section .services-wrapper {
+    max-width: 400px;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 20px 10px;
+    box-sizing: border-box; /* Added to make padding part of width */
+  }
+
+  /* Gallery section padding */
+  .gallery-section {
+    padding-top: 65px;
+    padding-bottom: 50px;
+  }
+
+  /* Blog items width and margin */
+  .blog-item {
+    max-width: 500px;
+    margin: 20px auto 30px;
+  }
+
+  /* Navbar padding adjustments */
+  .site-header #navbar > ul > li {
+    padding: 0 8px;
+  }
+  .site-header #navbar > ul > li:first-child {
+    padding-top: 10px;
+  }
+
+  /* Contact page area spacing */
+  .contact-page-area {
+    padding-top: 30px;
+    padding-bottom: 70px;
+  }
+  .contact-page-area .contact-map {
+    margin-top: 15px;
+  }
+
+  /* Page wrapper pseudo elements */
+  .page-wrapper:before {
+    left: 2%;
+  }
+  .page-wrapper:after {
+    right: 2%;
+  }
+
+  /* Hide about-area before pseudo */
+  .about-area:before {
+    display: none;
+  }
+
+  /* Header style border */
+  .header-style-1 {
+    border-bottom: 1px solid rgba(102, 102, 102, 0.3);
+  }
+
+  /* Hide hero copy text */
+  .hero .copy {
+    display: none;
+  }
+
+  /* Blog section padding */
+  .blog-section {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+
+  /* Testimonial image size */
+  .testimonial-img {
+    width: 20%;
+  }
+
+  /* Testimonial area padding */
+  .testimonial-area {
+    padding: 60px 0 100px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive video */
+  .video-carousel-wrapper iframe,
+  .video-carousel-wrapper video {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    margin: 0 auto !important;
+    display: block;
+  }
+
+  /* Filter navigation adjustments */
+  .main-filter-nav,
+  .sub-filter-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  .filter-btn,
+  .sub-filter-btn {
+    font-size: 12px;
+    padding: 8px 12px;
+    white-space: nowrap;
+    border-radius: 6px;
+    flex: 0 0 auto;
+    text-align: center;
+  }
+  
+  /* Prevent horizontal scroll on small screens */
+  body, html {
+    overflow-x: hidden;
+  }
+}
