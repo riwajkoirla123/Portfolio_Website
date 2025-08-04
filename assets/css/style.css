@@ -1976,6 +1976,7 @@ page loader
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   margin: 0;
+  cursor: pointer;
 }
 
 .video-wrapper {
@@ -2659,6 +2660,36 @@ body, .main-content {
   border-radius: 3px;
   transition: width 0.3s ease;  /* Smooth transition effect */
 }
+
+.services-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.services-container:before{
+  display: none !important;
+}
+
+.service-box{
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+/* Tablet: 2 columns */
+@media (min-width: 768px) {
+  .services-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Larger than tablet: 3 columns */
+@media (min-width: 1024px) {
+  .services-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 
 /* Enhanced Footer Social Icons - High Specificity Override */
 .footer-area .footer-menu ul.d-flex {
