@@ -1,4 +1,9 @@
-
+// Only force scroll to top if NOT on Live Server (localhost)
+if (!window.location.href.includes("localhost")) {
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  };
+}
 
 
 
@@ -762,6 +767,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const prevBtn = document.getElementById('nepa-carousel-prev');
   const nextBtn = document.getElementById('nepa-carousel-next');
   const indicatorEl = document.getElementById('nepa-carousel-indicator');
+  const progressBar = document.getElementById('nepa-progress-bar');
   const seeMoreBtn = nepaLayout.querySelector('.see-more-btn');
   const lightbox = document.getElementById('video-lightbox');
   const iframe = document.getElementById('lightbox-iframe');
@@ -795,47 +801,40 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-function updateCarousel() {
-  // Update the slide title (e.g., "Ajay Devgn as Brand Ambassador")
-  if (titleEl) {
-    titleEl.textContent = slides[currentSlide].title;
-  }
+  function updateCarousel() {
+    // Update text content
+    if (titleEl) titleEl.textContent = slides[currentSlide].title;
+    if (indicatorEl) indicatorEl.textContent = `Slide ${currentSlide + 1} / ${slides.length}`;
+    if (seeMoreBtn) {
+      seeMoreBtn.textContent = 'SEE MORE';
+      seeMoreBtn.onclick = () => window.open(slides[currentSlide].seeMoreUrl, '_blank');
+    }
 
-  // Update the slide number to "Slide X/5"
-  if (indicatorEl) {
-    indicatorEl.textContent = `Slide ${currentSlide + 1} / ${slides.length}`;
-  }
-
-  // Update the 'See More' button link and text
-  if (seeMoreBtn) {
-    seeMoreBtn.textContent = 'SEE MORE';
-    seeMoreBtn.onclick = () => window.open(slides[currentSlide].seeMoreUrl, '_blank');
-  }
-
-  // Disable/Enable 'Prev' button and adjust its style
-  if (prevBtn) {
+    // Update buttons
     prevBtn.disabled = currentSlide === 0;
     prevBtn.style.opacity = currentSlide === 0 ? 0.4 : 1;
     prevBtn.style.cursor = currentSlide === 0 ? 'not-allowed' : 'pointer';
-  }
 
-  // Disable/Enable 'Next' button and adjust its style
-  if (nextBtn) {
     nextBtn.disabled = currentSlide === slides.length - 1;
     nextBtn.style.opacity = currentSlide === slides.length - 1 ? 0.4 : 1;
     nextBtn.style.cursor = currentSlide === slides.length - 1 ? 'not-allowed' : 'pointer';
+
+    // Update progress bar
+    if (progressBar) {
+      const progress = ((currentSlide + 1) / slides.length) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+
+    // Show only the active slide
+    const allSlides = nepaLayout.querySelectorAll('.slide');
+    allSlides.forEach((slide, index) => {
+      slide.style.display = index === currentSlide ? 'block' : 'none';
+    });
+
+    bindVideoClickEvents();
   }
 
-  // Update the progress bar (fill it according to current slide)
-  if (progressBar) {
-    const progress = ((currentSlide + 1) / slides.length) * 100;
-    progressBar.style.width = `${progress}%`;
-  }
-
-  // Bind video click events (You might have a separate function for this)
-  bindVideoClickEvents();
-}
-
+  // Button listeners
   prevBtn?.addEventListener('click', () => {
     if (currentSlide > 0) {
       currentSlide--;
@@ -852,86 +851,5 @@ function updateCarousel() {
 
   updateCarousel();
 });
-
-
-const container = document.querySelector('.main-filter-nav');
-const buttons = container.querySelectorAll('.filter-btn');
-
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    // Remove old active classes and add to clicked
-    buttons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-
-    // Calculate visibility of button
-    const btnRect = button.getBoundingClientRect();
-    const containerRect = container.getBoundingClientRect();
-
-    // Scroll only if button is not fully in view
-    if (btnRect.left < containerRect.left || btnRect.right > containerRect.right) {
-      button.scrollIntoView({
-        behavior: 'smooth',
-        inline: 'nearest',
-        block: 'nearest'
-      });
-    }
-  });
-});
-
-// Initialize variables
-let currentSlide = 1;  // Starting at slide 1
-const totalSlides = 5;  // Total number of slides (5 slides in this case)
-const progressBar = document.getElementById('nepa-progress-bar');  // Progress bar element
-const slideIndicator = document.getElementById('nepa-carousel-indicator');  // Slide number indicator
-
-// Function to update the carousel (including progress bar)
-function updateCarousel() {
-  // Update the slide number to "Slide X/5"
-  if (slideIndicator) {
-    slideIndicator.textContent = `Slide ${currentSlide} / ${totalSlides}`;
-  }
-
-  // Update the progress bar width incrementally
-  if (progressBar) {
-    // Calculate the width increment (each slide is 20px for a 100px progress bar)
-    const progress = (currentSlide / totalSlides) * 100;
-    progressBar.style.width = `${progress}%`;
-  }
-
-  // Enable/disable buttons and adjust styles
-  if (prevBtn) {
-    prevBtn.disabled = currentSlide === 1;
-    prevBtn.style.opacity = currentSlide === 1 ? 0.4 : 1;
-    prevBtn.style.cursor = currentSlide === 1 ? 'not-allowed' : 'pointer';
-  }
-
-  if (nextBtn) {
-    nextBtn.disabled = currentSlide === totalSlides;
-    nextBtn.style.opacity = currentSlide === totalSlides ? 0.4 : 1;
-    nextBtn.style.cursor = currentSlide === totalSlides ? 'not-allowed' : 'pointer';
-  }
-
-  // Optionally bind video click events or any other logic
-  bindVideoClickEvents();
-}
-
-// Event listener for 'Next' button
-document.getElementById('nepa-carousel-next').addEventListener('click', () => {
-  if (currentSlide < totalSlides) {
-    currentSlide++;
-    updateCarousel();
-  }
-});
-
-// Event listener for 'Prev' button
-document.getElementById('nepa-carousel-prev').addEventListener('click', () => {
-  if (currentSlide > 1) {
-    currentSlide--;
-    updateCarousel();
-  }
-});
-
-// Initialize carousel on page load
-updateCarousel();
 
 })(window.jQuery);
