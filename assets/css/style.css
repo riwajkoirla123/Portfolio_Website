@@ -2872,3 +2872,23 @@ body, .main-content {
     font-size: 24px !important;
     transition: all 0.3s ease !important;
 }
+
+#daraz-video-carousel-track .item {
+    display: inline-block !important;
+    width: 200px;
+    height: 150px;
+    margin-right: 15px;
+    background: #333;
+}
+
+#daraz-video-carousel-track .video-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#daraz-video-carousel-track .reel-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

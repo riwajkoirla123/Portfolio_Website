@@ -620,33 +620,51 @@ $('.navigation-holder .nav > li > a').on('click', function() {
 
 // Main Portfolio Navigation Script
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const mainBtns = document.querySelectorAll('#main-filter-nav .filter-btn');
   const subNav = document.getElementById('sub-filter-nav');
 
-  // Map of main → sub → layout IDs
+  // Fixed: Map of main → sub → layout IDs (matching your HTML)
   const layouts = {
     // REELS
-    'reels-NEPA RUDRAKSHA': 'reels-nepa-layout',
-    'reels-DARAZ': 'reels-daraz-layout',
-    'reels-SHARE SANSKAR': 'reels-sharesanskar-layout',
+    'reels-nepa-rudraksha': 'reels-nepa-layout',
+    'reels-daraz': 'reels-daraz-layout',
+    'reels-sharesanskar': 'reels-sharesanskar-layout',
 
     // LONGFORM
-    'longform-NEPA RUDRAKSHA': 'longform-nepa-layout',
-    'longform-Nepal Engineers Association': 'longform-nea-layout',
+    'longform-nepa-rudraksha': 'longform-nepa-layout',
+    'longform-nea': 'longform-nea-layout',
 
     // LOGO
+    'logo-logo-type-1': 'logo-type-1-layout',
+    'logo-logo-type-2': 'logo-type-2-layout',
 
     // ADS
-    'ads-AJAY DEVGN X NEPA RUDRAKSHA CAMPAIGN': 'ads-ajaydevgn-layout',
+    'ads-facebook-ads': 'ads-facebook-layout',
+    'ads-instagram-ads': 'ads-instagram-layout'
   };
 
-  // Sub-filter options per main category
+  // Fixed: Sub-filter options per main category (matching HTML data-subcategory)
   const subFilters = {
-    reels: ['NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
-    longform: ['NEPA RUDRAKSHA', 'NEPAL ENGINEERS ASSOCIATION'],
-    logo: [],
-    ads: ['Ajay Devgn X Nepa Rudraksha Campaign']
+    reels: [
+      { display: 'Nepa Rudraksha', value: 'nepa-rudraksha' },
+      { display: 'Daraz', value: 'daraz' },
+      { display: 'Share Sanskar', value: 'sharesanskar' }
+    ],
+    longform: [
+      { display: 'Nepa Rudraksha', value: 'nepa-rudraksha' },
+      { display: 'Nepal Engineers Association', value: 'nea' }
+    ],
+    logo: [
+      { display: 'Logo Type 1', value: 'logo-type-1' },
+      { display: 'Logo Type 2', value: 'logo-type-2' }
+    ],
+    ads: [
+      { display: 'Facebook Ads', value: 'facebook-ads' },
+      { display: 'Instagram Ads', value: 'instagram-ads' }
+    ]
   };
 
   // Hide all portfolio layout sections
@@ -659,61 +677,77 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Handle main category click (e.g., REELS, LONGFORM)
   function handleMainClick(btn) {
-  // Remove 'active' class from all main category buttons
-  mainBtns.forEach(b => b.classList.remove('active'));
-  
-  // Add 'active' class to the clicked button
-  btn.classList.add('active');
+    // Remove 'active' class from all main category buttons
+    mainBtns.forEach(b => b.classList.remove('active'));
+    
+    // Add 'active' class to the clicked button
+    btn.classList.add('active');
 
-  const selectedCategory = btn.dataset.category; // e.g., 'reels', 'longform'
-  const subItems = subFilters[selectedCategory]; // Get the sub-filters for the selected category
+    const selectedCategory = btn.dataset.category; // e.g., 'reels', 'longform'
+    const subItems = subFilters[selectedCategory]; // Get the sub-filters for the selected category
 
-  if (subItems && subItems.length > 0) {
-    // Dynamically generate sub-filter buttons based on the subItems for the selected category
-    subNav.innerHTML = subItems.map((item, i) =>
-      `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
-    ).join('');
-    subNav.style.display = 'flex';  // Make the sub-filter navigation visible
+    if (subItems && subItems.length > 0) {
+      // Dynamically generate sub-filter buttons based on the subItems for the selected category
+      subNav.innerHTML = subItems.map((item, i) =>
+        `<button class="sub-filter-btn${i === 0 ? ' active' : ''}" data-subcategory="${item.value}">${item.display}</button>`
+      ).join('');
+      subNav.style.display = 'flex';  // Make the sub-filter navigation visible
 
-    // Add event listeners for each sub-filter button
-    const subBtns = subNav.querySelectorAll('.sub-filter-btn');
-    subBtns.forEach((subBtn) => {
-      subBtn.addEventListener('click', () => {
-        // Remove 'active' class from all sub-filter buttons
-        subBtns.forEach(b => b.classList.remove('active'));
-        
-        // Add 'active' class to the clicked sub-filter button
-        subBtn.classList.add('active');
-        
-        hideAllLayouts();  // Hide all layouts first
+      // Add event listeners for each sub-filter button
+      const subBtns = subNav.querySelectorAll('.sub-filter-btn');
+      subBtns.forEach((subBtn) => {
+        subBtn.addEventListener('click', () => {
+          // Remove 'active' class from all sub-filter buttons
+          subBtns.forEach(b => b.classList.remove('active'));
+          
+          // Add 'active' class to the clicked sub-filter button
+          subBtn.classList.add('active');
+          
+          hideAllLayouts();  // Hide all layouts first
 
-        // Build the layout key using the selected category and sub-filter
-        const layoutKey = `${selectedCategory}-${subBtn.textContent.trim().toUpperCase()}`;
-        const layoutId = layouts[layoutKey];  // Get the corresponding layout ID
-        if (layoutId) {
-          const grid = document.getElementById(layoutId);
-          if (grid) grid.style.display = 'grid';  // Show the correct layout
-        }
+          // Build the layout key using the selected category and sub-filter value
+          const subcategoryValue = subBtn.dataset.subcategory;
+          const layoutKey = `${selectedCategory}-${subcategoryValue}`;
+          const layoutId = layouts[layoutKey];  // Get the corresponding layout ID
+          
+          console.log('Looking for layout:', layoutKey, '→', layoutId); // Debug log
+          
+          if (layoutId) {
+            const layoutElement = document.getElementById(layoutId);
+            if (layoutElement) {
+              layoutElement.style.display = 'block';  // Show the correct layout
+              console.log('Showing layout:', layoutId); // Debug log
+            } else {
+              console.warn('Layout element not found:', layoutId);
+            }
+          } else {
+            console.warn('No layout mapping found for:', layoutKey);
+          }
+        });
       });
-    });
 
-    // Show the default layout for the first sub-filter button (first one in the list)
-    hideAllLayouts();
-    const defaultSub = subItems[0].toUpperCase();
-    const defaultLayoutKey = `${selectedCategory}-${defaultSub}`;
-    const defaultLayoutId = layouts[defaultLayoutKey];
-    if (defaultLayoutId) {
-      const defaultGrid = document.getElementById(defaultLayoutId);
-      if (defaultGrid) defaultGrid.style.display = 'grid';  // Display the default layout
+      // Show the default layout for the first sub-filter button
+      hideAllLayouts();
+      const defaultSub = subItems[0].value;
+      const defaultLayoutKey = `${selectedCategory}-${defaultSub}`;
+      const defaultLayoutId = layouts[defaultLayoutKey];
+      
+      console.log('Default layout:', defaultLayoutKey, '→', defaultLayoutId); // Debug log
+      
+      if (defaultLayoutId) {
+        const defaultGrid = document.getElementById(defaultLayoutId);
+        if (defaultGrid) {
+          defaultGrid.style.display = 'block';  // Display the default layout
+          console.log('Showing default layout:', defaultLayoutId); // Debug log
+        }
+      }
+
+    } else {
+      subNav.innerHTML = '';
+      subNav.style.display = 'none';  // Hide sub-filter navigation if no sub-filters exist
+      hideAllLayouts();  // Hide all layouts if no sub-filters
     }
-
-  } else {
-    subNav.innerHTML = '';
-    subNav.style.display = 'none';  // Hide sub-filter navigation if no sub-filters exist
-    hideAllLayouts();  // Hide all layouts if no sub-filters
   }
-}
-
 
   // Main nav click event binding
   mainBtns.forEach(btn => {
@@ -728,52 +762,16 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Carousel: Generic video carousel pagination logic
-document.addEventListener('DOMContentLoaded', function () {
-  const track = document.getElementById('video-carousel-track');
-  const nextBtn = document.getElementById('carousel-next');
-  const prevBtn = document.getElementById('carousel-prev');
-
-  if (!track) return;
-
-  let scrollIndex = 0;
-  const videosPerPage = 8;
-  const items = track.querySelectorAll('.item.reel-video');
-  const totalItems = items.length;
-  const totalPages = Math.ceil(totalItems / videosPerPage);
-
-  function updateVisibleVideos() {
-    items.forEach((el, i) => {
-      el.style.display = (i >= scrollIndex * videosPerPage && i < (scrollIndex + 1) * videosPerPage) ? 'block' : 'none';
-    });
-  }
-
-  nextBtn?.addEventListener('click', () => {
-    scrollIndex = Math.min(scrollIndex + 1, totalPages - 1);
-    updateVisibleVideos();
-  });
-
-  prevBtn?.addEventListener('click', () => {
-    scrollIndex = Math.max(scrollIndex - 1, 0);
-    updateVisibleVideos();
-  });
-
-  updateVisibleVideos();
-});
-
 // Nepa Rudraksha Carousel Custom Logic
 document.addEventListener('DOMContentLoaded', function () {
   const nepaLayout = document.getElementById('reels-nepa-layout');
   if (!nepaLayout) return;
 
-  const titleEl = document.getElementById('nepa-carousel-title');
   const prevBtn = document.getElementById('nepa-carousel-prev');
   const nextBtn = document.getElementById('nepa-carousel-next');
   const indicatorEl = document.getElementById('nepa-carousel-indicator');
   const progressBar = document.getElementById('nepa-progress-bar');
   const seeMoreBtn = nepaLayout.querySelector('.see-more-btn');
-  const lightbox = document.getElementById('video-lightbox');
-  const iframe = document.getElementById('lightbox-iframe');
 
   const slides = [
     { title: 'Ajay Devgn as Brand Ambassador', seeMoreUrl: 'https://www.facebook.com/' },
@@ -786,41 +784,71 @@ document.addEventListener('DOMContentLoaded', function () {
   let currentSlide = 0;
 
   function bindVideoClickEvents() {
-    document.querySelectorAll('.item.reel-video').forEach(item => {
+    // Only bind events for videos in the currently visible slide
+    const currentSlideEl = nepaLayout.querySelector(`.slide[data-slide-index="${currentSlide}"]`);
+    if (!currentSlideEl) return;
+
+    currentSlideEl.querySelectorAll('.item.reel-video').forEach(item => {
       item.onclick = function () {
         const videoId = item.getAttribute('data-video-id');
         if (videoId) {
+          // Create lightbox if it doesn't exist
+          let lightbox = document.getElementById('video-lightbox');
+          if (!lightbox) {
+            lightbox = document.createElement('div');
+            lightbox.id = 'video-lightbox';
+            lightbox.style.cssText = `
+              position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+              background: rgba(0,0,0,0.8); z-index: 9999; display: none;
+              align-items: center; justify-content: center;
+            `;
+            
+            const iframe = document.createElement('iframe');
+            iframe.id = 'lightbox-iframe';
+            iframe.style.cssText = 'width: 80%; height: 80%; max-width: 800px; max-height: 600px;';
+            iframe.frameBorder = '0';
+            iframe.allowFullscreen = true;
+            
+            lightbox.appendChild(iframe);
+            document.body.appendChild(lightbox);
+            
+            lightbox.addEventListener('click', function (e) {
+              if (e.target === lightbox) {
+                iframe.src = '';
+                lightbox.style.display = 'none';
+              }
+            });
+          }
+          
+          const iframe = lightbox.querySelector('#lightbox-iframe');
           iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-          lightbox.classList.add('active');
+          lightbox.style.display = 'flex';
         }
       };
     });
   }
 
-  lightbox?.addEventListener('click', function (e) {
-    if (e.target === lightbox) {
-      iframe.src = '';
-      lightbox.classList.remove('active');
-    }
-  });
-
   function updateCarousel() {
-    // Update text content
-    if (titleEl) titleEl.textContent = slides[currentSlide].title;
-    if (indicatorEl) indicatorEl.textContent = `Slide ${currentSlide + 1} / ${slides.length}`;
+    // Update indicator
+    if (indicatorEl) indicatorEl.textContent = `Slide ${currentSlide + 1}/${slides.length}`;
+    
+    // Update see more button
     if (seeMoreBtn) {
-      seeMoreBtn.textContent = 'SEE MORE';
       seeMoreBtn.onclick = () => window.open(slides[currentSlide].seeMoreUrl, '_blank');
     }
 
     // Update buttons
-    prevBtn.disabled = currentSlide === 0;
-    prevBtn.style.opacity = currentSlide === 0 ? 0.4 : 1;
-    prevBtn.style.cursor = currentSlide === 0 ? 'not-allowed' : 'pointer';
+    if (prevBtn) {
+      prevBtn.disabled = currentSlide === 0;
+      prevBtn.style.opacity = currentSlide === 0 ? '0.4' : '1';
+      prevBtn.style.cursor = currentSlide === 0 ? 'not-allowed' : 'pointer';
+    }
 
-    nextBtn.disabled = currentSlide === slides.length - 1;
-    nextBtn.style.opacity = currentSlide === slides.length - 1 ? 0.4 : 1;
-    nextBtn.style.cursor = currentSlide === slides.length - 1 ? 'not-allowed' : 'pointer';
+    if (nextBtn) {
+      nextBtn.disabled = currentSlide === slides.length - 1;
+      nextBtn.style.opacity = currentSlide === slides.length - 1 ? '0.4' : '1';
+      nextBtn.style.cursor = currentSlide === slides.length - 1 ? 'not-allowed' : 'pointer';
+    }
 
     // Update progress bar
     if (progressBar) {
@@ -834,6 +862,7 @@ document.addEventListener('DOMContentLoaded', function () {
       slide.style.display = index === currentSlide ? 'block' : 'none';
     });
 
+    // Bind video click events for the current slide
     bindVideoClickEvents();
   }
 
@@ -852,6 +881,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // Initialize carousel
   updateCarousel();
 });
 

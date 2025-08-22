@@ -620,21 +620,26 @@
 <!-- End of reels-nepa-layout -->
 
 
-
 <!-- REELS FORMAT EDITING → DARAZ -->
 <div id="reels-daraz-layout" style="display:none;">
   <h2 id="daraz-carousel-title" class="section-title" style="font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 1.6rem; text-align: center; margin-top: 0; color: #fff; margin-bottom: 10px;">
     Daraz Project Showcase
   </h2>
-
+  
   <div class="video-carousel-wrapper">
+    <!-- ADDED: Previous button -->
+    <button class="carousel-btn prev-btn" id="daraz-prev-btn">
+      <img src="./assets/images/arrow-left.svg" alt="Previous" style="width: 20px; height: 20px;">
+    </button>
+    
     <div class="video-carousel-track" id="daraz-video-carousel-track">
-
       <!-- ----- Video 1 ----- -->
       <div class="item reel-video" data-video-id="3sO5o9XX0Yg" data-tag="daraz">
         <div class="video-wrapper">
-        <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.png" alt="Daraz">
-          <div class="play-button"><img src="./assets/images/play-circle.svg" alt="Play Button" style="width: 30px; height: 30px;"/></div>
+          <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.png" alt="Daraz">
+          <div class="play-button">
+            <img src="./assets/images/play-circle.svg" alt="Play Button" style="width: 30px; height: 30px;"/>
+          </div>
         </div>
       </div>
       <!-- ----- End of Video 1 ----- -->
@@ -643,7 +648,9 @@
       <div class="item reel-video" data-video-id="3sO5o9XX0Yg" data-tag="daraz">
         <div class="video-wrapper">
           <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.png" alt="Daraz">
-          <div class="play-button"><img src="./assets/images/play-circle.svg" alt="Play Button" style="width: 30px; height: 30px;"/></div>
+          <div class="play-button">
+            <img src="./assets/images/play-circle.svg" alt="Play Button" style="width: 30px; height: 30px;"/>
+          </div>
         </div>
       </div>
       <!-- ----- End of Video 2 ----- -->
@@ -652,7 +659,9 @@
       <div class="item reel-video" data-video-id="3sO5o9XX0Yg" data-tag="daraz">
         <div class="video-wrapper">
           <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.png" alt="Daraz">
-          <div class="play-button"><img src="./assets/images/play-circle.svg" alt="Play Button" style="width: 30px; height: 30px;"/></div>
+          <div class="play-button">
+            <img src="./assets/images/play-circle.svg" alt="Play Button" style="width: 30px; height: 30px;"/>
+          </div>
         </div>
       </div>
       <!-- ----- End of Video 3 ----- -->
@@ -661,12 +670,18 @@
       <div class="item reel-video" data-video-id="3sO5o9XX0Yg" data-tag="daraz">
         <div class="video-wrapper">
           <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.png" alt="Daraz">
-          <div class="play-button"><img src="./assets/images/play-circle.svg" alt="Play Button" style="width: 30px; height: 30px;"/></div>
+          <div class="play-button">
+            <img src="./assets/images/play-circle.svg" alt="Play Button" style="width: 30px; height: 30px;"/>
+          </div>
         </div>
       </div>
       <!-- ----- End of Video 4 ----- -->
-
     </div>
+    
+    <!-- ADDED: Next button -->
+    <button class="carousel-btn next-btn" id="daraz-next-btn">
+      <img src="./assets/images/arrow-right.svg" alt="Next" style="width: 20px; height: 20px;">
+    </button>
   </div>
 
   <!-- See More button below the carousel -->
@@ -675,8 +690,9 @@
       SEE MORE
     </button>
   </div>
+</div>
+<!-- End reels-daraz-layout -->
 
-</div> <!-- End reels-daraz-layout -->
 
 
 <!-- Start REELS FORMAT EDITING → SHARE SANSKAR -->
@@ -1015,46 +1031,6 @@ buttons.forEach(btn => {
 </script>
 
 <!-- Portfolio Sub-filter Logic -->
-<script>
-const mainBtns = document.querySelectorAll('.main-filter-nav .filter-btn');
-const subNav = document.getElementById('sub-filter-nav');
-
-const subFilters = {
-  reels: ['ALL', 'NEPA RUDRAKSHA', 'DARAZ', 'SHARE SANSKAR'],
-  longform: ['NEPA RUDRAKSHA', "NEPAL ENGINEERS'S ASSOCIATION"],
-  logo: [],
-  ads: ['Ajay Devgn X Nepa Rudraksha Campaign'],
-  all: []
-};
-
-mainBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    mainBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    const selected = btn.dataset.category;
-    const items = subFilters[selected];
-
-    if (items.length > 0) {
-      subNav.innerHTML = items.map((item, i) =>
-        `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
-      ).join('');
-      subNav.style.display = 'flex';
-
-      const subBtns = subNav.querySelectorAll('.sub-filter-btn');
-      subBtns.forEach(subBtn => {
-        subBtn.addEventListener('click', () => {
-          subBtns.forEach(b => b.classList.remove('active'));
-          subBtn.classList.add('active');
-        });
-      });
-    } else {
-      subNav.innerHTML = '';
-      subNav.style.display = 'none';
-    }
-  });
-});
-</script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
