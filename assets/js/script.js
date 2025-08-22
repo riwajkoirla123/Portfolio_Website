@@ -1,11 +1,3 @@
-// Only force scroll to top if NOT on Live Server (localhost)
-if (!window.location.href.includes("localhost")) {
-  window.onbeforeunload = function () {
-    window.scrollTo(0, 0);
-  };
-}
-
-
 
 
 
@@ -667,50 +659,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Handle main category click (e.g., REELS, LONGFORM)
   function handleMainClick(btn) {
-    mainBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+  // Remove 'active' class from all main category buttons
+  mainBtns.forEach(b => b.classList.remove('active'));
+  
+  // Add 'active' class to the clicked button
+  btn.classList.add('active');
 
-    const selected = btn.dataset.category;
-    const subItems = subFilters[selected];
+  const selectedCategory = btn.dataset.category; // e.g., 'reels', 'longform'
+  const subItems = subFilters[selectedCategory]; // Get the sub-filters for the selected category
 
-    if (subItems && subItems.length > 0) {
-      subNav.innerHTML = subItems.map((item, i) =>
-        `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
-      ).join('');
-      subNav.style.display = 'flex';
+  if (subItems && subItems.length > 0) {
+    // Dynamically generate sub-filter buttons based on the subItems for the selected category
+    subNav.innerHTML = subItems.map((item, i) =>
+      `<button class="sub-filter-btn${i === 0 ? ' active' : ''}">${item}</button>`
+    ).join('');
+    subNav.style.display = 'flex';  // Make the sub-filter navigation visible
 
-      const subBtns = subNav.querySelectorAll('.sub-filter-btn');
-      subBtns.forEach((subBtn) => {
-        subBtn.addEventListener('click', () => {
-          subBtns.forEach(b => b.classList.remove('active'));
-          subBtn.classList.add('active');
-          hideAllLayouts();
+    // Add event listeners for each sub-filter button
+    const subBtns = subNav.querySelectorAll('.sub-filter-btn');
+    subBtns.forEach((subBtn) => {
+      subBtn.addEventListener('click', () => {
+        // Remove 'active' class from all sub-filter buttons
+        subBtns.forEach(b => b.classList.remove('active'));
+        
+        // Add 'active' class to the clicked sub-filter button
+        subBtn.classList.add('active');
+        
+        hideAllLayouts();  // Hide all layouts first
 
-          const layoutKey = `${selected}-${subBtn.textContent.trim().toUpperCase()}`;
-          const layoutId = layouts[layoutKey];
-          if (layoutId) {
-            const grid = document.getElementById(layoutId);
-            if (grid) grid.style.display = 'grid';
-          }
-        });
+        // Build the layout key using the selected category and sub-filter
+        const layoutKey = `${selectedCategory}-${subBtn.textContent.trim().toUpperCase()}`;
+        const layoutId = layouts[layoutKey];  // Get the corresponding layout ID
+        if (layoutId) {
+          const grid = document.getElementById(layoutId);
+          if (grid) grid.style.display = 'grid';  // Show the correct layout
+        }
       });
+    });
 
-      // Show default layout (first sub-filter)
-      hideAllLayouts();
-      const defaultSub = subItems[0].toUpperCase();
-      const defaultLayoutKey = `${selected}-${defaultSub}`;
-      const defaultLayoutId = layouts[defaultLayoutKey];
-      if (defaultLayoutId) {
-        const defaultGrid = document.getElementById(defaultLayoutId);
-        if (defaultGrid) defaultGrid.style.display = 'grid';
-      }
-
-    } else {
-      subNav.innerHTML = '';
-      subNav.style.display = 'none';
-      hideAllLayouts();
+    // Show the default layout for the first sub-filter button (first one in the list)
+    hideAllLayouts();
+    const defaultSub = subItems[0].toUpperCase();
+    const defaultLayoutKey = `${selectedCategory}-${defaultSub}`;
+    const defaultLayoutId = layouts[defaultLayoutKey];
+    if (defaultLayoutId) {
+      const defaultGrid = document.getElementById(defaultLayoutId);
+      if (defaultGrid) defaultGrid.style.display = 'grid';  // Display the default layout
     }
+
+  } else {
+    subNav.innerHTML = '';
+    subNav.style.display = 'none';  // Hide sub-filter navigation if no sub-filters exist
+    hideAllLayouts();  // Hide all layouts if no sub-filters
   }
+}
+
 
   // Main nav click event binding
   mainBtns.forEach(btn => {
