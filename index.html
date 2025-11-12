@@ -35,6 +35,35 @@
     <!-- Page Title -->
     <title>Riwaj Koirala Portfolio</title>
 
+    <style>
+  /* ========================================= */
+  /* == FINAL OVERRIDE FOR VISIBLE VIDEOS == */
+  /* ========================================= */
+
+  /* This forces the container to be a visible grid */
+  #reels-daraz-layout .video-carousel-track,
+  #reels-sharesanskar-layout .video-carousel-track {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 15px !important;
+    opacity: 1 !important;
+    height: auto !important;
+    width: 100% !important;
+    position: static !important;
+  }
+
+  /* This forces each video item to be a visible block */
+  #reels-daraz-layout .item,
+  #reels-sharesanskar-layout .item {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+    position: static !important;
+    width: 250px; /* Give it a specific width */
+  }
+</style>
+
     <!-- Icon fonts -->
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <link href="assets/css/flaticon.css" rel="stylesheet">
@@ -324,6 +353,7 @@
       <!-- Sub-filters for Reels -->
       <div class="sub-filter-group" data-parent="reels" style="display: flex; gap: 8px;">
         <button class="sub-filter-btn active" data-subcategory="nepa-rudraksha">Nepa Rudraksha</button>
+        <button class="sub-filter-btn" data-subcategory="stic-marketing">Stic Marketing</button>
         <button class="sub-filter-btn" data-subcategory="daraz">Daraz</button>
         <button class="sub-filter-btn" data-subcategory="sharesanskar">Share Sanskar</button>
       </div>
@@ -350,7 +380,7 @@
     <!-- End Sub Filter Navigation -->
 
     <!-- REELS FORMAT EDITING → NEPA RUDRAKSHA -->
-<div id="reels-nepa-layout" style="display:none;">
+<div class="portfolio-content" id="reels-nepa-rudraksha-layout" style="display: block;">
 
 <!-- Carousel Navigation Controls -->
 <div style="display: flex; justify-content: center; position: relative; align-items: center; gap: 16px; margin-top: 10px; margin-bottom: 8px; min-height: 40px;">
@@ -621,7 +651,7 @@
 
 
 <!-- REELS FORMAT EDITING → DARAZ -->
-<div id="reels-daraz-layout" style="display:none;">
+<div class="portfolio-content" id="reels-daraz-layout" style="display: none;">
   <h2 id="daraz-carousel-title" class="section-title" style="font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 1.6rem; text-align: center; margin-top: 0; color: #fff; margin-bottom: 10px;">
     Daraz Project Showcase
   </h2>
@@ -696,7 +726,7 @@
 
 
 <!-- Start REELS FORMAT EDITING → SHARE SANSKAR -->
-<div id="reels-sharesanskar-layout" style="display:none;">
+<div class="portfolio-content" id="reels-sharesanskar-layout" style="display: none;">
   <h2 id="sharesanskar-carousel-title" class="section-title" style="font-family: 'Heebo', sans-serif; font-weight: 600; font-size: 1.6rem; text-align: center; margin-top: 0; color: #fff; margin-bottom: 10px;">
     Share Sanskar Project Showcase
   </h2>
@@ -874,12 +904,12 @@
                             <p>If you'd like to work together or have any inquiries, feel free to reach out. I’m available for video editing, cinematography, graphics, and more.</p>
                             <div class="adress">
                                 <h3>Address</h3>
-                                <span>M9WC+VHG, Kageshwori Manohara, Kathmandu, 44600</span>
+                                <span>96 Horne Drive, Brampton, ON L6V 2V3, Canada</span>
                             </div>
                             <div class="phone">
                                 <h3>Phone</h3>
+                                <span>+1 (416) 989-0480</span>
                                 <span>+977 9823064831</span>
-                                <span>+977 9764597304</span>
                             </div>
                             <div class="email">
                                 <h3>Email</h3>
@@ -922,13 +952,13 @@
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="contact-map">
-                          <iframe 
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.238805859191!2d85.3688626!3d27.6971922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1b3deea85ee1%3A0x34a968fda68cba71!2sRiwaj%20Koirala!5e0!3m2!1sen!2snp!4v1721470249891!5m2!1sen!2snp" 
-  width="100%" 
-  height="450" 
-  style="border:0;" 
-  allowfullscreen="" 
-  loading="lazy" 
+                  <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7098.19782374573!2d-79.76489222336785!3d43.703336249186044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b15e7ff31a723%3A0xa29552b2347c1dd5!2s96%20Horne%20Dr%2C%20Brampton%2C%20ON%20L6V%202V3!5e0!3m2!1sen!2sca!4v1762915404019!5m2!1sen!2sca&layer=c"
+  width="100%"
+  height="450"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy"
   referrerpolicy="no-referrer-when-downgrade">
 </iframe>
                           </div>
@@ -960,7 +990,7 @@
             </div>
             <div class="col-12">
                 <div class="footer-sub">
-                    <p style="color: #999; font-size: 14px; margin-top: 20px;">© 2024 Riwaj Koirala. All rights reserved.</p>
+                    <p style="color: #999; font-size: 14px; margin-top: 20px;">© 2025 Riwaj Koirala. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -989,218 +1019,144 @@
 <script src="assets/js/jquery-plugin-collection.js"></script>
 <script src="assets/js/script.js"></script>
 
-<!-- Smooth scroll -->
-<script>
-$('a[href^="#"]').on('click', function(e) {
-  var target = $(this.getAttribute('href'));
-  if (target.length) {
-    e.preventDefault();
-    $('body').addClass('smooth-scroll');
-    const distance = Math.abs($(window).scrollTop() - target.offset().top);
-    const duration = Math.min(1200, distance);
-    $('html, body').animate({ scrollTop: target.offset().top }, duration, 'swing', function () {
-      $('body').removeClass('smooth-scroll');
-    });
-  }
-});
-</script>
-
-<!-- Swiper.js -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-// Your Swiper carousel code stays unchanged here...
-</script>
+document.addEventListener('DOMContentLoaded', function () {
 
-<script>
-const navContainer = document.getElementById('main-filter-nav');
-const buttons = document.querySelectorAll('.filter-btn');
-
-buttons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const containerRect = navContainer.getBoundingClientRect();
-    const buttonRect = btn.getBoundingClientRect();
-    
-    const offset = buttonRect.left - containerRect.left - (containerRect.width / 2) + (buttonRect.width / 2);
-    navContainer.scrollBy({ left: offset, behavior: 'smooth' });
-    
-    // Optionally update active state
-    buttons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  });
-});
-</script>
-
-<!-- Portfolio Sub-filter Logic -->
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const journeySwiper = new Swiper('.experience-swiper', {
-    modules: [
-      function ({ swiper, on, extendParams }) {
-        extendParams({ carouselEffect: { opacityStep: 0.33, scaleStep: 0.1, sideSlides: 2 } });
-
-        on('beforeInit', () => {
-          if (swiper.params.effect !== 'carousel') return;
-          swiper.classNames.push(`${swiper.params.containerModifierClass}carousel`);
-          Object.assign(swiper.params, { watchSlidesProgress: true, centeredSlides: true });
-        });
-
-        on('progress', () => {
-          if (swiper.params.effect !== 'carousel') return;
-          const { scaleStep, opacityStep, sideSlides } = swiper.params.carouselEffect;
-          const r = Math.max(Math.min(sideSlides, 3), 1);
-          const a = { 1: 2, 2: 1, 3: 0.2 }[r];
-          const o = { 1: 70, 2: 50, 3: 80 }[r];
-          const slidesCount = swiper.slides.length;
-
-          swiper.slides.forEach((slide) => {
-            const progress = slide.progress;
-            const absProgress = Math.abs(progress);
-            let scale = 1;
-            if (absProgress > 1) scale = 0.3 * (absProgress - 1) * a + 1;
-            let translateX = progress * scale * o * (swiper.rtlTranslate ? -1 : 1);
-            const zIndex = slidesCount - Math.abs(Math.round(progress));
-            const opacity = absProgress > r + 1 ? 0 : 1;
-
-            slide.style.transform = `translateX(${translateX}%) scale(${1 - absProgress * scaleStep})`;
-            slide.style.zIndex = zIndex;
-            slide.style.opacity = opacity;
-          });
-        });
-
-        on('resize', () => {
-          if (swiper.params.effect !== 'carousel') return;
-          if (swiper.virtual?.enabled) {
-            requestAnimationFrame(() => {
-              if (!swiper.destroyed) {
-                swiper.updateSlides();
-                swiper.updateProgress();
-              }
-            });
-          }
-        });
-
-        on('setTransition', (s, duration) => {
-          if (s.params.effect === 'carousel') {
-            s.slides.forEach((slide) => {
-              slide.style.transitionDuration = `${duration}ms`;
-            });
-          }
+    // --- SMOOTH SCROLL FOR ANCHOR LINKS ('#') ---
+    $('a[href^="#"]').on('click', function(e) {
+      var target = $(this.getAttribute('href'));
+      if (target.length) {
+        e.preventDefault();
+        $('body').addClass('smooth-scroll');
+        const distance = Math.abs($(window).scrollTop() - target.offset().top);
+        const duration = Math.min(1200, distance);
+        $('html, body').animate({ scrollTop: target.offset().top }, duration, 'swing', function () {
+          $('body').removeClass('smooth-scroll');
         });
       }
-    ],
-    effect: 'carousel',
-    carouselEffect: { opacityStep: 0.33, scaleStep: 0.2, sideSlides: 2 },
-    grabCursor: false,
-    loop: true,
-    loopAdditionalSlides: 1,
-    slidesPerView: 'auto',
-    autoplay: {
-      delay: 900,
-      disableOnInteraction: false
-    },
-    allowTouchMove: false,
-    simulateTouch: false
-  });
-});
-</script>
-
-<!-- ✅ Custom Lightbox Video Popup -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const thumbnails = document.querySelectorAll(".reel-video");
-  const lightbox = document.getElementById("video-lightbox");
-  const iframe = document.getElementById("lightbox-iframe");
-  const closeBtn = document.querySelector(".close-btn");
-
-  thumbnails.forEach(item => {
-    item.addEventListener("click", () => {
-      const videoId = item.dataset.videoId;
-      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-      lightbox.classList.add("active");
     });
-  });
 
-  closeBtn.addEventListener("click", () => {
-    lightbox.classList.remove("active");
-    iframe.src = "";
-  });
-
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) {
-      lightbox.classList.remove("active");
-      iframe.src = "";
+    // --- MAIN FILTER HORIZONTAL SCROLL ---
+    const mainFilterNav = document.getElementById('main-filter-nav');
+    if (mainFilterNav) {
+        mainFilterNav.addEventListener('click', function(event) {
+            if (event.target.matches('.filter-btn')) {
+                const btn = event.target;
+                const containerRect = mainFilterNav.getBoundingClientRect();
+                const buttonRect = btn.getBoundingClientRect();
+                const offset = buttonRect.left - containerRect.left - (containerRect.width / 2) + (buttonRect.width / 2);
+                mainFilterNav.scrollBy({ left: offset, behavior: 'smooth' });
+            }
+        });
     }
-  });
+
+    // --- "MY JOURNEY" SWIPER CAROUSEL (FIXED) ---
+    new Swiper('.experience-swiper', {
+        effect: 'carousel',
+        modules: [
+            function ({ swiper, on, extendParams }) {
+                extendParams({ carouselEffect: { opacityStep: 0.33, scaleStep: 0.1, sideSlides: 2 } });
+                on('beforeInit', () => { if (swiper.params.effect !== 'carousel') return; swiper.classNames.push(`${swiper.params.containerModifierClass}carousel`); Object.assign(swiper.params, { watchSlidesProgress: true, centeredSlides: true }); });
+                on('progress', () => { if (swiper.params.effect !== 'carousel') return; const { scaleStep, sideSlides } = swiper.params.carouselEffect; const r = Math.max(Math.min(sideSlides, 3), 1); const a = { 1: 2, 2: 1, 3: 0.2 }[r]; const o = { 1: 70, 2: 50, 3: 80 }[r]; const slidesCount = swiper.slides.length; swiper.slides.forEach((slide) => { const progress = slide.progress; const absProgress = Math.abs(progress); let scale = 1; if (absProgress > 1) scale = 0.3 * (absProgress - 1) * a + 1; let translateX = progress * scale * o * (swiper.rtlTranslate ? -1 : 1); const zIndex = slidesCount - Math.abs(Math.round(progress)); const opacity = absProgress > r + 1 ? 0 : 1; slide.style.transform = `translateX(${translateX}%) scale(${1 - absProgress * scaleStep})`; slide.style.zIndex = zIndex; slide.style.opacity = opacity; }); });
+                on('resize', () => { if (swiper.params.effect !== 'carousel') return; if (swiper.virtual?.enabled) { requestAnimationFrame(() => { if (!swiper.destroyed) { swiper.updateSlides(); swiper.updateProgress(); } }); } });
+                on('setTransition', (s, duration) => { if (s.params.effect === 'carousel') { s.slides.forEach((slide) => { slide.style.transitionDuration = `${duration}ms`; }); } });
+            }
+        ],
+        carouselEffect: { opacityStep: 0.33, scaleStep: 0.2, sideSlides: 2 },
+        grabCursor: false, loop: true, loopAdditionalSlides: 1, slidesPerView: 'auto',
+        autoplay: { delay: 900, disableOnInteraction: false },
+        allowTouchMove: false, simulateTouch: false
+    });
+
+    // --- UNIVERSAL VIDEO LIGHTBOX (POPUP) ---
+    const lightbox = document.getElementById("video-lightbox");
+    const iframe = document.getElementById("lightbox-iframe");
+    if (lightbox && iframe) {
+        document.body.addEventListener('click', function(event) {
+            const thumbnail = event.target.closest('.reel-video');
+            if (thumbnail) {
+                const videoId = thumbnail.dataset.videoId;
+                if (videoId) {
+                    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+                    lightbox.classList.add("active");
+                }
+            }
+        });
+        function closeLightbox() {
+            lightbox.classList.remove("active");
+            iframe.src = "";
+        }
+        lightbox.addEventListener("click", (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+    }
+
+    // --- FINAL PORTFOLIO FILTERING LOGIC ---
+    const mainFilterContainer = document.getElementById('main-filter-nav');
+    const subFilterContainer = document.getElementById('sub-filter-nav');
+    const portfolioContainer = document.querySelector('#protfolio');
+
+    function handleMainFilterClick(event) {
+        const clickedBtn = event.target.closest('.filter-btn');
+        if (!clickedBtn) return;
+
+        const category = clickedBtn.dataset.category;
+        mainFilterContainer.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        clickedBtn.classList.add('active');
+
+        subFilterContainer.querySelectorAll('.sub-filter-group').forEach(group => {
+            group.style.display = group.dataset.parent === category ? 'flex' : 'none';
+        });
+
+        const firstSubFilter = subFilterContainer.querySelector(`.sub-filter-group[data-parent="${category}"] .sub-filter-btn`);
+        if (firstSubFilter) firstSubFilter.click();
+    }
+
+    function handleSubFilterClick(event) {
+        const clickedBtn = event.target.closest('.sub-filter-btn');
+        if (!clickedBtn) return;
+
+        const parentGroup = clickedBtn.closest('.sub-filter-group');
+        if (!parentGroup) return;
+
+        const parentCategory = parentGroup.dataset.parent;
+        const subCategory = clickedBtn.dataset.subcategory;
+        
+        // This name must exactly match the IDs in your HTML.
+        // For example: "reels-daraz-layout"
+        const contentId = `${parentCategory}-${subCategory}-layout`;
+
+        parentGroup.querySelectorAll('.sub-filter-btn').forEach(btn => btn.classList.remove('active'));
+        clickedBtn.classList.add('active');
+
+        portfolioContainer.querySelectorAll('.portfolio-content').forEach(content => {
+            content.style.display = 'none';
+        });
+
+        const contentToShow = document.getElementById(contentId);
+        if (contentToShow) {
+            contentToShow.style.display = 'block';
+        } else {
+            // If it fails, check the ID. For "nepa-rudraksha", we made a change.
+            const alternateId = `reels-nepa-rudraksha-layout`;
+            const alternateContent = document.getElementById(alternateId);
+            if (alternateContent && contentId.includes('nepa-rudraksha')) {
+                alternateContent.style.display = 'block';
+            }
+        }
+    }
+
+    mainFilterContainer.addEventListener('click', handleMainFilterClick);
+    subFilterContainer.addEventListener('click', handleSubFilterClick);
+
+    const initiallyActiveButton = mainFilterContainer.querySelector('.filter-btn.active');
+    if (initiallyActiveButton) {
+        initiallyActiveButton.click();
+    }
 });
 </script>
 
-<!-- Nepa Carousel with dynamic content -->
-<script>
-// Add this container somewhere in your HTML for slide content:
-// <div id="slide-container"></div>
-
-const videoData = [
-  {
-    title: "Ajay Devgn as Brand Ambassador",
-    content: `
-      <video controls width="320" height="180" preload="metadata" style="max-width:100%;">
-        <source src="path_to_video1.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>`
-  },
-  {
-    title: "CEO Feature Reels",
-    content: `
-      <video controls width="320" height="180" preload="metadata" style="max-width:100%;">
-        <source src="path_to_video2.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>`
-  },
-  {
-    title: "Creative Visual Content",
-    content: `
-      <video controls width="320" height="180" preload="metadata" style="max-width:100%;">
-        <source src="path_to_video3.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>`
-  },
-  {
-    title: "Product Showcase Reels",
-    content: `
-      <video controls width="320" height="180" preload="metadata" style="max-width:100%;">
-        <source src="path_to_video4.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>`
-  }
-];
-
-let currentSlide = 0;
-
-const titleEl = document.getElementById("nepa-carousel-title");
-const indicatorEl = document.getElementById("nepa-carousel-indicator");
-const slideContainer = document.getElementById("slide-container");
-
-function renderSlide(index) {
-  const data = videoData[index];
-
-  titleEl.textContent = data.title;
-  indicatorEl.textContent = `Slide ${index + 1} / ${videoData.length}`;
-  slideContainer.innerHTML = data.content;
-}
-
-document.getElementById("nepa-carousel-prev").addEventListener("click", () => {
-  currentSlide = (currentSlide - 1 + videoData.length) % videoData.length;
-  renderSlide(currentSlide);
-});
-
-document.getElementById("nepa-carousel-next").addEventListener("click", () => {
-  currentSlide = (currentSlide + 1) % videoData.length;
-  renderSlide(currentSlide);
-});
-
-renderSlide(currentSlide);
-</script>
 
 </body>
 </html>

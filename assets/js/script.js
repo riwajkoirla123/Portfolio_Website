@@ -1,6 +1,7 @@
 
 
 
+
 (function($) {
 
   "use strict";
@@ -618,153 +619,10 @@ $('.navigation-holder .nav > li > a').on('click', function() {
 //   loop: true
 // });
 
-// Main Portfolio Navigation Script
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  const mainBtns = document.querySelectorAll('#main-filter-nav .filter-btn');
-  const subNav = document.getElementById('sub-filter-nav');
-
-  // Fixed: Map of main → sub → layout IDs (matching your HTML)
-  const layouts = {
-    // REELS
-    'reels-nepa-rudraksha': 'reels-nepa-layout',
-    'reels-daraz': 'reels-daraz-layout',
-    'reels-sharesanskar': 'reels-sharesanskar-layout',
-
-    // LONGFORM
-    'longform-nepa-rudraksha': 'longform-nepa-layout',
-    'longform-nea': 'longform-nea-layout',
-
-    // LOGO
-    'logo-logo-type-1': 'logo-type-1-layout',
-    'logo-logo-type-2': 'logo-type-2-layout',
-
-    // ADS
-    'ads-facebook-ads': 'ads-facebook-layout',
-    'ads-instagram-ads': 'ads-instagram-layout'
-  };
-
-  // Fixed: Sub-filter options per main category (matching HTML data-subcategory)
-  const subFilters = {
-    reels: [
-      { display: 'Nepa Rudraksha', value: 'nepa-rudraksha' },
-      { display: 'Daraz', value: 'daraz' },
-      { display: 'Share Sanskar', value: 'sharesanskar' }
-    ],
-    longform: [
-      { display: 'Nepa Rudraksha', value: 'nepa-rudraksha' },
-      { display: 'Nepal Engineers Association', value: 'nea' }
-    ],
-    logo: [
-      { display: 'Logo Type 1', value: 'logo-type-1' },
-      { display: 'Logo Type 2', value: 'logo-type-2' }
-    ],
-    ads: [
-      { display: 'Facebook Ads', value: 'facebook-ads' },
-      { display: 'Instagram Ads', value: 'instagram-ads' }
-    ]
-  };
-
-  // Hide all portfolio layout sections
-  function hideAllLayouts() {
-    Object.values(layouts).forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.style.display = 'none';
-    });
-  }
-
-  // Handle main category click (e.g., REELS, LONGFORM)
-  function handleMainClick(btn) {
-    // Remove 'active' class from all main category buttons
-    mainBtns.forEach(b => b.classList.remove('active'));
-    
-    // Add 'active' class to the clicked button
-    btn.classList.add('active');
-
-    const selectedCategory = btn.dataset.category; // e.g., 'reels', 'longform'
-    const subItems = subFilters[selectedCategory]; // Get the sub-filters for the selected category
-
-    if (subItems && subItems.length > 0) {
-      // Dynamically generate sub-filter buttons based on the subItems for the selected category
-      subNav.innerHTML = subItems.map((item, i) =>
-        `<button class="sub-filter-btn${i === 0 ? ' active' : ''}" data-subcategory="${item.value}">${item.display}</button>`
-      ).join('');
-      subNav.style.display = 'flex';  // Make the sub-filter navigation visible
-
-      // Add event listeners for each sub-filter button
-      const subBtns = subNav.querySelectorAll('.sub-filter-btn');
-      subBtns.forEach((subBtn) => {
-        subBtn.addEventListener('click', () => {
-          // Remove 'active' class from all sub-filter buttons
-          subBtns.forEach(b => b.classList.remove('active'));
-          
-          // Add 'active' class to the clicked sub-filter button
-          subBtn.classList.add('active');
-          
-          hideAllLayouts();  // Hide all layouts first
-
-          // Build the layout key using the selected category and sub-filter value
-          const subcategoryValue = subBtn.dataset.subcategory;
-          const layoutKey = `${selectedCategory}-${subcategoryValue}`;
-          const layoutId = layouts[layoutKey];  // Get the corresponding layout ID
-          
-          console.log('Looking for layout:', layoutKey, '→', layoutId); // Debug log
-          
-          if (layoutId) {
-            const layoutElement = document.getElementById(layoutId);
-            if (layoutElement) {
-              layoutElement.style.display = 'block';  // Show the correct layout
-              console.log('Showing layout:', layoutId); // Debug log
-            } else {
-              console.warn('Layout element not found:', layoutId);
-            }
-          } else {
-            console.warn('No layout mapping found for:', layoutKey);
-          }
-        });
-      });
-
-      // Show the default layout for the first sub-filter button
-      hideAllLayouts();
-      const defaultSub = subItems[0].value;
-      const defaultLayoutKey = `${selectedCategory}-${defaultSub}`;
-      const defaultLayoutId = layouts[defaultLayoutKey];
-      
-      console.log('Default layout:', defaultLayoutKey, '→', defaultLayoutId); // Debug log
-      
-      if (defaultLayoutId) {
-        const defaultGrid = document.getElementById(defaultLayoutId);
-        if (defaultGrid) {
-          defaultGrid.style.display = 'block';  // Display the default layout
-          console.log('Showing default layout:', defaultLayoutId); // Debug log
-        }
-      }
-
-    } else {
-      subNav.innerHTML = '';
-      subNav.style.display = 'none';  // Hide sub-filter navigation if no sub-filters exist
-      hideAllLayouts();  // Hide all layouts if no sub-filters
-    }
-  }
-
-  // Main nav click event binding
-  mainBtns.forEach(btn => {
-    btn.addEventListener('click', () => handleMainClick(btn));
-  });
-
-  // On load: show REELS → NEPA RUDRAKSHA
-  const defaultBtn = document.querySelector('.filter-btn[data-category="reels"]');
-  if (defaultBtn) {
-    defaultBtn.classList.add('active');
-    handleMainClick(defaultBtn);
-  }
-});
 
 // Nepa Rudraksha Carousel Custom Logic
 document.addEventListener('DOMContentLoaded', function () {
-  const nepaLayout = document.getElementById('reels-nepa-layout');
+  const nepaLayout = document.getElementById('reels-nepa-rudraksha-layout');
   if (!nepaLayout) return;
 
   const prevBtn = document.getElementById('nepa-carousel-prev');
