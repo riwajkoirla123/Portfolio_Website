@@ -1,8 +1,3 @@
-
-
-
-
-
 (function($) {
 
   "use strict";
@@ -150,9 +145,6 @@
                 dots: true,
                 speed: 1000,
                 cssEase: 'cubic-bezier(.4,.72,.22,.99)',
-                // speed: 1000,
-                // fade: true,
-                // cssEase: 'ease-in-out',
                 draggable: false
             });
         }
@@ -187,7 +179,7 @@
 
 
     /*------------------------------------------
-        = ACTIVE POPUP IMAGE
+        = ACTIVE POPUP IMAGE (STANDARD FANCYBOX)
     -------------------------------------------*/
     if ($(".fancybox").length) {
         $(".fancybox").fancybox({
@@ -199,7 +191,7 @@
 
 
     /*------------------------------------------
-        = POPUP VIDEO
+        = POPUP VIDEO (STANDARD FANCYBOX)
     -------------------------------------------*/
     if ($(".video-btn").length) {
         $(".video-btn").on("click", function(){
@@ -220,6 +212,25 @@
         });
     }
 
+    /*==========================================================================
+      !!! NEW ADDITION: MAKE FANCYBOX WORK WITH YOUR DATA-VIDEO-ID PORTFOLIO !!!
+    ==========================================================================*/
+    // This listens for clicks on any element with class .reel-video
+    $(document).on('click', '.reel-video', function(e) {
+        e.preventDefault();
+        var videoId = $(this).attr('data-video-id');
+        
+        if(videoId) {
+            $.fancybox({
+                href: 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1',
+                type: 'iframe', // Tells FancyBox this is a video iframe
+                padding: 0,
+                helpers: {
+                    media: {}
+                }
+            });
+        }
+    });
 
 
     /*------------------------------------------
@@ -303,20 +314,15 @@
         }
     }
 
-    // masonryGridSetting();
-
-
 
     /*------------------------------------------
         = STICKY HEADER
     -------------------------------------------*/
 
-    // Function for clone an element for sticky menu
     function cloneNavForSticyMenu($ele, $newElmClass) {
         $ele.addClass('original').clone().insertAfter($ele).addClass($newElmClass).removeClass('original');
     }
 
-    // clone home style 1 navigation for sticky menu
     if ($('.site-header .navigation').length) {
         cloneNavForSticyMenu($('.site-header .navigation'), "sticky-header");
     }
@@ -410,25 +416,17 @@
     if ($("#contact-form").length) {
         $("#contact-form").validate({
             rules: {
-                name: {
-                    required: true,
-                    minlength: 2
-                },
-
+                name: { required: true, minlength: 2 },
                 email: "required",
-
                 phone: "required",
-
                 address: "required",
             },
-
             messages: {
                 name: "Please enter your name",
                 email: "Please enter your email address",
                 phone: "Please enter your phone number",
                 address: "Please enter your address",
             },
-
             submitHandler: function (form) {
                 $.ajax({
                     type: "POST",
@@ -437,22 +435,17 @@
                     success: function () {
                         $( "#loader").hide();
                         $( "#success").slideDown( "slow" );
-                        setTimeout(function() {
-                        $( "#success").slideUp( "slow" );
-                        }, 3000);
+                        setTimeout(function() { $( "#success").slideUp( "slow" ); }, 3000);
                         form.reset();
                     },
                     error: function() {
                         $( "#loader").hide();
                         $( "#error").slideDown( "slow" );
-                        setTimeout(function() {
-                        $( "#error").slideUp( "slow" );
-                        }, 3000);
+                        setTimeout(function() { $( "#error").slideUp( "slow" ); }, 3000);
                     }
                 });
-                return false; // required to block normal submit since you used ajax
+                return false; 
             }
-
         });
     }
 
@@ -514,9 +507,7 @@
             return false;
         });
     }
-    /*------------------------------------------
-        = BACK TO TOP BTN SETTING
-    -------------------------------------------*/
+    
     $("body").append("<a href='#' class='back-to-top'><i class='ti-arrow-up'></i></a>");
 
     function toggleBackToTopBtn() {
@@ -541,21 +532,13 @@
         WHEN DOCUMENT LOADING
     ==========================================================================*/
         $(window).on('load', function() {
-
             preloader();
-
             sliderBgSetting();
-
             toggleMobileNavigation();
-
             smallNavFunctionality();
-
             sortingGallery();
-            
             smoothScrolling($("#navbar > ul > li > a[href^='#']"), $(".site-header .navigation").innerHeight());
-
             smoothScrolling($(".go-contact-area"), $(".site-header .navigation").innerHeight());
-
         });
 
 
@@ -567,7 +550,6 @@
 		if ($(".site-header").length) {
             stickyMenu( $('.site-header .navigation'), "sticky-on" );
         }
-        
         toggleBackToTopBtn();
     });
 
@@ -576,52 +558,22 @@
         WHEN WINDOW RESIZE
     ==========================================================================*/
     $(window).on("resize", function() {
-
         toggleClassForSmallNav();
-
         clearTimeout($.data(this, 'resizeTimer'));
-
         $.data(this, 'resizeTimer', setTimeout(function() {
             smallNavFunctionality();
         }, 200));
-
     });
-    // Close the side menu on ANY nav link click (desktop or mobile)
-$(document).on('click', '.navigation-holder a', function() {
-    $('.navigation-holder').removeClass('open-navigation-menu');
-});
-// Close the side menu when any navigation link is clicked
-$('.navigation-holder .nav > li > a').on('click', function() {
-    $('.navigation-holder').removeClass('open-navigation-menu');
-});
-// Close the side menu when any navigation link is clicked
-$('.navigation-holder .nav > li > a').on('click', function() {
-    $('.navigation-holder').removeClass('open-navigation-menu');
-});
-
-// // Your Swiper initialization here
-// var expSwiper = new Swiper('.experience-swiper', {
-//   effect: 'coverflow',
-//   grabCursor: true,
-//   centeredSlides: true,
-//   slidesPerView: 3,
-//   initialSlide: 2,
-//   coverflowEffect: {
-//     rotate: 0,
-//     stretch: -100,
-//     depth: 250,
-//     modifier: 2.5,
-//     slideShadows: false,
-//   },
-//   navigation: {
-//     nextEl: '.swiper-button-next',
-//     prevEl: '.swiper-button-prev',
-//   },
-//   loop: true
-// });
-
+    
+    $(document).on('click', '.navigation-holder a', function() {
+        $('.navigation-holder').removeClass('open-navigation-menu');
+    });
+    $('.navigation-holder .nav > li > a').on('click', function() {
+        $('.navigation-holder').removeClass('open-navigation-menu');
+    });
 
 // Nepa Rudraksha Carousel Custom Logic
+// NOTE: REMOVED THE MANUAL LIGHTBOX CREATION TO LET FANCYBOX HANDLE IT
 document.addEventListener('DOMContentLoaded', function () {
   const nepaLayout = document.getElementById('reels-nepa-rudraksha-layout');
   if (!nepaLayout) return;
@@ -641,51 +593,6 @@ document.addEventListener('DOMContentLoaded', function () {
   ];
 
   let currentSlide = 0;
-
-  function bindVideoClickEvents() {
-    // Only bind events for videos in the currently visible slide
-    const currentSlideEl = nepaLayout.querySelector(`.slide[data-slide-index="${currentSlide}"]`);
-    if (!currentSlideEl) return;
-
-    currentSlideEl.querySelectorAll('.item.reel-video').forEach(item => {
-      item.onclick = function () {
-        const videoId = item.getAttribute('data-video-id');
-        if (videoId) {
-          // Create lightbox if it doesn't exist
-          let lightbox = document.getElementById('video-lightbox');
-          if (!lightbox) {
-            lightbox = document.createElement('div');
-            lightbox.id = 'video-lightbox';
-            lightbox.style.cssText = `
-              position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-              background: rgba(0,0,0,0.8); z-index: 9999; display: none;
-              align-items: center; justify-content: center;
-            `;
-            
-            const iframe = document.createElement('iframe');
-            iframe.id = 'lightbox-iframe';
-            iframe.style.cssText = 'width: 80%; height: 80%; max-width: 800px; max-height: 600px;';
-            iframe.frameBorder = '0';
-            iframe.allowFullscreen = true;
-            
-            lightbox.appendChild(iframe);
-            document.body.appendChild(lightbox);
-            
-            lightbox.addEventListener('click', function (e) {
-              if (e.target === lightbox) {
-                iframe.src = '';
-                lightbox.style.display = 'none';
-              }
-            });
-          }
-          
-          const iframe = lightbox.querySelector('#lightbox-iframe');
-          iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-          lightbox.style.display = 'flex';
-        }
-      };
-    });
-  }
 
   function updateCarousel() {
     // Update indicator
@@ -720,9 +627,6 @@ document.addEventListener('DOMContentLoaded', function () {
     allSlides.forEach((slide, index) => {
       slide.style.display = index === currentSlide ? 'block' : 'none';
     });
-
-    // Bind video click events for the current slide
-    bindVideoClickEvents();
   }
 
   // Button listeners
