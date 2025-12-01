@@ -1,3 +1,4 @@
+
 /*============================================================
 [Master Stylesheet]
 Theme Name:     Payra
@@ -2873,22 +2874,57 @@ body, .main-content {
     transition: all 0.3s ease !important;
 }
 
-#daraz-video-carousel-track .item {
-    display: inline-block !important;
-    width: 200px;
-    height: 150px;
-    margin-right: 15px;
-    background: #333;
+
+/* ==========================================================================
+   Aspect Ratio Fix for Lightbox (Add this to the very end of style.css)
+   ========================================================================== */
+
+/* 9:16 VERTICAL ASPECT RATIO (For Reels) - FINAL FIX */
+.lightbox-content.lightbox-vertical {
+  max-width: 500px !important; /* Forces a maximum width of 500px, keeping it compact */
+  width: 90% !important; 
+  aspect-ratio: 9 / 16 !important; 
+  height: auto !important; 
 }
 
-#daraz-video-carousel-track .video-wrapper {
-    width: 100%;
-    height: 100%;
-    position: relative;
+/* ==========================================================================
+   HORIZONTAL ASPECT RATIO FIX (Long Form) - Final Robust Version
+   ========================================================================== */
+.lightbox-content.lightbox-horizontal {
+  /* Enforce max size and shape for the container */
+  max-width: 1600px !important; 
+  width: 90% !important;
+  aspect-ratio: 16 / 9 !important; /* FORCES the WIDE shape */
+  height: auto !important;
 }
 
-#daraz-video-carousel-track .reel-thumb {
+/* IMPORTANT: Force the video player to fill the container 100% */
+.lightbox-content.lightbox-horizontal #lightbox-iframe {
+    width: 80% !important;
+    height: 80% !important;
+    display: block;
+}
+
+/* VERTICAL SHAPE FIX: Must be present to make thumbnails tall */
+.reel-video .video-wrapper {
+    aspect-ratio: 9 / 16 !important;
+    overflow: hidden; 
+    border-radius: 10px; 
+}
+
+.reel-video .reel-thumb {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+/* COLUMN ALIGNMENT FIX: Fixes overflow/misalignment in the grid */
+.portfolio-content .row .col-md-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: flex-start;
+}
+
+.portfolio-content .row .col-md-4 .item.reel-video {
+    width: 100%;
 }
