@@ -48,33 +48,7 @@
     <title>Riwaj Koirala Portfolio</title>
 
     <style>
-      /* ========================================= */
-      /* == FINAL OVERRIDE FOR VISIBLE VIDEOS == */
-      /* ========================================= */
-
-      /* This forces the container to be a visible grid */
-      #reels-daraz-layout .video-carousel-track,
-      #reels-sharesanskar-layout .video-carousel-track {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        gap: 15px !important;
-        opacity: 1 !important;
-        height: auto !important;
-        width: 100% !important;
-        position: static !important;
-      }
-
-      /* This forces each video item to be a visible block */
-      #reels-daraz-layout .item,
-      #reels-sharesanskar-layout .item {
-        display: block !important;
-        opacity: 1 !important;
-        transform: none !important;
-        position: static !important;
-        width: 250px; /* Give it a specific width */
-      }
-
+      
       /* ========================================= */
       /* ==       VIDEO LIGHTBOX STYLES         == */
       /* ========================================= */
@@ -1440,87 +1414,85 @@
           </div>
           <!-- End of stic marketing -->
 
-          <!-- REELS FORMAT EDITING → DARAZ -->
-          <div
-    class="portfolio-content"
-    id="reels-daraz-layout"
-    style="display: none"
-    data-ratio="vertical"
->
-    <div class="section-title text-center">
-        <h2>Daraz - Reels</h2>
+          <!-- ========================== DARAZ REELS LAYOUT (VERTICAL) =========================== -->
+<div class="portfolio-content"
+     id="reels-daraz-layout"
+     style="display: none"
+     data-ratio="vertical">
+
+    <div class="video-carousel-wrapper">
+        <div class="video-carousel-track"> 
+
+            <div class="item reel-video"
+                 data-video-id="3sO5o9XX0Yg"
+                 data-tag="daraz">
+                <div class="video-wrapper">
+                    <img class="reel-thumb"
+                         src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.png"
+                         alt="Daraz 1">
+                    <div class="play-button">
+                        <img src="./assets/images/play-circle.svg"
+                             alt="Play Button"
+                             style="width: 30px; height: 30px">
+                    </div>
+                </div>
+            </div>
+            <div class="item reel-video"
+                 data-video-id="3sO5o9XX0Yg"
+                 data-tag="daraz">
+                <div class="video-wrapper">
+                    <img class="reel-thumb"
+                         src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.png"
+                         alt="Daraz 2">
+                    <div class="play-button">
+                        <img src="./assets/images/play-circle.svg"
+                             alt="Play Button"
+                             style="width: 30px; height: 30px">
+                    </div>
+                </div>
+            </div>
+            <div class="item reel-video"
+                 data-video-id="3sO5o9XX0Yg"
+                 data-tag="daraz">
+                <div class="video-wrapper">
+                    <img class="reel-thumb"
+                         src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.png"
+                         alt="Daraz 3">
+                    <div class="play-button">
+                        <img src="./assets/images/play-circle.svg"
+                             alt="Play Button"
+                             style="width: 30px; height: 30px">
+                    </div>
+                </div>
+            </div>
+            <div class="item reel-video"
+                 data-video-id="3sO5o9XX0Yg"
+                 data-tag="daraz">
+                <div class="video-wrapper">
+                    <img class="reel-thumb"
+                         src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.png"
+                         alt="Daraz 4">
+                    <div class="play-button">
+                        <img src="./assets/images/play-circle.svg"
+                             alt="Play Button"
+                             style="width: 30px; height: 30px">
+                    </div>
+                </div>
+            </div>
+            </div>
     </div>
-
-    <div class="row">
-        <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
-            <div class="item reel-video" data-video-id="3sO5o9XX0Yg" data-tag="daraz">
-                <div class="video-wrapper">
-                    <img
-                        class="reel-thumb"
-                        src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.png"
-                        alt="Daraz 1"
-                    />
-                    <div class="play-button">
-                        <img
-                            src="./assets/images/play-circle.svg"
-                            alt="Play Button"
-                            style="width: 30px; height: 30px"
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
-            <div class="item reel-video" data-video-id="3sO5o9XX0Yg" data-tag="daraz">
-                <div class="video-wrapper">
-                    <img
-                        class="reel-thumb"
-                        src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.png"
-                        alt="Daraz 2"
-                    />
-                    <div class="play-button">
-                        <img
-                            src="./assets/images/play-circle.svg"
-                            alt="Play Button"
-                            style="width: 30px; height: 30px"
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
-            <div class="item reel-video" data-video-id="3sO5o9XX0Yg" data-tag="daraz">
-                <div class="video-wrapper">
-                    <img
-                        class="reel-thumb"
-                        src="assets/images/portfolios/Videos Thumbnail/Daraz/boat.png"
-                        alt="Daraz 3"
-                    />
-                    <div class="play-button">
-                        <img
-                            src="./assets/images/play-circle.svg"
-                            alt="Play Button"
-                            style="width: 30px; height: 30px"
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        </div>
     <div style="text-align: center; margin-top: 10px">
-        <button
-            class="see-more-btn"
-            onclick="window.open('YOUR-SEE-MORE-LINK-HERE', '_blank')"
-        >
+        <button class="see-more-btn"
+                onclick="window.open('YOUR-SEE-MORE-LINK-HERE', '_blank')">
             SEE MORE
         </button>
     </div>
-</div>          <!-- End of Daraz -->
 
-          <!-- REELS FORMAT EDITING → SHARE SANSKAR -->
+</div>
+<!-- ========================== END OF DARAZ REELS LAYOUT =========================== -->
+
+
+<!-- ============ REELS FORMAT EDITING → SHARE SANSKAR ============ -->
           <div
             class="portfolio-content"
             id="reels-sharesanskar-layout"
@@ -1530,7 +1502,7 @@
 
     
     <!-- Video 1 -->
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="margin-bottom: 30px;">
+    <div class="col-lg-3 col-md-3 col-sm-6 mb-4" style="margin-bottom: 30px;">
       <div class="reel-video" data-video-id="gk_uWkp_m_A" data-tag="sharesanskar" style="cursor: pointer;">
         <div class="video-wrapper" style="position: relative; border-radius: 10px; overflow: hidden;">
           <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Share Sanskar/air asia.png" alt="Share Sanskar" style="width: 100%; aspect-ratio: 9/16; object-fit: cover;">
@@ -1542,7 +1514,7 @@
     </div>
 
     <!-- Video 2 -->
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="margin-bottom: 30px;">
+    <div class="col-lg-3 col-md-3 col-sm-6 mb-4" style="margin-bottom: 30px;">
       <div class="reel-video" data-video-id="gk_uWkp_m_A" data-tag="sharesanskar" style="cursor: pointer;">
         <div class="video-wrapper" style="position: relative; border-radius: 10px; overflow: hidden;">
           <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Share Sanskar/air asia.png" alt="Share Sanskar" style="width: 100%; aspect-ratio: 9/16; object-fit: cover;">
@@ -1554,7 +1526,7 @@
     </div>
 
     <!-- Video 3 -->
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="margin-bottom: 30px;">
+    <div class="col-lg-3 col-md-3 col-sm-6 mb-4" style="margin-bottom: 30px;">
       <div class="reel-video" data-video-id="gk_uWkp_m_A" data-tag="sharesanskar" style="cursor: pointer;">
         <div class="video-wrapper" style="position: relative; border-radius: 10px; overflow: hidden;">
           <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Share Sanskar/air asia.png" alt="Share Sanskar" style="width: 100%; aspect-ratio: 9/16; object-fit: cover;">
@@ -1566,7 +1538,7 @@
     </div>
 
     <!-- Video 4 -->
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4" style="margin-bottom: 30px;">
+    <div class="col-lg-3 col-md-3 col-sm-6 mb-4" style="margin-bottom: 30px;">
       <div class="reel-video" data-video-id="gk_uWkp_m_A" data-tag="sharesanskar" style="cursor: pointer;">
         <div class="video-wrapper" style="position: relative; border-radius: 10px; overflow: hidden;">
           <img class="reel-thumb" src="assets/images/portfolios/Videos Thumbnail/Share Sanskar/air asia.png" alt="Share Sanskar" style="width: 100%; aspect-ratio: 9/16; object-fit: cover;">

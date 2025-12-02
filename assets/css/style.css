@@ -2928,3 +2928,63 @@ body, .main-content {
 .portfolio-content .row .col-md-4 .item.reel-video {
     width: 100%;
 }
+
+/* Fix for Reels when using Bootstrap grid (col-md-3) instead of Flex/Grid track */
+.portfolio-content .row.video-carousel-track .col-md-3 {
+    /* Adjust padding to create space between items */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Ensure the reel video item itself takes up 100% of the column space */
+.portfolio-content .row.video-carousel-track .col-md-3 .item.reel-video {
+    width: 100%;
+}
+
+/* --- FINAL FIX: Enforce 4-Column Layout and 9:16 Aspect Ratio for Reels in Bootstrap Grids --- */
+
+/* 1. Ensure the Bootstrap column wrappers use minimal padding for a tight grid */
+#reels-daraz-layout .col-md-3,
+#reels-sharesanskar-layout .col-md-3,
+#reels-stic-layout .col-md-3 {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+/* 2. Force the .reel-video item itself to occupy the full width and height of its column container */
+#reels-daraz-layout .reel-video,
+#reels-sharesanskar-layout .reel-video,
+#reels-stic-layout .reel-video {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    margin: 0 !important;
+}
+
+/* 3. CRITICAL: Force the 9:16 aspect ratio on the video-wrapper element for the correct shape */
+#reels-daraz-layout .reel-video .video-wrapper,
+#reels-sharesanskar-layout .reel-video .video-wrapper,
+#reels-stic-layout .reel-video .video-wrapper {
+    aspect-ratio: 9 / 16 !important;
+    overflow: hidden !important;
+    position: relative !important; 
+}
+
+/* 4. Ensure the thumbnail image covers the new vertical container completely */
+#reels-daraz-layout .reel-thumb,
+#reels-sharesanskar-layout .reel-thumb,
+#reels-stic-layout .reel-thumb {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* 5. Ensure the play button is centered (redundant but safe) */
+#reels-daraz-layout .play-button,
+#reels-sharesanskar-layout .play-button,
+#reels-stic-layout .play-button {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
