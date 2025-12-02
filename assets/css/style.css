@@ -2988,3 +2988,89 @@ body, .main-content {
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
 }
+
+/* --- LONG FORM VIDEO FIX: 16:9 Aspect Ratio (Desktop/Tablet) --- */
+
+/* Target the container for all long form videos */
+.item.longform-video {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    margin: 0;
+    cursor: pointer;
+}
+
+/* --- LONG FORM VIDEO FIX: 16:9 Aspect Ratio (Desktop/Tablet) --- */
+
+/* This is the critical line to make the thumbnail WIDE (16:9) */
+.item.longform-video .video-wrapper {
+    aspect-ratio: 16 / 9 !important; /* This is the key line! */
+    overflow: hidden; 
+    border-radius: inherit;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.item.longform-video .reel-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* This is for the lightbox pop-up player, to make it WIDE (16:9) */
+.lightbox-content.lightbox-horizontal {
+    max-width: 1600px !important; 
+    width: 90% !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+}
+
+.lightbox-content.lightbox-horizontal #lightbox-iframe {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+
+/* --- TALLER VIDEO FIX (LEFT COLUMN) - RESPONSIVE VERSION --- */
+
+/* DEFAULT/MOBILE VIEW (All Screens up to 991px): 16:9 Widescreen */
+.item.taller-video-left .video-wrapper {
+    /* Default to Widescreen (16:9) for mobile stack view */
+    aspect-ratio: 16 / 9 !important; 
+    overflow: hidden; 
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* DESKTOP OVERRIDE: 4:3 TALLER RATIO (Only on screens wider than 991px) */
+@media (min-width: 992px) {
+    .item.taller-video-left .video-wrapper {
+        /* OVERRIDE FOR DESKTOP ONLY: 4:3 TALLER RATIO to match the stacked right column */
+        aspect-ratio: 4 / 3 !important; 
+    }
+}
+
+
+/* Global styles for the TALLER THUMBNAIL (Applies to all screens and fixes the white bar) */
+.item.taller-video-left .reel-thumb {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; 
+    display: block !important;
+    /* CRITICAL FIX FOR WHITE BAR ISSUE: */
+    position: absolute !important;
+    top: 0 !important; 
+    left: 0 !important;
+}
+
+/* Ensure the play button is centered in the new tall container */
+.item.taller-video-left .play-button {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
