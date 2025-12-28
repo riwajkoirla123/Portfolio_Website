@@ -2898,6 +2898,16 @@ body, .main-content {
   height: auto !important;
 }
 
+.video-wrapper {
+    position: relative;
+}
+
+.play-button img {
+    width: 50px;
+    height: 50px;
+}
+
+
 /* IMPORTANT: Force the video player to fill the container 100% */
 .lightbox-content.lightbox-horizontal #lightbox-iframe {
     width: 80% !important;
@@ -3034,43 +3044,74 @@ body, .main-content {
     display: block;
 }
 
-/* --- TALLER VIDEO FIX (LEFT COLUMN) - RESPONSIVE VERSION --- */
+/* --- LONG FORM 2x2 GRID FIX --- */
 
-/* DEFAULT/MOBILE VIEW (All Screens up to 991px): 16:9 Widescreen */
-.item.taller-video-left .video-wrapper {
-    /* Default to Widescreen (16:9) for mobile stack view */
-    aspect-ratio: 16 / 9 !important; 
-    overflow: hidden; 
-    position: relative;
-    width: 100%;
-    height: 100%;
+/* 1. Force all video containers to 16:9 and remove white gaps */
+#longform-nepa-rudraksha-layout .video-wrapper {
+    aspect-ratio: 16 / 9 !important; /* Forces widescreen shape for all */
+    width: 100% !important;
+    height: auto !important;
+    background: #000 !important;   /* Matches the dark theme and hides gaps */
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 10px;            /* Maintains your design style */
 }
 
-/* DESKTOP OVERRIDE: 4:3 TALLER RATIO (Only on screens wider than 991px) */
-@media (min-width: 992px) {
-    .item.taller-video-left .video-wrapper {
-        /* OVERRIDE FOR DESKTOP ONLY: 4:3 TALLER RATIO to match the stacked right column */
-        aspect-ratio: 4 / 3 !important; 
-    }
+/* 2. Treat the left and right items identically so they align in a grid */
+#longform-nepa-rudraksha-layout .item.longform-video,
+#longform-nepa-rudraksha-layout .item.taller-video-left {
+    width: 100% !important;
+    display: block !important;
+    margin-bottom: 20px;            /* Consistent vertical spacing */
 }
 
-
-/* Global styles for the TALLER THUMBNAIL (Applies to all screens and fixes the white bar) */
-.item.taller-video-left .reel-thumb {
+/* 3. Fix thumbnails: Fill the container completely without distortion */
+#longform-nepa-rudraksha-layout .reel-thumb {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important; 
+    object-fit: cover !important;  /* Stretches image to fill the 16:9 box */
     display: block !important;
-    /* CRITICAL FIX FOR WHITE BAR ISSUE: */
-    position: absolute !important;
-    top: 0 !important; 
-    left: 0 !important;
+    position: static !important;   /* Removes the 'absolute' floating issue */
 }
 
-/* Ensure the play button is centered in the new tall container */
-.item.taller-video-left .play-button {
+/* 4. Center the play button for all videos */
+#longform-nepa-rudraksha-layout .play-button {
     position: absolute !important;
     top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
+    z-index: 2;
+}
+
+/* 5. Desktop Grid spacing */
+@media (min-width: 992px) {
+    #longform-nepa-rudraksha-layout .col-lg-6 {
+        margin-bottom: 10px !important; 
+    }
+}
+
+/* --- TIGHTEN VERTICAL GAP BETWEEN ROWS --- */
+
+/* 1. Target the vertical margin between the rows */
+#longform-nepa-rudraksha-layout .mb-4, 
+#longform-nepa-rudraksha-layout .mb-3 {
+    margin-bottom: 12px !important; /* Reduces the gap between row 1 and row 2 */
+}
+
+/* 2. Neutralize the manual 20px gap from the inline HTML style */
+#longform-nepa-rudraksha-layout .row {
+    gap: 0 !important; 
+    margin-top: 10px !important; /* Tightens space between sub-nav and the first row */
+}
+
+/* 3. Ensure the video items themselves don't add hidden padding */
+#longform-nepa-rudraksha-layout .item.longform-video {
+    margin-bottom: 0 !important;
+}
+
+/* 4. Fix top row alignment */
+@media (min-width: 992px) {
+    #longform-nepa-rudraksha-layout .col-lg-6 {
+        margin-bottom: 15px !important; 
+    }
 }

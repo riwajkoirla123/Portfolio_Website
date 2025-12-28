@@ -221,7 +221,7 @@
    ========================================================================== */
 
 // This function runs every time a user clicks a video thumbnail
-$(".reel-video").on("click", function(e) {
+$(".reel-video, .longform-video").on("click", function(e) {
     e.preventDefault(); // Stop default action
     const videoId = $(this).data("video-id");
     const iframeSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0&modestbranding=1&controls=1`;

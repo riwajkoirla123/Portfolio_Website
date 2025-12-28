@@ -925,3 +925,69 @@ html, body {
     overflow-x: hidden;
   }
 }
+
+
+/* --- FORCE 2x3 GRID ON MOBILE --- */
+@media (max-width: 767px) {
+    /* 1. Make the container a flex row instead of a stack */
+    .service-area .row {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        margin-left: -5px !important;
+        margin-right: -5px !important;
+    }
+
+    /* 2. Force each item to be 50% width */
+    .service-area .row > div[class*="col-"] {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        padding: 5px !important; /* Spacing between boxes */
+        float: none !important;
+    }
+
+    /* 3. Fix the inner wrapper so it doesn't stay huge */
+    .service-section .services-wrapper {
+        max-width: 100% !important; /* Overrides the 400px in your file */
+        margin: 0 0 10px 0 !important;
+        padding: 20px 10px !important;
+        height: 100% !important; /* Keeps boxes same height */
+    }
+
+    /* 4. Shrink text slightly so it fits in the smaller boxes */
+    .service-section .services-wrapper h3 {
+        font-size: 15px !important;
+        margin-top: 10px !important;
+    }
+    
+    .service-section .services-wrapper p {
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+    }
+
+    /* 5. Shrink the circle icons to save space */
+    .service-section .services-wrapper .icon {
+        width: 60px !important;
+        height: 60px !important;
+        line-height: 60px !important;
+    }
+}
+
+
+
+/* --- SECTION GAP FIX FOR RESPONSIVE.CSS --- */
+@media screen and (max-width: 767px) {
+    /* Tighten the bottom of the Service section */
+    .service-area {
+        padding-bottom: 10px !important;
+    }
+
+    /* Tighten the top of the Work/Portfolio section */
+    .gallery-section {
+        padding-top: 10px !important;
+    }
+
+    /* Remove the bottom margin from the last row of service boxes */
+    .service-section .services-wrapper {
+        margin-bottom: 5px !important;
+    }
+}
